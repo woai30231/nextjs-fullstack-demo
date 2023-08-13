@@ -1,22 +1,63 @@
 {
-  "name": "next.js-typescript",
-  "version": "0.1.0",
+  "name": "project-name",
+  "version": "0.0.1",
   "private": true,
+  "description": "project-description",
+  "keywords": [
+    "project keywords"
+  ],
+  "license": "ISC",
+  "author": "Nisharg Shah",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "yarn lint --fix",
+    "prepare": "husky install",
+    "prettier": "prettier \"**/*.{ts,tsx,css,scss,json}\" --config ./.prettierrc.js",
+    "prettier:fix": "yarn prettier --write",
+    "script:lint": "sh -e ./scripts/lint.sh"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint"
+    ]
   },
   "dependencies": {
-    "@types/node": "20.4.10",
-    "@types/react": "18.2.20",
-    "@types/react-dom": "18.2.7",
-    "eslint": "8.47.0",
-    "eslint-config-next": "13.4.13",
-    "next": "13.4.13",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
+    "next": "^13.4.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.13",
+    "@types/node": "^18.17.5",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-next": "^13.4.13",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=9",
+    "yarn": ">=1.22"
   }
 }
