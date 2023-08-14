@@ -4,13 +4,12 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import type { NextPage } from 'next';
+import type { Component } from '@/types/Common';
 
-const Home: NextPage = () => {
+const Home: Component = () => {
   console.log('lol');
   return (
     <div>
-      Login
       <Link href="/login">Login</Link>
     </div>
   );

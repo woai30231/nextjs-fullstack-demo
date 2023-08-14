@@ -5,27 +5,40 @@ import React, { useEffect, useState } from 'react';
 import { Inter } from 'next/font/google';
 import { Provider } from 'react-redux';
 
+import { getProfile } from '@/api';
+import Loader from '@/shared/Loader';
+import { getProfileAction } from '@/store/features/auth';
 import store from '@/store/store';
+import catchAsync from '@/utils/catchAsync';
 
-import type { ReactNode } from 'react';
+import type { Layout } from '@/types/Common';
 
 import '@/app/globals.css';
-import { getProfileAction } from '@/store/features/auth/actions';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout: Layout = ({ children }) => {
   const [loader, setLoader] = useState(true);
 
+  const getData = async () => {
+    await catchAsync(async (check) => {
+      const res = await getProfile({ data: { platform: 1 } });
+
+      if (check(res, true)) store.dispatch(getProfileAction(res.data.data));
+    });
+  };
+
   useEffect(() => {
-    store.dispatch(getProfileAction());
-    setLoader(true);
+    (async () => {
+      await getData();
+      setLoader(false);
+    })();
   }, []);
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>{loader ? <Loader /> : children}</Provider>
       </body>
     </html>
   );

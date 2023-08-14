@@ -1,20 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import config from '@/config';
-import { getProfileAction, loginAction } from '@/store/features/auth/actions';
 
 import type { AuthSliceState } from '@/store/features/auth/type';
+import type { TokenOutput } from '@/types/Axios';
+import type { MeRes } from '@/types/schemas/Profile';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 const { tokenName } = config;
-
-const logout = (state: AuthSliceState) => {
-  state.isAuthenticated = false;
-  state.token = null;
-  state.user = null;
-  localStorage.removeItem(tokenName);
-  console.log('logging out...');
-};
 
 const initialState: AuthSliceState = {
   isAuthenticated: false,
@@ -25,19 +18,24 @@ const initialState: AuthSliceState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(getProfileAction.fulfilled, (state) => {
+  reducers: {
+    getProfileAction: (state, action: PayloadAction<MeRes>) => {
       state.isAuthenticated = true;
-    });
-
-    builder.addCase(getProfileAction.rejected, logout);
-
-    builder.addCase(loginAction.fulfilled, (state, action) => {
-      const { token } = action.payload;
-      state.token = token;
-      localStorage.setItem(tokenName, token);
-    });
+      state.token = localStorage.getItem(tokenName);
+      state.user = action.payload;
+    },
+    loginAction: (state, action: PayloadAction<TokenOutput['token']>) => {
+      const { payload } = action;
+      state.token = payload;
+      localStorage.setItem(tokenName, payload);
+    },
+    logoutAction: (state: AuthSliceState) => {
+      state.isAuthenticated = false;
+      state.token = null;
+      state.user = null;
+      localStorage.removeItem(tokenName);
+      console.log('logging out...');
+    },
   },
 });
 

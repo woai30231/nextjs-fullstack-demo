@@ -2,14 +2,15 @@
 
 import React, { useState } from 'react';
 
+import { getProfile, login } from '@/api';
 import { useAppDispatch } from '@/store';
-import { loginAction } from '@/store/features/auth/actions';
+import { getProfileAction, loginAction } from '@/store/features/auth';
 import catchAsync from '@/utils/catchAsync';
 
-import type { NextPage } from 'next';
+import type { Component } from '@/types/Common';
 import type { MouseEvent } from 'react';
 
-const Login: NextPage = () => {
+const Login: Component = () => {
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,10 +18,15 @@ const Login: NextPage = () => {
   const handleSubmit = async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     await catchAsync(async (check) => {
-      const data = await dispatch(loginAction({ data: { email, password } }));
-      console.log(data.payload);
+      const data = await login({ data: { email, password } });
 
-      if (data.payload) {
+      if (check(data)) {
+        dispatch(loginAction(data.data.token));
+
+        const profile = await getProfile({ data: { platform: 1 } });
+        if (check(profile, true)) {
+          dispatch(getProfileAction(profile.data.data));
+        }
       }
     });
   };

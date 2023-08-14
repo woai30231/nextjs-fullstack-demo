@@ -14,24 +14,33 @@ export interface InternalAxiosRequestConfigWithUrlParams extends InternalAxiosRe
 
 export type AxiosFn<T> = (data: AxiosRequestConfigWithUrlParams) => Promise<AxiosResponse<T>>;
 
-export interface SuccessResponse<T = unknown> {
-  status: number;
-  message: string;
-  token?: string;
-  results: number;
-  data: T;
+export interface TokenOutput {
+  token: string;
 }
 
-export type SuccessPayloadResponse<T = unknown[]> = SuccessResponse<{
+export interface SuccessOutput<T = unknown> {
+  status: number;
+  message: string;
+  results: T extends unknown[] ? number : number | undefined;
+  data?: T;
+}
+
+interface DocsOutput<T = unknown[]> {
   docs: T;
   limit: number;
   page: number;
   totalDocs: number;
   totalPages: number;
-}>;
+}
+
+export type SuccessDocsOutput<T> = SuccessOutput<DocsOutput<T>>;
 
 export interface ErrorResponse {
   status: number;
   message: string;
   messages?: string[];
 }
+
+export type AxiosOutput<T = unknown, E = unknown> = AxiosFn<SuccessOutput<T> & E>;
+
+export type AxiosDocsOutput<T = unknown[]> = AxiosFn<SuccessDocsOutput<T>>;
