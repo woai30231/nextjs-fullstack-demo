@@ -17,7 +17,7 @@
     "prepare": "husky install",
     "prettier": "prettier \"**/*.{ts,tsx,css,scss,json}\" --config ./.prettierrc.js",
     "prettier:fix": "yarn prettier --write",
-    "script:lint": "sh -e ./scripts/lint.sh"
+    "script:lint": "bash -e ./scripts/lint.sh"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
