@@ -1,12 +1,11 @@
 import axiosInstance from 'axios';
 
 import config from '@/config';
+import tokenStore from '@/config/tokenStore';
 import { isServer } from '@/utils/utils';
 
 import type { InternalAxiosRequestConfigWithUrlParams } from '@/types/Axios';
 import type { AxiosError } from 'axios';
-
-const { tokenName } = config;
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH });
 
@@ -15,7 +14,7 @@ axios.interceptors.request.use(
     const myConfig = { ...conf };
 
     const lang = myConfig.headers['Accept-Language'];
-    const token = localStorage.getItem(tokenName);
+    const token = isServer ? myConfig.headers.token : tokenStore.get();
 
     if (token) myConfig.headers.Authorization = `Bearer ${token}`;
     if (!isServer && !lang) myConfig.headers['Accept-Language'] = 'en';

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid;
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+.link {
+  margin-right: 10px;
+  text-decoration: none;
+}

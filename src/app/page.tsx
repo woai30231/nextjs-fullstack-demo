@@ -2,19 +2,8 @@
 
 import React from 'react';
 
-import Link from 'next/link';
-
 import type { Component } from '@/types/Common';
 
-const Home: Component = () => (
-  <div>
-    <div>
-      <Link href="/login">Login</Link>
-    </div>
-    <div>
-      <Link href="/app">App</Link>
-    </div>
-  </div>
-);
+const HomePage: Component = () => <h1 className="text-center">Hello, Public route</h1>;
 
-export default Home;
+export default HomePage;

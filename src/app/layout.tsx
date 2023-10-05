@@ -1,15 +1,10 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { Inter } from 'next/font/google';
-import { Provider } from 'react-redux';
 
 import { getProfile } from '@/api';
-import Loader from '@/shared/Loader';
-import { getProfileAction } from '@/store/features/auth';
-import store from '@/store/store';
-import catchAsync from '@/utils/catchAsync';
+import App from '@/app/_app';
+import serverTokenStore from '@/config/tokenStore/server';
 
 import type { Layout } from '@/types/Common';
 
@@ -17,28 +12,29 @@ import '@/app/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const RootLayout: Layout = ({ children }) => {
-  const [loader, setLoader] = useState(true);
-
-  const getData = async () => {
-    await catchAsync(async (check) => {
-      const res = await getProfile({ data: { platform: 1 } });
-
-      if (check(res, true)) store.dispatch(getProfileAction(res.data.data));
+const profile = async () => {
+  try {
+    const res = await getProfile({
+      data: { platform: 1 },
+      headers: {
+        token: serverTokenStore.get(),
+      },
     });
-  };
 
-  useEffect(() => {
-    (async () => {
-      await getData();
-      setLoader(false);
-    })();
-  }, []);
+    return res.data.data;
+  } catch (err) {
+    console.log(err);
+    return undefined;
+  }
+};
+
+const RootLayout: Layout = async ({ children }) => {
+  const data = await profile();
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider store={store}>{loader ? <Loader /> : children}</Provider>
+        <App user={data}>{children}</App>
       </body>
     </html>
   );
