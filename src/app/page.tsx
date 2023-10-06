@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import type { Component } from '@/types/Common';
+import type { Component } from '@/types/common';
 
 const HomePage: Component = () => <h1 className="text-center">Hello, Public route</h1>;
 

@@ -2,12 +2,12 @@
 
 import { redirect } from 'next/navigation';
 
-import { useAppSelector } from '@/store';
+import { useUser } from '@/features/user/useUser';
 
-import type { Layout } from '@/types/Common';
+import type { Layout } from '@/types/common';
 
 const AppLayout: Layout = ({ children }) => {
-  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
+  const { isAuthenticated } = useUser();
 
   if (isAuthenticated) redirect('/app');
 

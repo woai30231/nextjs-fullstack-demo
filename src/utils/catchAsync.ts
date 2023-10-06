@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 
-import type { SuccessOutput } from '@/types/Axios';
+import type { SuccessOutput } from '@/types/axios';
 import type { AxiosResponse } from 'axios';
 import type { RequireAtLeastOne } from 'type-fest';
 

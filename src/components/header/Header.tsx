@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import styles from '@/components/header/Header.module.css';
 
-import type { Component } from '@/types/Common';
+import type { Component } from '@/types/common';
 
 const Header: Component = () => (
   <div className={styles.container}>

@@ -5,9 +5,11 @@ import type { QueryClientConfig } from '@tanstack/react-query';
 
 const options: QueryClientConfig = {
   queryCache: new QueryCache({
-    onError: (error) => {
-      const message = error instanceof Error ? error.message : 'Something went wrong';
-      toast.error(message);
+    onError: (error, query) => {
+      if (!query.meta?.noErrorMessage) {
+        const message = error instanceof Error ? error.message : 'Something went wrong';
+        toast.error(message);
+      }
     },
   }),
   defaultOptions: {

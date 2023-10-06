@@ -1,4 +1,4 @@
-import type { Endpoints } from '@/types/Axios';
+import type { Endpoints } from '@/types/axios';
 
 const endpoints: Endpoints = {
   getProfile: {

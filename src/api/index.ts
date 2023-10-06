@@ -1,14 +1,15 @@
 import axios from '@/api/axios';
 import endpoints from '@/api/endpoints';
 
+import type { MeRes } from '@/features/user/user.type';
 import type {
   AxiosOutput as Axios,
   AxiosDocsOutput as AxiosDocs,
   TokenOutput,
-} from '@/types/Axios';
-import type { MeRes } from '@/types/schemas/Profile';
+} from '@/types/axios';
 
-export const login: Axios<unknown, TokenOutput> = async (data) =>
+export const loginApi: Axios<unknown, TokenOutput> = async (data) =>
   axios({ ...endpoints.login, ...data });
 
-export const getProfile: Axios<MeRes> = async (data) => axios({ ...endpoints.getProfile, ...data });
+export const getProfileApi: Axios<MeRes> = async (data) =>
+  axios({ ...endpoints.getProfile, ...data });

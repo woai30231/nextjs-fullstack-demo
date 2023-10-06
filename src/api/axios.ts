@@ -4,17 +4,17 @@ import config from '@/config';
 import tokenStore from '@/storage/client';
 import { isServer } from '@/utils/utils';
 
-import type { InternalAxiosRequestConfigWithUrlParams } from '@/types/Axios';
+import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios';
 import type { AxiosError } from 'axios';
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH });
 
 axios.interceptors.request.use(
-  (conf: InternalAxiosRequestConfigWithUrlParams) => {
+  (conf: InternalAxiosRequestConfigWithExtraProps) => {
     const myConfig = { ...conf };
 
     const lang = myConfig.headers['Accept-Language'];
-    const token = isServer ? myConfig.headers.token : tokenStore.get();
+    const token = conf.serverToken ?? tokenStore.get();
 
     if (token) myConfig.headers.Authorization = `Bearer ${token}`;
     if (!isServer && !lang) myConfig.headers['Accept-Language'] = 'en';
@@ -29,7 +29,7 @@ axios.interceptors.request.use(
     return myConfig;
   },
   async (error: AxiosError) => {
-    console.debug('Request Error', error);
+    if (!isServer) console.debug('Request Error', error);
     return Promise.reject(error);
   }
 );
@@ -37,7 +37,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   (res) => ({ ...res }),
   async (error: AxiosError) => {
-    console.debug('Response Error', error);
+    if (!isServer) console.debug('Response Error', error);
     return Promise.reject(error);
   }
 );

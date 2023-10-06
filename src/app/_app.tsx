@@ -2,31 +2,23 @@
 
 import React from 'react';
 
-import { QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Provider } from 'react-redux';
-import { ToastContainer } from 'react-toastify';
-
 import Header from '@/components/header/Header';
-import queryClient from '@/config/queryClient';
-import store from '@/store/store';
+import { useUser } from '@/features/user/useUser';
 
-import type { Layout } from '@/types/Common';
-import type { MeRes } from '@/types/schemas/Profile';
+import type { MeRes } from '@/features/user/user.type';
+import type { Layout } from '@/types/common';
 
-interface Props {
-  user: MeRes | undefined;
-}
+type Props = Record<'user', MeRes | undefined>;
 
-const App: Layout<Props> = ({ children, user }) => (
-  <QueryClientProvider client={queryClient}>
-    <ReactQueryDevtools initialIsOpen={false} />
-    <ToastContainer />
-    <Provider store={store}>
+const App: Layout<Props> = ({ children, user }) => {
+  useUser(user);
+
+  return (
+    <main id="main">
       <Header />
       {children}
-    </Provider>
-  </QueryClientProvider>
-);
+    </main>
+  );
+};
 
 export default App;

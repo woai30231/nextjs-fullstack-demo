@@ -5,11 +5,11 @@ import config from '@/config';
 const { tokenName } = config;
 
 const serverTokenStore = {
-  get: (): string | false => {
+  get: (): string | null => {
     const cookieStore = cookies();
 
     const token = cookieStore.has(tokenName) && cookieStore.get(tokenName);
-    return token ? token.value : false;
+    return token ? token.value : null;
   },
   set: (value: string): boolean => {
     const cookieStore = cookies();

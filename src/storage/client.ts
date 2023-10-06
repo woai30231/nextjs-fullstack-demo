@@ -5,9 +5,10 @@ import config from '@/config';
 const { tokenName } = config;
 
 const tokenStore = {
-  get: (): string | false => {
+  get: (): string | null => {
     const token = hasCookie(tokenName) && getCookie(tokenName);
-    return token ?? false;
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    return token || null;
   },
   set: (value: string): boolean => {
     const isExist = hasCookie(tokenName);

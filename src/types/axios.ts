@@ -2,17 +2,18 @@ import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } fr
 
 type UrlParams = Record<string, number | string>;
 
-interface AxiosRequestConfigWithUrlParams extends AxiosRequestConfig {
+interface AxiosExtraProps {
   urlParams?: UrlParams;
+  serverToken?: string | null;
 }
 
-export type Endpoints = Record<string, AxiosRequestConfigWithUrlParams>;
+export type AxiosRequestConfigWithExtraProps = AxiosRequestConfig & AxiosExtraProps;
 
-export interface InternalAxiosRequestConfigWithUrlParams extends InternalAxiosRequestConfig {
-  urlParams?: UrlParams;
-}
+export type Endpoints = Record<string, AxiosRequestConfigWithExtraProps>;
 
-export type AxiosFn<T> = (data: AxiosRequestConfigWithUrlParams) => Promise<AxiosResponse<T>>;
+export type InternalAxiosRequestConfigWithExtraProps = InternalAxiosRequestConfig & AxiosExtraProps;
+
+export type AxiosFn<T> = (data: AxiosRequestConfigWithExtraProps) => Promise<AxiosResponse<T>>;
 
 export interface TokenOutput {
   token: string;
