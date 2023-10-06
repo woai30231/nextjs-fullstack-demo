@@ -4,7 +4,7 @@ import config from '@/config';
 
 const { tokenName } = config;
 
-const clientTokenStore = {
+const tokenStore = {
   get: (): string | false => {
     const token = hasCookie(tokenName) && getCookie(tokenName);
     return token ?? false;
@@ -25,4 +25,4 @@ const clientTokenStore = {
   },
 };
 
-export default clientTokenStore;
+export default tokenStore;

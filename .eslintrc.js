@@ -13,8 +13,9 @@ module.exports = {
     './lint/.eslintrc-react.js',
     'plugin:@next/next/recommended',
     'prettier',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
-  plugins: ['@typescript-eslint', 'prettier', 'import'],
+  plugins: ['@typescript-eslint', 'prettier', 'import', '@tanstack/query'],
   rules: {
     'prettier/prettier': 'error',
     'no-console': 'off',

@@ -1,7 +1,7 @@
 import axiosInstance from 'axios';
 
 import config from '@/config';
-import tokenStore from '@/config/tokenStore';
+import tokenStore from '@/storage/client';
 import { isServer } from '@/utils/utils';
 
 import type { InternalAxiosRequestConfigWithUrlParams } from '@/types/Axios';

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import tokenStore from '@/config/tokenStore';
+import tokenStore from '@/storage/client';
 
 import type { AuthSliceState } from '@/store/features/auth/type';
 import type { TokenOutput } from '@/types/Axios';

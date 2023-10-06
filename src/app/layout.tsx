@@ -4,11 +4,11 @@ import { Inter } from 'next/font/google';
 
 import { getProfile } from '@/api';
 import App from '@/app/_app';
-import serverTokenStore from '@/config/tokenStore/server';
+import serverTokenStore from '@/storage/server';
 
 import type { Layout } from '@/types/Common';
 
-import '@/app/globals.css';
+import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
