@@ -9,7 +9,7 @@ import type { Layout } from '@/types/common';
 const AppLayout: Layout = ({ children }) => {
   const { isAuthenticated } = useUser();
 
-  if (!isAuthenticated) redirect('/login');
+  if (!isAuthenticated) return redirect('/login');
 
   return children;
 };

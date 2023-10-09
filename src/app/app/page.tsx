@@ -1,7 +1,16 @@
-import React from 'react';
+'use client';
+
+import React, { Fragment } from 'react';
+
+import Dashboard from '@/components/dashboard/Dashboard';
 
 import type { Component } from '@/types/common';
 
-const AppPage: Component = () => <h1 className="text-center">Hello, Protected Route</h1>;
+const AppPage: Component = () => (
+  <Fragment>
+    <h1 className="text-center">Hello, Protected Route</h1>
+    <Dashboard />
+  </Fragment>
+);
 
 export default AppPage;
