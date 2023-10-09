@@ -9,15 +9,15 @@ import { ToastContainer } from 'react-toastify';
 import App from '@/app/_app';
 import queryClient from '@/config/queryClient';
 
-import type { MeRes } from '@/features/user/user.type';
+import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { Layout } from '@/types/common';
 
-type Props = Record<'user', MeRes | undefined>;
+type Props = Record<'user', GetProfileOutput | undefined>;
 
 const Providers: Layout<Props> = ({ children, user }) => (
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={false} />
-    <ToastContainer />
+    <ToastContainer pauseOnFocusLoss={false} />
     <App user={user}>{children}</App>
   </QueryClientProvider>
 );

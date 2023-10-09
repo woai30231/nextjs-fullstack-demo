@@ -1,13 +1,13 @@
 import type { Endpoints } from '@/types/axios';
 
 const endpoints: Endpoints = {
-  getProfile: {
-    method: 'POST',
-    url: '/profile/me',
-  },
   login: {
     method: 'POST',
     url: '/auth/login',
+  },
+  getProfile: {
+    method: 'GET',
+    url: '/auth/profile',
   },
 } as const;
 

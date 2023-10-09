@@ -44,4 +44,6 @@ export type AxiosDocsOutput<T = unknown[], E = unknown> = <M = T, O extends bool
   data: AxiosRequestConfigWithExtraProps
 ) => Promise<AxiosResponse<O extends false ? SuccessDocsOutput<M> & E : M>>;
 
-export type AxiosSignal = Pick<AxiosRequestConfig, 'signal'>;
+export interface AxiosSignal {
+  signal?: AbortSignal;
+}

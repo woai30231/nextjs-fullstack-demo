@@ -10,10 +10,7 @@ const tokenStore = {
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     return token || null;
   },
-  set: (value: string): boolean => {
-    const isExist = hasCookie(tokenName);
-    if (!isExist) return false;
-
+  set: (value: string): true => {
     setCookie(tokenName, value);
     return true;
   },

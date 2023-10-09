@@ -1,46 +1,66 @@
-import React, { useState } from 'react';
+import React from 'react';
+
+import { useForm } from 'react-hook-form';
 
 import styles from '@/components/login/Login.module.css';
+import { useLogin } from '@/features/auth/useLogin';
+import catchAsync from '@/utils/catchAsync';
 
-import type { Component } from '@/types/common';
-import type { MouseEvent } from 'react';
+import type { Component, Layout } from '@/types/common';
+import type { SubmitHandler } from 'react-hook-form';
+
+interface FormControlProps {
+  label: string;
+  labelFor: string;
+  error?: string;
+}
+
+const FormControl: Layout<FormControlProps> = ({ children, label, labelFor, error }) => (
+  <div className={styles.wrapper}>
+    <label className={styles.label} htmlFor={labelFor}>
+      {label}
+    </label>
+    {children}
+    {error ? <p className={styles.error}>{error}</p> : null}
+  </div>
+);
+
+interface FormData {
+  email: string;
+  password: string;
+}
 
 const Login: Component = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { formState, register, handleSubmit: onSubmit } = useForm<FormData>();
+  const { mutateAsync, isLoading } = useLogin();
+  const { errors } = formState;
 
-  const handleSubmit = async (e: MouseEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit: SubmitHandler<FormData> = async data => {
+    await catchAsync(async () => {
+      await mutateAsync(data);
+    });
   };
 
   return (
-    <form className={styles.container} onSubmit={handleSubmit}>
-      <div className={styles.wrapper}>
-        <label className={styles.label} htmlFor="temp_email">
-          Email
-        </label>
+    <form className={styles.container} onSubmit={onSubmit(handleSubmit)}>
+      <FormControl label="Email" labelFor="temp_email" error={errors.email?.message}>
         <input
+          {...register('email', { required: 'Email is required' })}
           className={styles.input}
           id="temp_email"
           type="text"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
         />
-      </div>
-      <div className={styles.wrapper}>
-        <label className={styles.label} htmlFor="temp_password">
-          Password
-        </label>
+      </FormControl>
+      <FormControl label="Password" labelFor="temp_password" error={errors.password?.message}>
         <input
+          {...register('password', { required: 'Password is required' })}
           className={styles.input}
           id="temp_password"
           type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
         />
-      </div>
+      </FormControl>
       <div>
-        <button className={styles.btn} type="submit">
+        <button className={styles.btn} type="submit" disabled={isLoading}>
           Submit
         </button>
       </div>

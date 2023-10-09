@@ -11,11 +11,8 @@ const serverTokenStore = {
     const token = cookieStore.has(tokenName) && cookieStore.get(tokenName);
     return token ? token.value : null;
   },
-  set: (value: string): boolean => {
+  set: (value: string): true => {
     const cookieStore = cookies();
-
-    const isExist = cookieStore.has(tokenName);
-    if (!isExist) return false;
 
     cookieStore.set(tokenName, value);
     return true;

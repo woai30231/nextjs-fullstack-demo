@@ -1,11 +1,9 @@
-export interface MeRes {
-  firstName: string;
-  lastName: string;
-  fullName: string;
-}
+import type { GetProfileOutput } from '@/features/auth/auth.type';
 
 export interface AuthInfo {
   isAuthenticated: boolean;
   token?: string | null;
-  user?: MeRes;
+  user?: GetProfileOutput;
 }
+
+export type UseUser = (initialData?: GetProfileOutput | undefined) => AuthInfo;

@@ -3,6 +3,6 @@ import endpoints from '@/api/endpoints';
 
 import type { AxiosOutput as Axios, AxiosDocsOutput as AxiosDocs } from '@/types/axios';
 
-export const login: Axios = async (data) => axios({ ...endpoints.login, ...data });
+export const login: Axios = async data => axios({ ...endpoints.login, ...data });
 
-export const getProfile: Axios = async (data) => axios({ ...endpoints.getProfile, ...data });
+export const getProfile: Axios = async data => axios({ ...endpoints.getProfile, ...data });
