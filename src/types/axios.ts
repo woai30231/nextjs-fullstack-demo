@@ -13,12 +13,6 @@ export type Endpoints = Record<string, AxiosRequestConfigWithExtraProps>;
 
 export type InternalAxiosRequestConfigWithExtraProps = InternalAxiosRequestConfig & AxiosExtraProps;
 
-export type AxiosFn<T> = (data: AxiosRequestConfigWithExtraProps) => Promise<AxiosResponse<T>>;
-
-export interface TokenOutput {
-  token: string;
-}
-
 export interface SuccessOutput<T = unknown> {
   status: number;
   message: string;
@@ -42,6 +36,10 @@ export interface ErrorResponse {
   messages?: string[];
 }
 
-export type AxiosOutput<T = unknown, E = unknown> = AxiosFn<SuccessOutput<T> & E>;
+export type AxiosOutput<T = unknown, E = unknown> = <M = T, O extends boolean = false>(
+  data: AxiosRequestConfigWithExtraProps
+) => Promise<AxiosResponse<O extends false ? SuccessOutput<M> & E : M>>;
 
-export type AxiosDocsOutput<T = unknown[]> = AxiosFn<SuccessDocsOutput<T>>;
+export type AxiosDocsOutput<T = unknown[], E = unknown> = <M = T, O extends boolean = false>(
+  data: AxiosRequestConfigWithExtraProps
+) => Promise<AxiosResponse<O extends false ? SuccessDocsOutput<M> & E : M>>;

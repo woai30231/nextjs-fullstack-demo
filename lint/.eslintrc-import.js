@@ -15,7 +15,16 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        patterns: ['./*', '../*'],
+        patterns: [
+          {
+            group: ['./*', '../*'],
+            message: "Please use the absolute path '@/*' instead.",
+          },
+          {
+            group: ['@/api/api'],
+            message: 'Please use the api default export instead.',
+          },
+        ],
       },
     ],
     'import/prefer-default-export': 'off',

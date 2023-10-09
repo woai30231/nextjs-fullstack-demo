@@ -9,6 +9,6 @@ const endpoints: Endpoints = {
     method: 'POST',
     url: '/auth/login',
   },
-};
+} as const;
 
 export default endpoints;
