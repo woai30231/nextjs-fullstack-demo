@@ -3,24 +3,24 @@ import { useQuery } from '@tanstack/react-query';
 import { getProfile } from '@/features/auth/auth.api';
 import tokenStore from '@/storage/client';
 
-import type { GetProfileOutput } from '@/features/auth/auth.type';
-import type { AuthInfo, UseUser } from '@/features/user/user.type';
+import type { AuthInfo, TransformUserData, UseUser } from '@/features/user/user.type';
 
-const transformUserData = (user: GetProfileOutput | undefined = undefined): AuthInfo => ({
+export const transformUserData: TransformUserData = (user): AuthInfo => ({
   isAuthenticated: !!user,
   token: tokenStore.get(),
   user,
 });
 
-export const useUser: UseUser = initialData => {
+export const useUser: UseUser = () => {
   const { data } = useQuery({
     queryKey: ['user'],
     queryFn: async ({ signal }) => transformUserData(await getProfile({ signal })),
-    initialData: transformUserData(initialData),
+    initialData: transformUserData,
     retry: false,
     staleTime: Infinity,
     meta: {
-      noErrorMessage: !initialData,
+      noErrorMessage: true,
+      noMessage: true,
     },
   });
 

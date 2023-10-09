@@ -14,7 +14,7 @@ const Header: Component = () => {
 
   const handleLogout = async () => {
     tokenStore.delete();
-    queryClient.removeQueries({ queryKey: ['user'], exact: true });
+    await queryClient.resetQueries({ queryKey: ['user'], exact: true });
   };
 
   return (

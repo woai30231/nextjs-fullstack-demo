@@ -6,4 +6,6 @@ export interface AuthInfo {
   user?: GetProfileOutput;
 }
 
-export type UseUser = (initialData?: GetProfileOutput | undefined) => AuthInfo;
+export type UseUser = () => AuthInfo;
+
+export type TransformUserData = (user?: GetProfileOutput | undefined) => AuthInfo;
