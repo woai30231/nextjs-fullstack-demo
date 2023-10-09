@@ -9,5 +9,5 @@ export const getBase64 = async (file: File): Promise<FileReader['result']> =>
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onerror = error => reject(error);
   });

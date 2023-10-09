@@ -24,7 +24,7 @@ const Login: Component = () => {
           id="temp_email"
           type="text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
         />
       </div>
       <div className={styles.wrapper}>
@@ -36,7 +36,7 @@ const Login: Component = () => {
           id="temp_password"
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
         />
       </div>
       <div>

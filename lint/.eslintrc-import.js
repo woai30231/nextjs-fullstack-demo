@@ -53,6 +53,7 @@ module.exports = {
         },
         distinctGroup: true,
         pathGroupsExcludedImportTypes: ['type'],
+        warnOnUnassignedImports: true,
       },
     ],
     'import/no-unresolved': 'error',

@@ -35,7 +35,7 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
-  (res) => ({ ...res }),
+  res => ({ ...res }),
   async (error: AxiosError) => {
     if (!isServer) console.debug('Response Error', error);
     return Promise.reject(error);
