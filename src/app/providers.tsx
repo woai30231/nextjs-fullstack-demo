@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 
 import App from '@/app/_app';
 import queryClient from '@/config/queryClient';
+import ZustandProvider from '@/context/ZustandProvider';
 
 import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { Layout } from '@/types/common';
@@ -18,7 +19,9 @@ const Providers: Layout<Props> = ({ children, user }) => (
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={false} />
     <ToastContainer pauseOnFocusLoss={false} />
-    <App user={user}>{children}</App>
+    <ZustandProvider>
+      <App>{children}</App>
+    </ZustandProvider>
   </QueryClientProvider>
 );
 

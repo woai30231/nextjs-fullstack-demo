@@ -2,12 +2,12 @@
 
 import { redirect } from 'next/navigation';
 
-import { useUser } from '@/features/user/useUser';
+import { useStore } from '@/store';
 
 import type { Layout } from '@/types/common';
 
 const AppLayout: Layout = ({ children }) => {
-  const { isAuthenticated } = useUser();
+  const isAuthenticated = useStore(state => state.isAuthenticated);
 
   if (!isAuthenticated) return redirect('/login');
 

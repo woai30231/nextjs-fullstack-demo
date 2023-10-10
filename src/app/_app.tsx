@@ -2,19 +2,14 @@
 
 import React from 'react';
 
-import { useQueryClient } from '@tanstack/react-query';
-
 import Header from '@/components/header/Header';
-import { transformUserData } from '@/features/user/useUser';
+import { useStore } from '@/store';
 
-import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { Layout } from '@/types/common';
 
-type Props = Record<'user', GetProfileOutput | undefined>;
-
-const App: Layout<Props> = ({ children, user }) => {
-  const queryClient = useQueryClient();
-  if (user) queryClient.setQueryData(['user'], transformUserData(user));
+const App: Layout = ({ children }) => {
+  const store = useStore(state => state);
+  console.log(store);
 
   return (
     <main id="main">

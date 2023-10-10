@@ -11,11 +11,10 @@ export const transformUserData: TransformUserData = (user): AuthInfo => ({
   user,
 });
 
-export const useUser: UseUser = () => {
-  const { data } = useQuery({
+export const useUser: UseUser = () =>
+  useQuery({
     queryKey: ['user'],
-    queryFn: async ({ signal }) => transformUserData(await getProfile({ signal })),
-    initialData: transformUserData,
+    queryFn: async ({ signal }) => getProfile({ signal }),
     retry: false,
     staleTime: Infinity,
     meta: {
@@ -23,6 +22,3 @@ export const useUser: UseUser = () => {
       noMessage: true,
     },
   });
-
-  return data;
-};

@@ -3,19 +3,13 @@ import React from 'react';
 import Link from 'next/link';
 
 import styles from '@/components/header/Header.module.css';
-import queryClient from '@/config/queryClient';
-import { useUser } from '@/features/user/useUser';
-import tokenStore from '@/storage/client';
+import { useStore } from '@/store';
 
 import type { Component } from '@/types/common';
 
 const Header: Component = () => {
-  const { isAuthenticated } = useUser();
-
-  const handleLogout = async () => {
-    tokenStore.delete();
-    await queryClient.resetQueries({ queryKey: ['user'], exact: true });
-  };
+  const logout = useStore(state => state.logout);
+  const isAuthenticated = useStore(state => state.isAuthenticated);
 
   return (
     <div className={styles.container}>
@@ -31,7 +25,7 @@ const Header: Component = () => {
         </Link>
       </div>
       {isAuthenticated && (
-        <button type="button" className={styles.btn} onClick={handleLogout}>
+        <button type="button" className={styles.btn} onClick={logout}>
           Logout
         </button>
       )}

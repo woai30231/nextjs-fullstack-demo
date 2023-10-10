@@ -1,6 +1,5 @@
 import type { AxiosSignal } from '@/types/axios';
 import type { UseMutationResult } from '@tanstack/react-query';
-import type { AxiosError } from 'axios';
 
 /* Login API */
 
@@ -15,7 +14,7 @@ export interface LoginOutput {
 
 export type Login = (params: LoginInput) => Promise<LoginOutput | undefined>;
 
-export type UseLogin = () => UseMutationResult<LoginOutput | undefined, AxiosError, LoginInput>;
+export type UseLogin = () => UseMutationResult<LoginOutput | undefined, unknown, LoginInput>;
 
 /* Get Profile API */
 

@@ -37,10 +37,4 @@ module.exports = {
       },
     ],
   },
-  overrides: [
-    {
-      files: ['**/*.slice.ts'],
-      rules: { 'no-param-reassign': ['error', { props: false }] },
-    },
-  ],
 };

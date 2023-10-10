@@ -8,7 +8,7 @@ import { useUser } from '@/features/user/useUser';
 import type { Component } from '@/types/common';
 
 const Dashboard: Component = () => {
-  const { user } = useUser();
+  const { data: user } = useUser();
 
   if (!user) return null;
 
