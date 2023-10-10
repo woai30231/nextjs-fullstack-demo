@@ -4,7 +4,7 @@ import tokenStore from '@/storage/client';
 
 import type { GetProfile, GetProfileOutput, Login, LoginOutput } from '@/features/auth/auth.type';
 
-export const login: Login = async data => {
+export const loginApi: Login = async data => {
   try {
     const res = await api.login<LoginOutput, true>({ data });
 
@@ -14,7 +14,7 @@ export const login: Login = async data => {
   }
 };
 
-export const getProfile: GetProfile = async ({ token, signal }) => {
+export const getProfileApi: GetProfile = async ({ token, signal }) => {
   try {
     const res = await api.getProfile<GetProfileOutput, true>({
       data: { platform: 1 },

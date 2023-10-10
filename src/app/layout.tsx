@@ -3,7 +3,7 @@ import React from 'react';
 import { Inter } from 'next/font/google';
 
 import Providers from '@/app/providers';
-import { getProfile } from '@/features/auth/auth.api';
+import { getProfileApi } from '@/features/auth/auth.api';
 import serverTokenStore from '@/storage/server';
 import '@/styles/globals.css';
 
@@ -21,7 +21,7 @@ const RootLayout: Layout = async ({ children }) => {
   let user;
 
   try {
-    user = await getProfile({ token: serverTokenStore.get() });
+    user = await getProfileApi({ token: serverTokenStore.get() });
   } catch (err) {
     console.error(err);
   }

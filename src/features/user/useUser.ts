@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getProfile } from '@/features/auth/auth.api';
+import { getProfileApi } from '@/features/auth/auth.api';
 import tokenStore from '@/storage/client';
 
 import type { AuthInfo, TransformUserData, UseUser } from '@/features/user/user.type';
@@ -14,7 +14,7 @@ export const transformUserData: TransformUserData = (user): AuthInfo => ({
 export const useUser: UseUser = () =>
   useQuery({
     queryKey: ['user'],
-    queryFn: async ({ signal }) => getProfile({ signal }),
+    queryFn: async ({ signal }) => getProfileApi({ signal }),
     retry: false,
     staleTime: Infinity,
     meta: {

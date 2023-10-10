@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { login } from '@/features/auth/auth.api';
+import { loginApi } from '@/features/auth/auth.api';
 import { useStore } from '@/store';
 
 import type { UseLogin } from '@/features/auth/auth.type';
@@ -10,7 +10,7 @@ export const useLogin: UseLogin = () => {
   const loginAction = useStore(state => state.login);
 
   return useMutation({
-    mutationFn: login,
+    mutationFn: loginApi,
     onSuccess: async data => {
       if (!data) return;
 
