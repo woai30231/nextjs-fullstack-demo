@@ -7,14 +7,14 @@ import type { UseLogin } from '@/features/auth/auth.type';
 
 export const useLogin: UseLogin = () => {
   const queryClient = useQueryClient();
-  const loginAction = useStore(state => state.login);
+  const login = useStore(state => state.login);
 
   return useMutation({
     mutationFn: loginApi,
     onSuccess: async data => {
       if (!data) return;
 
-      loginAction(data.access_token);
+      login(data.access_token);
       await queryClient.invalidateQueries({ queryKey: ['user'], exact: true });
     },
   });

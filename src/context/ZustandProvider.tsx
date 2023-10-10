@@ -2,17 +2,16 @@ import React, { createContext, useContext, useRef } from 'react';
 
 import createStore from '@/store/store';
 
-import type { StoreState } from '@/store/store';
 import type { Layout } from '@/types/common';
-import type { ZustandStoreApi } from '@/types/store';
+import type { ZustandInitialState, ZustandStoreApi } from '@/types/store';
 
 export const ZustandContext = createContext<ZustandStoreApi | undefined>(undefined);
 
-const ZustandProvider: Layout<Partial<StoreState>> = ({ children, ...props }) => {
+const ZustandProvider: Layout<ZustandInitialState> = ({ children, initialState }) => {
   const storeRef = useRef<ZustandStoreApi>();
 
   if (!storeRef.current) {
-    storeRef.current = createStore(props);
+    storeRef.current = createStore(initialState);
   }
 
   return <ZustandContext.Provider value={storeRef.current}>{children}</ZustandContext.Provider>;

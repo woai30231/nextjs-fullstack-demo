@@ -16,18 +16,21 @@ const initialState = {
   user: null,
 };
 
+export const setUser = (payload: GetProfileOutput): Partial<AuthInfo> => ({
+  isAuthenticated: true,
+  token: tokenStore.get() ?? '',
+  user: payload,
+});
+
 const createAuthSlice: StateCreator<AuthSlice> = set => ({
   ...initialState,
   login: token => {
     set({ token });
     tokenStore.set(token);
   },
-  setUser: payload =>
-    set({
-      isAuthenticated: true,
-      token: tokenStore.get() ?? '',
-      user: payload,
-    }),
+  setUser: payload => {
+    set(setUser(payload));
+  },
   logout: () => {
     set(initialState);
     tokenStore.delete();

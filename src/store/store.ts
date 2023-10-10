@@ -1,16 +1,23 @@
 import { createStore as createZustandStore } from 'zustand';
 
-import createAuthSlice from '@/store/slices/auth.slice';
+import createAuthSlice, { setUser } from '@/store/slices/auth.slice';
 
-import type { CreateStore, StateFromFunctions } from '@/types/store';
+import type { CreateStore, GetProperStoreData, StateFromFunctions } from '@/types/store';
 
 export type StoreState = StateFromFunctions<[typeof createAuthSlice]>;
 
+const getProperStoreData: GetProperStoreData = initialState => {
+  if (initialState?.user) return setUser(initialState.user);
+
+  return {};
+};
+
 const createStore: CreateStore = initialState => {
-  console.log(initialState);
+  const state = getProperStoreData(initialState);
 
   return createZustandStore<StoreState>()((...a) => ({
     ...createAuthSlice(...a),
+    ...state,
   }));
 };
 

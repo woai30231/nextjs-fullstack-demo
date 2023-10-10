@@ -19,7 +19,7 @@ const Providers: Layout<Props> = ({ children, user }) => (
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={false} />
     <ToastContainer pauseOnFocusLoss={false} />
-    <ZustandProvider>
+    <ZustandProvider initialState={{ user }}>
       <App>{children}</App>
     </ZustandProvider>
   </QueryClientProvider>

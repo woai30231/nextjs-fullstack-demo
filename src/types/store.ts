@@ -1,3 +1,4 @@
+import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { StoreState } from '@/store/store';
 import type { StoreApi } from 'zustand';
 
@@ -9,8 +10,22 @@ export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infe
     : unknown
   : unknown;
 
+interface InitialState {
+  user: GetProfileOutput | undefined;
+}
+
+export interface ZustandInitialState {
+  initialState?: InitialState | undefined;
+}
+
 export type ZustandStoreApi = StoreApi<StoreState>;
 
-export type CreateStore = (initialState?: Partial<StoreState>) => StoreApi<StoreState>;
+export type GetProperStoreData = (
+  initialState?: ZustandInitialState['initialState']
+) => Partial<StoreState>;
+
+export type CreateStore = (
+  initialState?: ZustandInitialState['initialState']
+) => StoreApi<StoreState>;
 
 export type UseStore = <T>(selector: (state: StoreState) => T) => T;
