@@ -20,7 +20,7 @@ type CatchInput<R> = ((err: unknown | AxiosError) => R | Promise<R>) | null;
 
 const catchAsync = async <R = void>(
   tryCB: TryInput<R>,
-  catchCB?: CatchInput<R>
+  catchCB?: CatchInput<R | undefined>
 ): Promise<R | undefined> => {
   try {
     // @ts-expect-error check type predicate mismatched

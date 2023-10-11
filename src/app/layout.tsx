@@ -4,7 +4,6 @@ import { Inter } from 'next/font/google';
 
 import Providers from '@/app/providers';
 import { getProfileApi } from '@/features/auth/auth.api';
-import serverTokenStore from '@/storage/server';
 import '@/styles/globals.css';
 
 import type { Layout } from '@/types/common';
@@ -18,13 +17,7 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: Layout = async ({ children }) => {
-  let user;
-
-  try {
-    user = await getProfileApi({ token: serverTokenStore.get() });
-  } catch (err) {
-    console.error(err);
-  }
+  const user = await getProfileApi({}, true);
 
   return (
     <html lang="en">

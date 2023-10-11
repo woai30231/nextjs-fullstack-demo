@@ -4,7 +4,6 @@ type UrlParams = Record<string, number | string>;
 
 interface AxiosExtraProps {
   urlParams?: UrlParams;
-  serverToken?: string | null;
 }
 
 export type AxiosRequestConfigWithExtraProps = AxiosRequestConfig & AxiosExtraProps;

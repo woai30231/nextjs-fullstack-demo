@@ -12,7 +12,10 @@ export interface LoginOutput {
   access_token: string;
 }
 
-export type Login = (params: LoginInput) => Promise<LoginOutput | undefined>;
+export type Login = (
+  params: LoginInput,
+  noErrorThrow?: boolean
+) => Promise<LoginOutput | undefined>;
 
 export type UseLogin = () => UseMutationResult<LoginOutput | undefined, unknown, LoginInput>;
 
@@ -31,4 +34,7 @@ export interface GetProfileOutput {
   avatar: string;
 }
 
-export type GetProfile = (params: GetProfileInput) => Promise<GetProfileOutput | undefined>;
+export type GetProfile = (
+  params: GetProfileInput,
+  noErrorThrow?: boolean
+) => Promise<GetProfileOutput | undefined>;

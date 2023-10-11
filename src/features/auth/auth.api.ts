@@ -1,30 +1,28 @@
 import api from '@/api';
 import { throwAxiosError } from '@/api/utils';
-import tokenStore from '@/storage/client';
+import tokenStore from '@/config/tokenStore';
 
 import type { GetProfile, GetProfileOutput, Login, LoginOutput } from '@/features/auth/auth.type';
 
-export const loginApi: Login = async data => {
+export const loginApi: Login = async (data, noErrorThrow) => {
   try {
     const res = await api.login<LoginOutput, true>({ data });
 
     return res.data;
   } catch (err) {
-    throwAxiosError(err);
+    if (!noErrorThrow) throwAxiosError(err);
+    return undefined;
   }
 };
 
-export const getProfileApi: GetProfile = async ({ token, signal }) => {
+export const getProfileApi: GetProfile = async ({ signal }, noErrorThrow) => {
   try {
-    const res = await api.getProfile<GetProfileOutput, true>({
-      data: { platform: 1 },
-      serverToken: token,
-      signal,
-    });
+    const res = await api.getProfile<GetProfileOutput, true>({ signal });
 
     return res.data;
   } catch (err) {
     tokenStore.delete();
-    throwAxiosError(err);
+    if (!noErrorThrow) throwAxiosError(err);
+    return undefined;
   }
 };
