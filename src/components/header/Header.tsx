@@ -9,6 +9,8 @@ import type { Component } from '@/types/common';
 
 const Header: Component = () => {
   const logout = useStore(state => state.logout);
+  const isDarkMode = useStore(state => state.isDarkMode);
+  const setMode = useStore(state => state.setMode);
   const isAuthenticated = useStore(state => state.isAuthenticated);
 
   return (
@@ -24,11 +26,16 @@ const Header: Component = () => {
           App
         </Link>
       </div>
-      {isAuthenticated && (
-        <button type="button" className={styles.btn} onClick={logout}>
-          Logout
+      <div className={styles.btnWrapper}>
+        <button type="button" className={styles.btn} onClick={setMode}>
+          Current: {isDarkMode ? 'Dark' : 'Light'}
         </button>
-      )}
+        {isAuthenticated && (
+          <button type="button" className={styles.btn} onClick={logout}>
+            Logout
+          </button>
+        )}
+      </div>
     </div>
   );
 };
