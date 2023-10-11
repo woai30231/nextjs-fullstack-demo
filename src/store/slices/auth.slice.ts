@@ -3,7 +3,7 @@ import tokenStore from '@/config/tokenStore';
 
 import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { AuthInfo } from '@/features/user/user.type';
-import type { StateCreator } from 'zustand';
+import type { SliceCreator } from '@/types/store';
 
 interface AuthSlice extends AuthInfo {
   login: (token: string) => void;
@@ -27,17 +27,17 @@ export const setUser = (payload: GetProfileOutput): Partial<AuthInfo> => {
   };
 };
 
-const createAuthSlice: StateCreator<AuthSlice> = set => ({
+const createAuthSlice: SliceCreator<AuthSlice> = set => ({
   ...initialState,
   login: token => {
-    set({ token });
+    set({ token }, false, 'auth/login');
     tokenStore.set(token);
   },
   setUser: payload => {
-    set(setUser(payload));
+    set(setUser(payload), false, 'auth/setUser');
   },
   logout: () => {
-    set(initialState);
+    set(initialState, false, 'auth/logout');
     tokenStore.delete();
     queryClient.removeQueries();
   },

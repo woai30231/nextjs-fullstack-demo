@@ -1,6 +1,6 @@
 import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { StoreState } from '@/store/store';
-import type { StoreApi } from 'zustand';
+import type { StateCreator, StoreApi } from 'zustand';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
 export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infer R]
@@ -29,3 +29,5 @@ export type CreateStore = (
 ) => StoreApi<StoreState>;
 
 export type UseStore = <T>(selector: (state: StoreState) => T) => T;
+
+export type SliceCreator<T> = StateCreator<T, [['zustand/devtools', never]]>;

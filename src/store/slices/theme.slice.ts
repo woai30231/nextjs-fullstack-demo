@@ -1,6 +1,6 @@
 import { isServer } from '@/utils/utils';
 
-import type { StateCreator } from 'zustand';
+import type { SliceCreator } from '@/types/store';
 
 interface ThemeSlice {
   isDarkMode: boolean;
@@ -19,11 +19,11 @@ const setMode = (isDarkMode: boolean): void => {
   document.documentElement.classList[method]('light-mode');
 };
 
-const createThemeSlice: StateCreator<ThemeSlice> = (set, get) => ({
+const createThemeSlice: SliceCreator<ThemeSlice> = (set, get) => ({
   isDarkMode: detectMode(),
   setMode: () => {
     const { isDarkMode } = get();
-    set({ isDarkMode: !isDarkMode });
+    set({ isDarkMode: !isDarkMode }, false, 'theme/setMode');
     setMode(!isDarkMode);
   },
 });
