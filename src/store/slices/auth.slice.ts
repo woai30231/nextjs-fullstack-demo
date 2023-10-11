@@ -1,4 +1,5 @@
-import tokenStore from '@/storage/client';
+import queryClient from '@/config/queryClient';
+import tokenStore from '@/config/tokenStore';
 
 import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { AuthInfo } from '@/features/user/user.type';
@@ -16,11 +17,15 @@ const initialState = {
   user: null,
 };
 
-export const setUser = (payload: GetProfileOutput): Partial<AuthInfo> => ({
-  isAuthenticated: true,
-  token: tokenStore.get() ?? '',
-  user: payload,
-});
+export const setUser = (payload: GetProfileOutput): Partial<AuthInfo> => {
+  queryClient.setQueryData(['user'], payload);
+
+  return {
+    isAuthenticated: true,
+    token: tokenStore.get() ?? '',
+    user: payload,
+  };
+};
 
 const createAuthSlice: StateCreator<AuthSlice> = set => ({
   ...initialState,
@@ -34,6 +39,7 @@ const createAuthSlice: StateCreator<AuthSlice> = set => ({
   logout: () => {
     set(initialState);
     tokenStore.delete();
+    queryClient.removeQueries();
   },
 });
 

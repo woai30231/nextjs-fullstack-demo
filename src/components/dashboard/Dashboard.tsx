@@ -3,12 +3,12 @@ import React from 'react';
 import Image from 'next/image';
 
 import styles from '@/components/dashboard/Dashboard.module.css';
-import { useUser } from '@/features/user/useUser';
+import { useStore } from '@/store';
 
 import type { Component } from '@/types/common';
 
 const Dashboard: Component = () => {
-  const { data: user } = useUser();
+  const user = useStore(state => state.user);
 
   if (!user) return null;
 

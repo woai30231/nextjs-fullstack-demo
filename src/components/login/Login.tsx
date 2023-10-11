@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import styles from '@/components/login/Login.module.css';
 import { useLogin } from '@/features/auth/useLogin';
-import catchAsync from '@/utils/catchAsync';
+import { useFetchUser } from '@/features/user/useUser';
 
 import type { Component, Layout } from '@/types/common';
 import type { SubmitHandler } from 'react-hook-form';
@@ -31,14 +31,16 @@ interface FormData {
 }
 
 const Login: Component = () => {
+  const { mutateAsync, isLoading: isLogging } = useLogin();
+  const { isLoading: isFetching, fetchUser } = useFetchUser();
+  const isLoading = isLogging || isFetching;
+
   const { formState, register, handleSubmit: onSubmit } = useForm<FormData>();
-  const { mutateAsync, isLoading } = useLogin();
   const { errors } = formState;
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
-    await catchAsync(async () => {
-      await mutateAsync(data);
-    });
+    await mutateAsync(data);
+    await fetchUser();
   };
 
   return (

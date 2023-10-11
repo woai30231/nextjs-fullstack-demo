@@ -1,24 +1,32 @@
-import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
+
+import { useQueryClient } from '@tanstack/react-query';
 
 import { getProfileApi } from '@/features/auth/auth.api';
-import tokenStore from '@/storage/client';
+import { useStore } from '@/store';
 
-import type { AuthInfo, TransformUserData, UseUser } from '@/features/user/user.type';
+import type { UseFetchUser } from '@/features/user/user.type';
 
-export const transformUserData: TransformUserData = (user): AuthInfo => ({
-  isAuthenticated: !!user,
-  token: tokenStore.get(),
-  user,
-});
+export const useFetchUser: UseFetchUser = () => {
+  const queryClient = useQueryClient();
+  const setUser = useStore(state => state.setUser);
+  const [isLoading, setLoading] = useState(false);
 
-export const useUser: UseUser = () =>
-  useQuery({
-    queryKey: ['user'],
-    queryFn: async ({ signal }) => getProfileApi({ signal }),
-    retry: false,
-    staleTime: Infinity,
-    meta: {
-      noErrorMessage: true,
-      noMessage: true,
-    },
-  });
+  const fetchUser = async () => {
+    setLoading(true);
+
+    const data = await queryClient.fetchQuery({
+      queryKey: ['user'],
+      queryFn: async ({ signal }) => getProfileApi({ signal }),
+    });
+
+    setLoading(false);
+
+    if (!data) return false;
+
+    setUser(data);
+    return true;
+  };
+
+  return { isLoading, fetchUser };
+};
