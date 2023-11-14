@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: Layout = async ({ children }) => {
-  const user = await getProfileApi({}, true);
+  const user = await getProfileApi({}, { throwError: false });
 
   return (
     <html lang="en">

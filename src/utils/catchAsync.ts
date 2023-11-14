@@ -1,50 +1,39 @@
-import { AxiosError } from 'axios';
+import { throwAxiosError } from '@/api/utils';
 
-import type { SuccessOutput } from '@/types/axios';
-import type { AxiosResponse } from 'axios';
-import type { RequireAtLeastOne } from 'type-fest';
+import type { AxiosSignal } from '@/types/axios';
+import type { Promisable } from 'type-fest';
 
-type TryCheckOutput<T extends AxiosResponse<SuccessOutput>> = AxiosResponse<
-  RequireAtLeastOne<SuccessOutput<NonNullable<T['data']['data']>>, 'data'>
->;
+type DefaultParamsInput = AxiosSignal;
 
-type TryCheckInput = <S extends boolean>(
-  res: AxiosResponse<SuccessOutput>,
-  strict?: S | boolean,
-  message?: boolean
-) => res is S extends true ? TryCheckOutput<typeof res> : typeof res;
+interface CatchAsyncOptions {
+  throwError?: boolean;
+}
 
-type TryInput<R> = (check: TryCheckInput) => R | Promise<R>;
+type CatchAsyncInput<T, R> = (data: T, options?: CatchAsyncOptions) => Promise<R>;
 
-type CatchInput<R> = ((err: unknown | AxiosError) => R | Promise<R>) | null;
+type CatchAsyncOutput<T, R, E> = (
+  data: T,
+  options?: CatchAsyncOptions
+) => Promise<R | E | undefined>;
 
-const catchAsync = async <R = void>(
-  tryCB: TryInput<R>,
-  catchCB?: CatchInput<R | undefined>
-): Promise<R | undefined> => {
-  try {
-    // @ts-expect-error check type predicate mismatched
-    const check: TryCheckInput = (res, strict = false, message = true) => {
-      if (res.data.status.toString().startsWith('2')) {
-        if (strict) return !!res.data.data;
-        if (message) console.log('success', res.data.message);
-        return true;
-      }
-      console.log('error', res.data.message);
-      return false;
-    };
+type ErrorCB<E> = (err: unknown) => Promisable<E>;
 
-    return await tryCB(check);
-  } catch (err) {
-    console.debug(err);
-    if (catchCB) return catchCB(err);
+type CatchAsync = <I, R, E = undefined, T = I & DefaultParamsInput>(
+  fn: CatchAsyncInput<T, R>,
+  errorCB?: ErrorCB<E>
+) => CatchAsyncOutput<T, R, E>;
 
-    if (err instanceof AxiosError && err.response) {
-      console.log('error', err.response.data.message);
-    } else {
-      console.log('error', 'Something went wrong');
+const catchAsync: CatchAsync =
+  (fn, errorCB = undefined) =>
+  async (data, options = {}) => {
+    const { throwError = true } = options;
+
+    try {
+      return await fn(data, options);
+    } catch (err) {
+      if (throwError) throwAxiosError(err);
+      return errorCB ? errorCB(err) : undefined;
     }
-  }
-};
+  };
 
 export default catchAsync;

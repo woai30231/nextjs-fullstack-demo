@@ -7,7 +7,7 @@ interface ThemeSlice {
   setMode: () => void;
 }
 
-const detectMode = (): boolean => {
+const detectDarkMode = (): boolean => {
   if (isServer) return true;
 
   const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -20,7 +20,7 @@ const setMode = (isDarkMode: boolean): void => {
 };
 
 const createThemeSlice: SliceCreator<ThemeSlice> = (set, get) => ({
-  isDarkMode: detectMode(),
+  isDarkMode: detectDarkMode(),
   setMode: () => {
     const { isDarkMode } = get();
     set({ isDarkMode: !isDarkMode }, false, 'theme/setMode');
