@@ -26,6 +26,10 @@ axios.interceptors.request.use(
       return temp;
     }, myConfig.url ?? '');
 
+    if (myConfig.data instanceof FormData) {
+      myConfig.headers['Content-Type'] = 'multipart/form-data';
+    }
+
     return myConfig;
   },
   async (error: AxiosError) => {
