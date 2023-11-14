@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import styles from '@/components/users/Users.module.css';
 import { useUsers } from '@/features/user/useUsers';
-import Loader from '@/shared/Loader';
+import Loader from '@/shared/loader/Loader';
 
 import type { Component } from '@/types';
 
