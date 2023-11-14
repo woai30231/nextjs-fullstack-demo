@@ -5,15 +5,14 @@ import Image from 'next/image';
 import styles from '@/components/users/Users.module.css';
 import { useUsers } from '@/features/user/useUsers';
 import Loader from '@/shared/loader/Loader';
+import { isProcessing } from '@/utils/utils';
 
 import type { Component } from '@/types';
 
 const Users: Component = () => {
-  const { isLoading, data: users, error } = useUsers();
+  const { isLoading, data: users } = useUsers();
 
-  if (isLoading) return <Loader />;
-
-  if (error) return <p>{error.message}</p>;
+  if (isProcessing(isLoading, users)) return <Loader />;
 
   return (
     <div className={styles.container}>
