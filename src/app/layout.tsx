@@ -6,7 +6,7 @@ import Providers from '@/app/providers';
 import { getProfileApi } from '@/features/auth/auth.api';
 import '@/styles/globals.css';
 
-import type { Layout } from '@/types/common';
+import type { Layout } from '@/types';
 import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });

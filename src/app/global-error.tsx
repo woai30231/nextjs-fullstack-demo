@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 
-import type { Component, GlobalErrorType } from '@/types/common';
+import type { Component, GlobalErrorType } from '@/types';
 
 const GlobalError: Component<GlobalErrorType> = ({ error, reset }) => {
   const { reset: queryReset } = useQueryErrorResetBoundary();

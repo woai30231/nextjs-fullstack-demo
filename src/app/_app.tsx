@@ -4,7 +4,7 @@ import React from 'react';
 
 import Header from '@/components/header/Header';
 
-import type { Layout } from '@/types/common';
+import type { Layout } from '@/types';
 
 const App: Layout = ({ children }) => (
   <main id="main">

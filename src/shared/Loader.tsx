@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { Component } from '@/types/common';
+import type { Component } from '@/types';
 import type { CSSProperties } from 'react';
 
 const style: CSSProperties = {

@@ -6,7 +6,7 @@ import styles from '@/components/login/Login.module.css';
 import { useLogin } from '@/features/auth/useLogin';
 import { useFetchUser } from '@/features/user/useUser';
 
-import type { Component, Layout } from '@/types/common';
+import type { Component, Layout } from '@/types';
 import type { SubmitHandler } from 'react-hook-form';
 
 interface FormControlProps {

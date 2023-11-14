@@ -2,7 +2,7 @@ import React, { createContext, useContext, useRef } from 'react';
 
 import createStore from '@/store/store';
 
-import type { Layout } from '@/types/common';
+import type { Layout } from '@/types';
 import type { ZustandInitialState, ZustandStoreApi } from '@/types/store';
 
 export const ZustandContext = createContext<ZustandStoreApi | undefined>(undefined);

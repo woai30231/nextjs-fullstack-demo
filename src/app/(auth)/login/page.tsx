@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 
 import Login from '@/components/login/Login';
 
-import type { Component } from '@/types/common';
+import type { Component } from '@/types';
 
 const LoginPage: Component = () => (
   <Fragment>

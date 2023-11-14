@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 
 import { useStore } from '@/store';
 
-import type { Layout } from '@/types/common';
+import type { Layout } from '@/types';
 
 const AppLayout: Layout = ({ children }) => {
   const isAuthenticated = useStore(state => state.isAuthenticated);

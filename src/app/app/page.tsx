@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 
 import Dashboard from '@/components/dashboard/Dashboard';
 
-import type { Component } from '@/types/common';
+import type { Component } from '@/types';
 
 const AppPage: Component = () => (
   <Fragment>

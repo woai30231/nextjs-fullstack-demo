@@ -11,7 +11,7 @@ import queryClient from '@/config/queryClient';
 import ZustandProvider from '@/context/ZustandProvider';
 
 import type { GetProfileOutput } from '@/features/auth/auth.type';
-import type { Layout } from '@/types/common';
+import type { Layout } from '@/types';
 
 type Props = Record<'user', GetProfileOutput | undefined>;
 

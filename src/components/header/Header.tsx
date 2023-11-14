@@ -5,7 +5,7 @@ import Link from 'next/link';
 import styles from '@/components/header/Header.module.css';
 import { useStore } from '@/store';
 
-import type { Component } from '@/types/common';
+import type { Component } from '@/types';
 
 const Header: Component = () => {
   const logout = useStore(state => state.logout);
