@@ -9,6 +9,10 @@ const endpoints: Endpoints = {
     method: 'GET',
     url: '/auth/profile',
   },
+  getAllUsers: {
+    method: 'GET',
+    url: '/users',
+  },
 } as const;
 
 export default endpoints;

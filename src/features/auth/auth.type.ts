@@ -20,8 +20,6 @@ export type GetProfileInput = unknown;
 export interface GetProfileOutput {
   id: number;
   email: string;
-  password: string;
   name: string;
-  role: string;
   avatar: string;
 }

@@ -17,7 +17,7 @@ type Props = Record<'user', GetProfileOutput | undefined>;
 
 const Providers: Layout<Props> = ({ children, user }) => (
   <QueryClientProvider client={queryClient}>
-    <ReactQueryDevtools initialIsOpen={false} />
+    <ReactQueryDevtools />
     <ToastContainer pauseOnFocusLoss={false} />
     <ZustandProvider initialState={{ user }}>
       <App>{children}</App>
