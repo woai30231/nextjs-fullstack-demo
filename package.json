@@ -21,11 +21,6 @@
     "start:dev": "next dev",
     "ts": "tsc --noEmit --skipLibCheck -p tsconfig.json"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "yarn lint"
-    ]
-  },
   "dependencies": {
     "@tanstack/react-query": "^4.35.7",
     "@tanstack/react-query-devtools": "^4.35.7",
