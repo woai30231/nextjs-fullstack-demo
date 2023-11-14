@@ -6,7 +6,7 @@ import { useStore } from '@/store';
 
 import type { Layout } from '@/types';
 
-const AppLayout: Layout = ({ children }) => {
+const AuthLayout: Layout = ({ children }) => {
   const isAuthenticated = useStore(state => state.isAuthenticated);
 
   if (isAuthenticated) return redirect('/app');
@@ -14,4 +14,4 @@ const AppLayout: Layout = ({ children }) => {
   return children;
 };
 
-export default AppLayout;
+export default AuthLayout;

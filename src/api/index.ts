@@ -1,4 +1,2 @@
-// eslint-disable-next-line no-restricted-imports
-import * as api from '@/api/api';
-
-export default api;
+// eslint-disable-next-line no-restricted-imports, no-restricted-exports
+export * as default from '@/api/api';
