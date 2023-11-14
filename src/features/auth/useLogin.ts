@@ -3,9 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { loginApi } from '@/features/auth/auth.api';
 import { useStore } from '@/store';
 
-import type { UseLogin } from '@/features/auth/auth.type';
-
-export const useLogin: UseLogin = () => {
+export const useLogin = () => {
   const login = useStore(state => state.login);
 
   return useMutation({

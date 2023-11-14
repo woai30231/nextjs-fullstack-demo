@@ -1,5 +1,4 @@
 import type { GetProfileOutput } from '@/features/auth/auth.type';
-import type { UseQueryResult } from '@tanstack/react-query';
 
 export interface AuthInfo {
   isAuthenticated: boolean;
@@ -19,5 +18,3 @@ export type UseFetchUser = () => UseFetchUserOutput;
 export type GetAllUsersInput = unknown;
 
 export type GetAllUsersOutput = GetProfileOutput[];
-
-export type UseGetAllUsers = () => UseQueryResult<GetAllUsersOutput | undefined>;

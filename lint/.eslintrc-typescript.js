@@ -81,5 +81,11 @@ module.exports = {
       files: ['*.js'],
       extends: ['plugin:@typescript-eslint/disable-type-checked'],
     },
+    {
+      files: ['src/features/**/use*.ts'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+      },
+    },
   ],
 };

@@ -1,5 +1,3 @@
-import type { UseMutationResult } from '@tanstack/react-query';
-
 /* Login API */
 
 export interface LoginInput {
@@ -10,8 +8,6 @@ export interface LoginInput {
 export interface LoginOutput {
   access_token: string;
 }
-
-export type UseLogin = () => UseMutationResult<LoginOutput | undefined, unknown, LoginInput>;
 
 /* Get Profile API */
 
