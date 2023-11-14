@@ -8,7 +8,7 @@ interface AxiosExtraProps {
 
 export type AxiosRequestConfigWithExtraProps = AxiosRequestConfig & AxiosExtraProps;
 
-export type Endpoints = Record<string, AxiosRequestConfigWithExtraProps>;
+export type Endpoints = Record<string, Pick<AxiosRequestConfigWithExtraProps, 'method' | 'url'>>;
 
 export type InternalAxiosRequestConfigWithExtraProps = InternalAxiosRequestConfig & AxiosExtraProps;
 
