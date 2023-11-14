@@ -31,7 +31,7 @@ interface FormData {
 }
 
 const Login: Component = () => {
-  const { mutateAsync, isLoading: isLogging } = useLogin();
+  const { mutateAsync, isPending: isLogging } = useLogin();
   const { isLoading: isFetching, fetchUser } = useFetchUser();
   const isLoading = isLogging || isFetching;
 

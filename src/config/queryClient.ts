@@ -2,6 +2,8 @@ import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
+import { isServer } from '@/utils/utils';
+
 import type { SuccessOutput } from '@/types/axios';
 import type { QueryClientConfig } from '@tanstack/react-query';
 
@@ -40,9 +42,9 @@ const options: QueryClientConfig = {
   }),
   defaultOptions: {
     queries: {
-      retry: 1,
+      retry: isServer ? 0 : 1,
       staleTime: 10000,
-      cacheTime: 1000 * 60 * 5,
+      gcTime: isServer ? Infinity : 1000 * 60 * 5,
     },
   },
 };
