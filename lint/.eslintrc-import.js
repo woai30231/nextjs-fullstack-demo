@@ -1,10 +1,11 @@
 module.exports = {
   settings: {
     'import/resolver': {
-      typescript: {},
+      typescript: true,
+      node: true,
     },
   },
-  extends: ['plugin:import/recommended'],
+  extends: ['plugin:import/recommended', 'plugin:import/typescript'],
   rules: {
     'sort-imports': [
       'error',

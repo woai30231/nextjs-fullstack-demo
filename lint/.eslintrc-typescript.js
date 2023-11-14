@@ -7,6 +7,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/stylistic',
   ],
+  plugins: ['@typescript-eslint'],
   rules: {
     // FORMATTING
     'lines-between-class-members': 'off',
