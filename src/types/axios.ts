@@ -16,7 +16,7 @@ export interface SuccessOutput<T = unknown> {
   status: number;
   message: string;
   results: T extends unknown[] ? number : number | undefined;
-  data?: T;
+  data: T;
 }
 
 interface DocsOutput<T = unknown[]> {
