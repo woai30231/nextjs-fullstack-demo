@@ -12,7 +12,7 @@ import type { Component } from '@/types';
 const Users: Component = () => {
   const { isLoading, data: users } = useUsers();
 
-  if (isProcessing(isLoading, users)) return <Loader />;
+  if (isProcessing(users, isLoading)) return <Loader />;
 
   return (
     <div className={styles.container}>

@@ -12,5 +12,5 @@ export const getBase64 = async (file: File): Promise<FileReader['result']> =>
     reader.onerror = error => reject(error);
   });
 
-export const isProcessing = (isLoading: boolean, data: unknown): data is undefined =>
+export const isProcessing = (data: unknown, isLoading: boolean): data is undefined =>
   isLoading && !data;
