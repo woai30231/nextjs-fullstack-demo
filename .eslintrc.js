@@ -21,6 +21,7 @@ module.exports = {
     'no-console': 'off',
     'no-void': 'off',
     'consistent-return': 'off',
+    'no-array-constructor': 'off',
     'no-underscore-dangle': [
       'error',
       {

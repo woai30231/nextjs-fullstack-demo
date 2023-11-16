@@ -17,6 +17,7 @@ module.exports = {
       { exceptAfterSingleLine: true },
     ],
 
+    // EXTRA RULES ( NOT IN EXTENDED CONFIG )
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
     'default-param-last': 'off',
@@ -40,17 +41,6 @@ module.exports = {
     '@typescript-eslint/no-shadow': 'error',
     'no-throw-literal': 'off',
     '@typescript-eslint/no-throw-literal': 'error',
-    '@typescript-eslint/no-type-alias': [
-      'error',
-      {
-        allowAliases: 'always',
-        allowCallbacks: 'always',
-        allowConditionalTypes: 'always',
-        allowConstructors: 'always',
-        allowTupleTypes: 'always',
-        allowGenerics: 'always',
-      },
-    ],
     '@typescript-eslint/no-unnecessary-type-arguments': 'warn',
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
@@ -68,6 +58,9 @@ module.exports = {
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/require-array-sort-compare': 'error',
     '@typescript-eslint/unified-signatures': 'error',
+
+    // OVERRIDING RULES
+    'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
