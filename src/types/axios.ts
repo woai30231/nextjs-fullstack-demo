@@ -19,7 +19,18 @@ export interface SuccessOutput<T = unknown> {
   data: T;
 }
 
-interface DocsOutput<T = unknown[]> {
+export interface DocsInputDefaults {
+  search?: string;
+  fields?: string;
+  sort?: number;
+  sortBy?: string;
+  dateField?: string;
+  startDate?: string;
+  endDate?: string;
+  pagination?: boolean;
+}
+
+export interface DocsOutput<T = unknown[]> {
   docs: T;
   limit: number;
   page: number;
