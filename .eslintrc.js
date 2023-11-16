@@ -21,6 +21,12 @@ module.exports = {
     'no-console': 'off',
     'no-void': 'off',
     'consistent-return': 'off',
+    'no-underscore-dangle': [
+      'error',
+      {
+        allow: ['_id'],
+      },
+    ],
     'no-restricted-syntax': [
       'error',
       'ForStatement',
