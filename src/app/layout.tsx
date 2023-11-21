@@ -22,7 +22,7 @@ const RootLayout: Layout = async ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers user={user}>{children}</Providers>
+        <Providers initialState={{ user }}>{children}</Providers>
       </body>
     </html>
   );

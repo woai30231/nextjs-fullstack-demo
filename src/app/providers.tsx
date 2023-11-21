@@ -10,16 +10,14 @@ import App from '@/app/_app';
 import queryClient from '@/config/queryClient';
 import ZustandProvider from '@/context/ZustandProvider';
 
-import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { Layout } from '@/types';
+import type { ZustandInitialState } from '@/types/store';
 
-type Props = Record<'user', GetProfileOutput | undefined>;
-
-const Providers: Layout<Props> = ({ children, user }) => (
+const Providers: Layout<ZustandInitialState> = ({ children, initialState }) => (
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools />
     <ToastContainer pauseOnFocusLoss={false} />
-    <ZustandProvider initialState={{ user }}>
+    <ZustandProvider initialState={initialState}>
       <App>{children}</App>
     </ZustandProvider>
   </QueryClientProvider>
