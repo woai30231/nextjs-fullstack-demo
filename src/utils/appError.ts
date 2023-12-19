@@ -11,6 +11,7 @@ export interface AppErrorType {
 export class AppError extends Error {
   public messages: AppErrorType['messages'];
   public statusCode: AppErrorType['statusCode'];
+  public status: AppErrorType['statusCode'];
   public extraFields: AppErrorType['extraFields'];
   public isOperational: AppErrorType['isOperational'];
 
@@ -27,7 +28,8 @@ export class AppError extends Error {
     super();
     this.message = AppError.getMessage(message);
     this.messages = Array.isArray(message) ? message : undefined;
-    this.statusCode = statusCode;
+    this.statusCode = statusCode || 400;
+    this.status = statusCode;
     this.extraFields = extraFields;
     this.isOperational = true;
     Error.captureStackTrace(this, this.constructor);

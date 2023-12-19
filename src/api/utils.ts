@@ -7,5 +7,8 @@ export const throwAxiosError = (err: unknown): void => {
 
   const message = err instanceof AxiosError ? err.response?.data.message : err;
   const statusCode = err instanceof AxiosError ? err.response?.status ?? STATUS_CODE : STATUS_CODE;
-  throw new AppError(message, statusCode, { error: err });
+  throw new AppError(message, statusCode, {
+    error: err,
+    ...(err instanceof AxiosError ? { res: err.response?.data ?? null } : null),
+  });
 };
