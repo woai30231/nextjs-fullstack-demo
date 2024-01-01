@@ -19,7 +19,12 @@ export interface SuccessOutput<T = unknown> {
   data: T;
 }
 
-export interface DocsInputDefaults {
+export interface DocsInputParamsDefaults {
+  page?: number;
+  limit?: number;
+}
+
+export interface DocsInputDataDefaults {
   search?: string;
   fields?: string;
   sort?: number;
@@ -30,8 +35,10 @@ export interface DocsInputDefaults {
   pagination?: boolean;
 }
 
+export type DocsInputDefaults = DocsInputParamsDefaults & DocsInputDataDefaults;
+
 export interface DocsOutput<T = unknown[]> {
-  docs: T;
+  docs: T[];
   limit: number;
   page: number;
   totalDocs: number;
