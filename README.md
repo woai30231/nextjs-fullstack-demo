@@ -4,17 +4,17 @@ Project Name
 
 ### Prerequisites
 
-- Install yarn as global dependency.
-- Node 18 and above only.
-- No NPM, Only Yarn.
+- Install pnpm as global dependency.
+- Node 20 and above only.
+- No NPM, Yarn, Only PNPM.
 - Don't Disable ESLint & Prettier.
 - Try to follow the rules as much as you can.
 
 ### Installing
 
-1. yarn
+1. pnpm install
 2. fill all the .env and config details
-3. `yarn start` to run the project ( `yarn start:dev` for development )
+3. `pnpm start` to run the project ( `pnpm start:dev` for development )
 
 ### Environment Variables
 
@@ -30,4 +30,4 @@ https://fakeapi.platzi.com/
 
 Nisharg Shah
 
-22/11/2023
+12/05/2024
