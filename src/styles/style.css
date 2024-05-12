@@ -1,4 +1,8 @@
-@import 'react-toastify/dist/ReactToastify.min.css';
+@import '~react-toastify/dist/ReactToastify.min.css';
+
+:root {
+  --toastify-z-index: 99999;
+}
 
 * {
   box-sizing: border-box;
