@@ -1,16 +1,13 @@
 import React from 'react';
 
-import { Inter } from 'next/font/google';
-
 import Providers from '@/app/providers';
 import tokenStore from '@/config/tokenStore';
 import { getProfileApi } from '@/features/auth/auth.api';
+import { interFont } from '@/styles/font';
 import '@/styles/style.css';
 
 import type { Layout } from '@/types';
 import type { Metadata } from 'next';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Next.js Template',
@@ -33,7 +30,7 @@ const RootLayout: Layout = async ({ children }) => {
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={interFont.className}>
         <Providers user={user}>{children}</Providers>
       </body>
     </html>
