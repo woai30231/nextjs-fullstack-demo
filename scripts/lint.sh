@@ -20,11 +20,11 @@ if [[ $isForPush == "0" ]]; then
     echo "Stash Stored"
 fi
 
-yarn prettier:fix --log-level silent
+pnpm --silent prettier:fix --log-level silent
 echo "Prettier Completed"
-yarn lint:fix
+pnpm --silent lint:fix
 echo "Eslint Completed"
-yarn ts
+pnpm --silent ts
 echo "Typescript Completed"
 
 if [[ $isForPush == "0" ]]; then
