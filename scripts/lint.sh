@@ -1,17 +1,20 @@
 #!/bin/bash
 
 forPush="--for-push"
+isForPush="$( [[ $1 == $forPush ]]; echo $? )"
 
 cleanup() {
-  git stash pop -q
-  rm .script
-  echo "Stash Applied"
+  if [[ $isForPush == "0" ]]; then
+      git stash pop -q
+      rm .script
+      echo "Stash Applied"
+  fi
 }
 
 echo "Started"
 trap '[[ $? -ne 0 ]] && cleanup' EXIT
 
-if [[ $1 == $forPush ]]; then
+if [[ $isForPush == "0" ]]; then
     touch .script
     git stash push -uqm "Backup of auto commit functionality"
     echo "Stash Stored"
@@ -24,7 +27,7 @@ echo "Eslint Completed"
 yarn ts
 echo "Typescript Completed"
 
-if [[ $1 == $forPush ]]; then
+if [[ $isForPush == "0" ]]; then
     git add .
     if ! git diff-index --quiet HEAD; then
       git commit -m "refactor: code reformatted" -q
