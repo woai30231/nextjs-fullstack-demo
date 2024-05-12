@@ -3,8 +3,9 @@ import React from 'react';
 import { Inter } from 'next/font/google';
 
 import Providers from '@/app/providers';
+import tokenStore from '@/config/tokenStore';
 import { getProfileApi } from '@/features/auth/auth.api';
-import '@/styles/globals.css';
+import '@/styles/style.css';
 
 import type { Layout } from '@/types';
 import type { Metadata } from 'next';
@@ -17,12 +18,23 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: Layout = async ({ children }) => {
-  const user = await getProfileApi({}, { throwError: false });
+  const { user } = await (async () => {
+    const defaults = { user: undefined };
+
+    const hasToken = await tokenStore.getAsync();
+
+    if (hasToken) {
+      const userData = await getProfileApi({}, { throwError: false });
+      return { ...defaults, user: userData };
+    }
+
+    return defaults;
+  })();
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers initialState={{ user }}>{children}</Providers>
+        <Providers user={user}>{children}</Providers>
       </body>
     </html>
   );

@@ -1,5 +1,7 @@
 'use client';
 
+import React, { Fragment } from 'react';
+
 import { redirect } from 'next/navigation';
 
 import { useStore } from '@/store';
@@ -11,7 +13,8 @@ const AuthLayout: Layout = ({ children }) => {
 
   if (isAuthenticated) return redirect('/app');
 
-  return children;
+  // eslint-disable-next-line react/jsx-no-useless-fragment
+  return <Fragment>{children}</Fragment>;
 };
 
 export default AuthLayout;
