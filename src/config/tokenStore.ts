@@ -11,49 +11,49 @@ const cookies = async () => {
 };
 
 const tokenStore = {
-  get(): string | null {
-    const token = hasCookie(tokenName) && getCookie(tokenName);
+  get(key: string = tokenName): string | null {
+    const token = hasCookie(key) && getCookie(key);
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     return token || null;
   },
-  async getAsync(): Promise<string | null> {
+  async getAsync(key: string = tokenName): Promise<string | null> {
     if (isServer) {
       const cookieStore = await cookies();
 
-      const token = cookieStore.has(tokenName) && cookieStore.get(tokenName);
+      const token = cookieStore.has(key) && cookieStore.get(key);
       return token ? token.value : null;
     }
 
-    return this.get();
+    return this.get(key);
   },
-  set(value: string): true {
-    setCookie(tokenName, value);
+  set(value: string, key: string = tokenName): true {
+    setCookie(key, value, { expires: new Date('9999-12-31') });
     return true;
   },
-  async setAsync(value: string): Promise<true> {
+  async setAsync(value: string, key: string = tokenName): Promise<true> {
     if (isServer) {
       const cookieStore = await cookies();
 
-      cookieStore.set(tokenName, value);
+      cookieStore.set(key, value, { expires: new Date('9999-12-31') });
       return true;
     }
 
-    return this.set(value);
+    return this.set(value, key);
   },
-  delete(): boolean {
-    const isExist = hasCookie(tokenName);
+  delete(key: string = tokenName): boolean {
+    const isExist = hasCookie(key);
     if (!isExist) return false;
 
-    deleteCookie(tokenName);
+    deleteCookie(key);
     return true;
   },
-  async deleteAsync(): Promise<boolean> {
+  async deleteAsync(key: string = tokenName): Promise<boolean> {
     if (isServer) {
       const cookieStore = await cookies();
-      const isExist = cookieStore.has(tokenName);
+      const isExist = cookieStore.has(key);
       if (!isExist) return false;
 
-      cookieStore.delete(tokenName);
+      cookieStore.delete(key);
       return true;
     }
 
