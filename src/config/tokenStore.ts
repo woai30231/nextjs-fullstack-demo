@@ -1,9 +1,9 @@
 import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
 
-import config from '@/config';
+import constants from '@/constants';
 import { isServer } from '@/utils/utils';
 
-const { tokenName } = config;
+const { tokenName } = constants;
 
 const cookies = async () => {
   const { cookies: serverCookies } = await import('next/headers');
