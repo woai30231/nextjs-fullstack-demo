@@ -1,10 +1,11 @@
 import axiosInstance from 'axios';
 
+import { showToast } from '@/api/utils';
 import config from '@/config';
 import tokenStore from '@/config/tokenStore';
 import { isServer } from '@/utils/utils';
 
-import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios';
+import type { AxiosErr, InternalAxiosRequestConfigWithExtraProps } from '@/types/axios';
 import type { AxiosError } from 'axios';
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH });
@@ -14,7 +15,7 @@ axios.interceptors.request.use(
     const myConfig = { ...conf };
 
     const lang = myConfig.headers['Accept-Language'];
-    const token = await tokenStore.getAsync();
+    const token = myConfig.noAuth ? null : await tokenStore.getAsync();
 
     if (token) myConfig.headers.Authorization = `Bearer ${token}`;
     if (!isServer && !lang) myConfig.headers['Accept-Language'] = 'en';
@@ -39,9 +40,16 @@ axios.interceptors.request.use(
 );
 
 axios.interceptors.response.use(
-  res => ({ ...res }),
-  async (error: AxiosError) => {
-    if (!isServer) console.debug('Response Error', error);
+  res => {
+    if (!isServer) showToast(res);
+    return res;
+  },
+  async (error: AxiosErr) => {
+    if (!isServer) {
+      showToast(error);
+      console.debug('Response Error', error);
+    }
+
     return Promise.reject(error);
   }
 );
