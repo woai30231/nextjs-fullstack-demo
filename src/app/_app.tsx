@@ -3,16 +3,29 @@
 import React, { Fragment, Suspense, useEffect } from 'react';
 
 import Header from '@/components/header/Header';
+import tokenStore from '@/config/tokenStore';
+import constants from '@/constants';
 import Loader from '@/shared/loader/Loader';
 import { PROGRESS_BAR_DELAY } from '@/shared/loader/ProgressBar';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
 import { useStore } from '@/store';
+import { detectMode, setModeClient } from '@/store/slices/theme.slice';
 
 import type { Layout } from '@/types';
 
 const App: Layout = ({ children }) => {
   const isLoading = useStore(state => state.isLoading);
   const setLoading = useStore(state => state.setLoading);
+  const setMode = useStore(state => state.setMode);
+
+  useEffect(() => {
+    const mode = tokenStore.get(constants.cookies.themeName);
+    if (mode) return;
+
+    const detectedMode = detectMode();
+    setModeClient(detectedMode);
+    setMode(detectedMode);
+  }, [setMode]);
 
   useEffect(() => {
     (async () => {
