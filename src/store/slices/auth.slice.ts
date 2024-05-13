@@ -17,7 +17,7 @@ const initialState = {
   user: null,
 };
 
-export const setUser = (payload: GetProfileOutput): Partial<AuthInfo> => {
+export const getUser = (payload: GetProfileOutput): Partial<AuthInfo> => {
   queryClient.setQueryData(['user'], payload);
 
   return {
@@ -34,7 +34,7 @@ const createAuthSlice: SliceCreator<AuthSlice> = set => ({
     tokenStore.set(token);
   },
   setUser: payload => {
-    set(setUser(payload), false, 'auth/setUser');
+    set(getUser(payload), false, 'auth/setUser');
   },
   logout: () => {
     set(initialState, false, 'auth/logout');

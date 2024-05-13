@@ -1,36 +1,46 @@
 import tokenStore from '@/config/tokenStore';
+import constants from '@/constants';
 import { isServer } from '@/utils/utils';
 
 import type { SliceCreator } from '@/types/store';
 
-type Mode = 'dark' | 'light';
+export type Mode = 'dark' | 'light';
 
 interface ThemeSlice {
   mode: Mode;
   setMode: (mode: Mode) => void;
 }
 
-const detectMode = (): Mode => {
-  if (isServer) return 'dark';
+const { light, dark } = constants.theme;
 
-  const theme = tokenStore.get('theme');
-  if (theme) return theme === 'dark' ? 'dark' : 'light';
-
-  const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
-  return darkThemeMq.matches ? 'dark' : 'light';
+const initialState = {
+  mode: light,
 };
 
-const setMode = (mode: Mode): void => {
-  const method = mode === 'dark' ? 'remove' : 'add';
-  document.documentElement.classList[method]('light-mode');
-  tokenStore.set(mode, 'theme');
+const detectMode = (): Mode => {
+  if (isServer) return light;
+
+  const darkThemeMq = window.matchMedia(`(prefers-color-scheme: ${light})`);
+  return darkThemeMq.matches ? light : dark;
+};
+
+export const getMode = (modeStr: string | null): Mode => {
+  if (!modeStr) return initialState.mode;
+
+  return modeStr === light ? light : dark;
+};
+
+export const setModeClient = (mode: Mode): void => {
+  document.documentElement.classList.remove(`${mode === dark ? light : dark}-mode`);
+  document.documentElement.classList.add(`${mode}-mode`);
+  tokenStore.set(mode, constants.cookies.themeName);
 };
 
 const createThemeSlice: SliceCreator<ThemeSlice> = set => ({
-  mode: detectMode(),
+  ...initialState,
   setMode: (mode: Mode) => {
     set({ mode }, false, 'theme/setMode');
-    setMode(mode);
+    setModeClient(mode);
   },
 });
 

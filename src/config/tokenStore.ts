@@ -3,7 +3,7 @@ import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
 import constants from '@/constants';
 import { isServer } from '@/utils/utils';
 
-const { tokenName } = constants;
+const { tokenName } = constants.cookies;
 
 const cookies = async () => {
   const { cookies: serverCookies } = await import('next/headers');

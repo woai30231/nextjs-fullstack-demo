@@ -1,4 +1,5 @@
 import type { GetProfileOutput } from '@/features/auth/auth.type';
+import type { Mode } from '@/store/slices/theme.slice';
 import type { StoreState } from '@/store/store';
 import type { StateCreator, StoreApi } from 'zustand';
 
@@ -12,6 +13,7 @@ export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infe
 
 interface InitialState {
   user: GetProfileOutput | undefined;
+  mode: Mode | null;
 }
 
 export interface ZustandInitialState {

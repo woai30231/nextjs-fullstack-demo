@@ -1,9 +1,9 @@
 import { createStore as createZustandStore } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import createAuthSlice, { setUser } from '@/store/slices/auth.slice';
+import createAuthSlice, { getUser } from '@/store/slices/auth.slice';
 import createLoadingSlice from '@/store/slices/loading.slice';
-import createThemeSlice from '@/store/slices/theme.slice';
+import createThemeSlice, { getMode } from '@/store/slices/theme.slice';
 
 import type { CreateStore, GetProperStoreData, StateFromFunctions } from '@/types/store';
 
@@ -15,8 +15,13 @@ const getProperStoreData: GetProperStoreData = initialState => {
   let newState = {};
 
   if (initialState?.user) {
-    const state = setUser(initialState.user);
+    const state = getUser(initialState.user);
     newState = { ...newState, ...state };
+  }
+
+  if (initialState?.mode) {
+    const state = getMode(initialState.mode);
+    newState = { ...newState, mode: state };
   }
 
   return newState;
