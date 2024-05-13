@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import styles from '@/components/login/Login.module.css';
 import { useLogin } from '@/features/auth/useLogin';
-import { useFetchProfile } from '@/features/profile/useProfile';
+import { useProfile } from '@/features/profile/useProfile';
 
 import type { Component, Layout } from '@/types';
 import type { SubmitHandler } from 'react-hook-form';
@@ -32,9 +32,9 @@ interface FormData {
 }
 
 const Login: Component = () => {
-  const { mutateAsync, isPending: isLogging } = useLogin();
-  const { isLoading: isFetching, fetchProfile } = useFetchProfile();
-  const isLoading = isLogging || isFetching;
+  const { mutateAsync, isPending: isLoginPending } = useLogin();
+  const { mutateAsync: fetchProfile, isPending: isProfilePending } = useProfile();
+  const isLoading = isLoginPending || isProfilePending;
 
   const { formState, register, handleSubmit: onSubmit } = useForm<FormData>();
   const { errors } = formState;
@@ -42,7 +42,7 @@ const Login: Component = () => {
   const handleSubmit: SubmitHandler<FormData> = async data => {
     try {
       await mutateAsync(data);
-      await fetchProfile();
+      await fetchProfile({});
       toast.success('Logged In Successfully');
     } catch (err) {
       // empty

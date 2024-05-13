@@ -8,10 +8,3 @@ export interface GetProfileOutput {
   name: string;
   avatar: string;
 }
-
-interface UseFetchProfileOutput {
-  isLoading: boolean;
-  fetchProfile: () => Promise<boolean>;
-}
-
-export type UseFetchProfile = () => UseFetchProfileOutput;
