@@ -3,6 +3,7 @@ import axiosInstance from 'axios';
 import { showToast } from '@/api/utils';
 import config from '@/config';
 import tokenStore from '@/config/tokenStore';
+import store from '@/store/store';
 import { isServer } from '@/utils/utils';
 
 import type { AxiosErr, InternalAxiosRequestConfigWithExtraProps } from '@/types/axios';
@@ -45,6 +46,10 @@ axios.interceptors.response.use(
     return res;
   },
   async (error: AxiosErr) => {
+    if (error.response && [401, 403].includes(error.response.status)) {
+      store().getState().logout();
+    }
+
     if (!isServer) {
       showToast(error);
       console.debug('Response Error', error);
