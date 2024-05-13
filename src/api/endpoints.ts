@@ -8,6 +8,7 @@ const endpoints: Endpoints = {
   },
   getProfile: {
     method: 'GET',
+    // Usually in every backend it is /profile/me or /profile, so configured in this way
     url: '/auth/profile',
   },
   getAllUsers: {

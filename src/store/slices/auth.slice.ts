@@ -1,12 +1,14 @@
 import queryClient from '@/config/queryClient';
 import tokenStore from '@/config/tokenStore';
 
-import type { GetProfileOutput } from '@/features/auth/auth.type';
-import type { AuthInfo } from '@/features/user/user.type';
+import type { GetProfileOutput } from '@/features/profile/profile.type';
 import type { RemoveFnType } from '@/types';
 import type { SliceCreator } from '@/types/store';
 
-interface AuthSlice extends AuthInfo {
+interface AuthSlice {
+  isAuthenticated: boolean;
+  token?: string | null;
+  user?: GetProfileOutput | null;
   login: (token: string) => void;
   setUser: (payload: GetProfileOutput) => void;
   logout: () => void;

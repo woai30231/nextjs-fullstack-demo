@@ -3,7 +3,7 @@ import React from 'react';
 import Providers from '@/app/providers';
 import tokenStore from '@/config/tokenStore';
 import constants from '@/constants';
-import { getProfileApi } from '@/features/auth/auth.api';
+import { getProfileApi } from '@/features/profile/profile.api';
 import { getMode } from '@/store/slices/theme.slice';
 import { interFont } from '@/styles/font';
 import '@/styles/style.css';

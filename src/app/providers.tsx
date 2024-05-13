@@ -11,7 +11,7 @@ import queryClient from '@/config/queryClient';
 import ZustandProvider from '@/context/ZustandProvider';
 import ProgressBar from '@/shared/loader/ProgressBar';
 
-import type { GetProfileOutput } from '@/features/auth/auth.type';
+import type { GetProfileOutput } from '@/features/profile/profile.type';
 import type { Mode } from '@/store/slices/theme.slice';
 import type { Layout } from '@/types';
 

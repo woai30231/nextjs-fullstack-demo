@@ -1,4 +1,4 @@
-import type { GetProfileOutput } from '@/features/auth/auth.type';
+import type { GetProfileOutput } from '@/features/profile/profile.type';
 import type { Mode } from '@/store/slices/theme.slice';
 import type { StoreState } from '@/store/store';
 import type { StateCreator, StoreApi } from 'zustand';

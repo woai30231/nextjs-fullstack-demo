@@ -2,17 +2,17 @@ import { useState } from 'react';
 
 import { useQueryClient } from '@tanstack/react-query';
 
-import { getProfileApi } from '@/features/auth/auth.api';
+import { getProfileApi } from '@/features/profile/profile.api';
 import { useStore } from '@/store';
 
-import type { UseFetchUser } from '@/features/user/user.type';
+import type { UseFetchProfile } from '@/features/profile/profile.type';
 
-export const useFetchUser: UseFetchUser = () => {
+export const useFetchProfile: UseFetchProfile = () => {
   const queryClient = useQueryClient();
   const setUser = useStore(state => state.setUser);
   const [isLoading, setLoading] = useState(false);
 
-  const fetchUser = async () => {
+  const fetchProfile = async () => {
     setLoading(true);
 
     const data = await queryClient.fetchQuery({
@@ -28,5 +28,5 @@ export const useFetchUser: UseFetchUser = () => {
     return true;
   };
 
-  return { isLoading, fetchUser };
+  return { isLoading, fetchProfile };
 };
