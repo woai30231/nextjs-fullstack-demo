@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import styles from '@/components/login/Login.module.css';
 import { useLogin } from '@/features/auth/useLogin';
@@ -39,8 +40,13 @@ const Login: Component = () => {
   const { errors } = formState;
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
-    await mutateAsync(data);
-    await fetchUser();
+    try {
+      await mutateAsync(data);
+      await fetchUser();
+      toast.success('Logged In Successfully');
+    } catch (err) {
+      // empty
+    }
   };
 
   return (

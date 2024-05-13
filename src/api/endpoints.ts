@@ -4,6 +4,7 @@ const endpoints: Endpoints = {
   login: {
     method: 'POST',
     url: '/auth/login',
+    manageToast: res => !!res.message,
   },
   getProfile: {
     method: 'GET',
