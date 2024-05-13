@@ -1,3 +1,4 @@
+import type { RemoveFnType } from '@/types';
 import type { SliceCreator } from '@/types/store';
 
 interface LoadingSlice {
@@ -5,7 +6,9 @@ interface LoadingSlice {
   setLoading: (payload: boolean) => void;
 }
 
-const initialState = {
+type LoadingSliceProperties = RemoveFnType<LoadingSlice>;
+
+const initialState: LoadingSliceProperties = {
   isLoading: true,
 };
 

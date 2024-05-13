@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const RootLayout: Layout = async ({ children }) => {
   const modeStr = await tokenStore.getAsync(constants.cookies.themeName);
-  const mode = getMode(modeStr);
+  const { mode } = getMode(modeStr);
 
   const { user } = await (async () => {
     const defaults = { user: undefined };

@@ -13,7 +13,7 @@ export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infe
 
 interface InitialState {
   user: GetProfileOutput | undefined;
-  mode: Mode | null;
+  mode: Mode;
 }
 
 export interface ZustandInitialState {

@@ -17,7 +17,7 @@ import type { Layout } from '@/types';
 
 interface Props {
   user: GetProfileOutput | undefined;
-  mode: Mode | null;
+  mode: Mode;
 }
 
 const Providers: Layout<Props> = ({ children, user, mode }) => (

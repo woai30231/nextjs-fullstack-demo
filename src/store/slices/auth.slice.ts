@@ -3,6 +3,7 @@ import tokenStore from '@/config/tokenStore';
 
 import type { GetProfileOutput } from '@/features/auth/auth.type';
 import type { AuthInfo } from '@/features/user/user.type';
+import type { RemoveFnType } from '@/types';
 import type { SliceCreator } from '@/types/store';
 
 interface AuthSlice extends AuthInfo {
@@ -11,13 +12,15 @@ interface AuthSlice extends AuthInfo {
   logout: () => void;
 }
 
-const initialState = {
+type AuthSliceProperties = RemoveFnType<AuthSlice>;
+
+const initialState: AuthSliceProperties = {
   isAuthenticated: false,
   token: null,
   user: null,
 };
 
-export const getUser = (payload: GetProfileOutput): Partial<AuthInfo> => {
+export const getUser = (payload: GetProfileOutput): AuthSliceProperties => {
   queryClient.setQueryData(['user'], payload);
 
   return {

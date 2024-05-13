@@ -21,7 +21,7 @@ const getProperStoreData: GetProperStoreData = initialState => {
 
   if (initialState?.mode) {
     const state = getMode(initialState.mode);
-    newState = { ...newState, mode: state };
+    newState = { ...newState, ...state };
   }
 
   return newState;
