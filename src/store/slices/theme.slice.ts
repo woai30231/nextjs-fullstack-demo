@@ -1,30 +1,36 @@
+import tokenStore from '@/config/tokenStore';
 import { isServer } from '@/utils/utils';
 
 import type { SliceCreator } from '@/types/store';
 
+type Mode = 'dark' | 'light';
+
 interface ThemeSlice {
-  isDarkMode: boolean;
-  setMode: () => void;
+  mode: Mode;
+  setMode: (mode: Mode) => void;
 }
 
-const detectDarkMode = (): boolean => {
-  if (isServer) return true;
+const detectMode = (): Mode => {
+  if (isServer) return 'dark';
+
+  const theme = tokenStore.get('theme');
+  if (theme) return theme === 'dark' ? 'dark' : 'light';
 
   const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
-  return darkThemeMq.matches;
+  return darkThemeMq.matches ? 'dark' : 'light';
 };
 
-const setMode = (isDarkMode: boolean): void => {
-  const method = isDarkMode ? 'remove' : 'add';
+const setMode = (mode: Mode): void => {
+  const method = mode === 'dark' ? 'remove' : 'add';
   document.documentElement.classList[method]('light-mode');
+  tokenStore.set(mode, 'theme');
 };
 
-const createThemeSlice: SliceCreator<ThemeSlice> = (set, get) => ({
-  isDarkMode: detectDarkMode(),
-  setMode: () => {
-    const { isDarkMode } = get();
-    set({ isDarkMode: !isDarkMode }, false, 'theme/setMode');
-    setMode(!isDarkMode);
+const createThemeSlice: SliceCreator<ThemeSlice> = set => ({
+  mode: detectMode(),
+  setMode: (mode: Mode) => {
+    set({ mode }, false, 'theme/setMode');
+    setMode(mode);
   },
 });
 

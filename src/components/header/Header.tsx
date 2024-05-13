@@ -9,7 +9,7 @@ import type { Component } from '@/types';
 
 const Header: Component = () => {
   const logout = useStore(state => state.logout);
-  const isDarkMode = useStore(state => state.isDarkMode);
+  const mode = useStore(state => state.mode);
   const setMode = useStore(state => state.setMode);
   const isAuthenticated = useStore(state => state.isAuthenticated);
 
@@ -32,8 +32,12 @@ const Header: Component = () => {
         )}
       </div>
       <div className={styles.btnWrapper}>
-        <button type="button" className={styles.btn} onClick={setMode}>
-          Current: {isDarkMode ? 'Dark' : 'Light'}
+        <button
+          type="button"
+          className={styles.btn}
+          onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
+        >
+          Current: {mode === 'dark' ? 'Dark' : 'Light'}
         </button>
         {isAuthenticated && (
           <button type="button" className={styles.btn} onClick={logout}>
