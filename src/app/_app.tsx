@@ -1,16 +1,40 @@
 'use client';
 
-import React from 'react';
+import React, { Fragment, Suspense, useEffect } from 'react';
 
 import Header from '@/components/header/Header';
+import Loader from '@/shared/loader/Loader';
+import { PROGRESS_BAR_DELAY } from '@/shared/loader/ProgressBar';
+import WebsiteLoader from '@/shared/loader/WebsiteLoader';
+import { useStore } from '@/store';
 
 import type { Layout } from '@/types';
 
-const App: Layout = ({ children }) => (
-  <main id="main">
-    <Header />
-    {children}
-  </main>
-);
+const App: Layout = ({ children }) => {
+  const isLoading = useStore(state => state.isLoading);
+  const setLoading = useStore(state => state.setLoading);
+
+  useEffect(() => {
+    (async () => {
+      await new Promise(resolve => {
+        setTimeout(resolve, PROGRESS_BAR_DELAY);
+      });
+
+      setLoading(false);
+    })();
+  }, [setLoading]);
+
+  return (
+    <Fragment>
+      {isLoading && <WebsiteLoader />}
+      <Suspense fallback={<Loader />}>
+        <main id="main">
+          <Header />
+          {children}
+        </main>
+      </Suspense>
+    </Fragment>
+  );
+};
 
 export default App;
