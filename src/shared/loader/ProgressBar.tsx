@@ -8,7 +8,7 @@ import { isLive } from '@/utils/utils';
 
 import type { Component } from '@/types';
 
-export const PROGRESS_BAR_DELAY = isLive ? 1000 : 2000;
+export const PROGRESS_BAR_DELAY = isLive ? 200 : 500;
 
 const ProgressBar: Component = () => {
   const loader = ReactDOMServer.renderToString(<WebsiteLoader />);

@@ -51,7 +51,7 @@ html.light-mode {
 }
 
 .website-loader-transparent {
-  background: rgba(0, 0, 0, 0.3) !important;
+  opacity: 0.75;
 }
 
 .dark-mode .website-loader img {

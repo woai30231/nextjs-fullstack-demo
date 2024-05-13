@@ -10,7 +10,7 @@ interface WebsiteLoaderType {
   transparent?: boolean;
 }
 
-const WebsiteLoader: Component<WebsiteLoaderType> = ({ transparent = false }) => (
+const WebsiteLoader: Component<WebsiteLoaderType> = ({ transparent = true }) => (
   <div
     className={clsx('website-loader', {
       'website-loader-transparent': transparent,
