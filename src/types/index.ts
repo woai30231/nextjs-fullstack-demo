@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from 'react';
+import type { ConditionalExcept } from 'type-fest';
 
 export type PrimitiveType = string | number | boolean;
 
@@ -20,3 +21,6 @@ export interface GlobalErrorType {
   error: Error & { digest?: string };
   reset: () => void;
 }
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type RemoveFnType<T> = ConditionalExcept<T, Function>;

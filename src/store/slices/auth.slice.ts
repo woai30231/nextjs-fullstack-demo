@@ -1,23 +1,28 @@
 import queryClient from '@/config/queryClient';
 import tokenStore from '@/config/tokenStore';
 
-import type { GetProfileOutput } from '@/features/auth/auth.type';
-import type { AuthInfo } from '@/features/user/user.type';
+import type { GetProfileOutput } from '@/features/profile/profile.type';
+import type { RemoveFnType } from '@/types';
 import type { SliceCreator } from '@/types/store';
 
-interface AuthSlice extends AuthInfo {
+interface AuthSlice {
+  isAuthenticated: boolean;
+  token?: string | null;
+  user?: GetProfileOutput | null;
   login: (token: string) => void;
   setUser: (payload: GetProfileOutput) => void;
   logout: () => void;
 }
 
-const initialState = {
+type AuthSliceProperties = RemoveFnType<AuthSlice>;
+
+const initialState: AuthSliceProperties = {
   isAuthenticated: false,
   token: null,
   user: null,
 };
 
-export const setUser = (payload: GetProfileOutput): Partial<AuthInfo> => {
+export const getUser = (payload: GetProfileOutput): AuthSliceProperties => {
   queryClient.setQueryData(['user'], payload);
 
   return {
@@ -34,7 +39,7 @@ const createAuthSlice: SliceCreator<AuthSlice> = set => ({
     tokenStore.set(token);
   },
   setUser: payload => {
-    set(setUser(payload), false, 'auth/setUser');
+    set(getUser(payload), false, 'auth/setUser');
   },
   logout: () => {
     set(initialState, false, 'auth/logout');

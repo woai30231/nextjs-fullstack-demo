@@ -1,10 +1,11 @@
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import styles from '@/components/login/Login.module.css';
 import { useLogin } from '@/features/auth/useLogin';
-import { useFetchUser } from '@/features/user/useUser';
+import { useProfile } from '@/features/profile/useProfile';
 
 import type { Component, Layout } from '@/types';
 import type { SubmitHandler } from 'react-hook-form';
@@ -31,16 +32,21 @@ interface FormData {
 }
 
 const Login: Component = () => {
-  const { mutateAsync, isPending: isLogging } = useLogin();
-  const { isLoading: isFetching, fetchUser } = useFetchUser();
-  const isLoading = isLogging || isFetching;
+  const { mutateAsync, isPending: isLoginPending } = useLogin();
+  const { mutateAsync: fetchProfile, isPending: isProfilePending } = useProfile();
+  const isLoading = isLoginPending || isProfilePending;
 
   const { formState, register, handleSubmit: onSubmit } = useForm<FormData>();
   const { errors } = formState;
 
   const handleSubmit: SubmitHandler<FormData> = async data => {
-    await mutateAsync(data);
-    await fetchUser();
+    try {
+      await mutateAsync(data);
+      await fetchProfile({});
+      toast.success('Logged In Successfully');
+    } catch (err) {
+      // empty
+    }
   };
 
   return (

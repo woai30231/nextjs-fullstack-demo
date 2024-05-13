@@ -1,16 +1,37 @@
-import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import type { PrimitiveType, RecursiveType } from '@/types';
+import type {
+  AxiosError,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
 
 type UrlParams = Record<string, number | string>;
 
 interface AxiosExtraProps {
   urlParams?: UrlParams;
+  noAuth?: boolean;
+}
+
+interface ManageToast {
+  manageToast?: ((res: RecursiveType<PrimitiveType>) => boolean) | boolean;
 }
 
 export type AxiosRequestConfigWithExtraProps = AxiosRequestConfig & AxiosExtraProps;
 
-export type Endpoints = Record<string, Pick<AxiosRequestConfigWithExtraProps, 'method' | 'url'>>;
+type AxiosRequestInput = Pick<AxiosRequestConfigWithExtraProps, 'method' | 'url'> & ManageToast;
+
+export type Endpoints = Record<string, AxiosRequestInput>;
 
 export type InternalAxiosRequestConfigWithExtraProps = InternalAxiosRequestConfig & AxiosExtraProps;
+
+export type AxiosRes<T = unknown> = Omit<AxiosResponse<T>, 'config'> & {
+  config: InternalAxiosRequestConfig & ManageToast;
+};
+
+export type AxiosErr<T = unknown> = Omit<AxiosError<T>, 'config'> & {
+  config: InternalAxiosRequestConfig & ManageToast;
+};
 
 export interface SuccessOutput<T = unknown> {
   status: number;
@@ -43,6 +64,10 @@ export interface DocsOutput<T = unknown[]> {
   page: number;
   totalDocs: number;
   totalPages: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number;
+  nextPage: number;
 }
 
 export type SuccessDocsOutput<T> = SuccessOutput<DocsOutput<T>>;
@@ -55,11 +80,11 @@ export interface ErrorResponse {
 
 export type AxiosOutput<T = unknown, E = unknown> = <M = T, O extends boolean = false>(
   data: AxiosRequestConfigWithExtraProps
-) => Promise<AxiosResponse<O extends false ? SuccessOutput<M> & E : M>>;
+) => Promise<AxiosRes<O extends false ? SuccessOutput<M> & E : M>>;
 
 export type AxiosDocsOutput<T = unknown[], E = unknown> = <M = T, O extends boolean = false>(
   data: AxiosRequestConfigWithExtraProps
-) => Promise<AxiosResponse<O extends false ? SuccessDocsOutput<M> & E : M>>;
+) => Promise<AxiosRes<O extends false ? SuccessDocsOutput<M> & E : M>>;
 
 export interface AxiosSignal {
   signal?: AbortSignal;
