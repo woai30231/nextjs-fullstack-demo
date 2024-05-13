@@ -5,10 +5,9 @@ ENV NODE_ENV=production
 
 COPY . .
 
-RUN ls -al
 RUN npm install -g pnpm
 
-RUN pnpm install --prod --ignore-scripts --frozen-lockfile --prefer-offline
+RUN pnpm install --prod=false --ignore-scripts --frozen-lockfile --prefer-offline
 RUN pnpm build
 
 FROM node:20-alpine
