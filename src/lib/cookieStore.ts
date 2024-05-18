@@ -3,6 +3,8 @@ import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
 import constants from '@/constants';
 import { isServer } from '@/utils/utils';
 
+import type { CookieStoreType } from '@/types/lib/cookieStore.type';
+
 const { tokenName } = constants.cookies;
 
 const cookies = async () => {
@@ -10,13 +12,13 @@ const cookies = async () => {
   return serverCookies();
 };
 
-const cookieStore = {
-  get(key: string = tokenName): string | null {
+const cookieStore: CookieStoreType = {
+  get(key = tokenName) {
     const token = hasCookie(key) && getCookie(key);
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     return token || null;
   },
-  async getAsync(key: string = tokenName): Promise<string | null> {
+  async getAsync(key = tokenName) {
     if (isServer) {
       const serverCookies = await cookies();
 
@@ -26,11 +28,11 @@ const cookieStore = {
 
     return this.get(key);
   },
-  set(value: string, key: string = tokenName): true {
+  set(value, key = tokenName) {
     setCookie(key, value, { expires: new Date('9999-12-31') });
     return true;
   },
-  async setAsync(value: string, key: string = tokenName): Promise<true> {
+  async setAsync(value, key = tokenName) {
     if (isServer) {
       const serverCookies = await cookies();
 
@@ -40,14 +42,14 @@ const cookieStore = {
 
     return this.set(value, key);
   },
-  delete(key: string = tokenName): boolean {
+  delete(key = tokenName) {
     const isExist = hasCookie(key);
     if (!isExist) return false;
 
     deleteCookie(key);
     return true;
   },
-  async deleteAsync(key: string = tokenName): Promise<boolean> {
+  async deleteAsync(key = tokenName) {
     if (isServer) {
       const serverCookies = await cookies();
       const isExist = serverCookies.has(key);
