@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { AppError } from '@/utils/appError';
 
-import type { ShowToast, ThrowAxiosError } from '@/types/api/utils.type';
+import type { ShowToast, ThrowAxiosError } from '@/types/axios.type';
 
 export const throwAxiosError: ThrowAxiosError = err => {
   const STATUS_CODE = 400;

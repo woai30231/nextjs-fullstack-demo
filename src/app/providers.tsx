@@ -11,16 +11,10 @@ import queryClient from '@/config/queryClient';
 import ZustandProvider from '@/context/ZustandProvider';
 import ProgressBar from '@/shared/loader/ProgressBar';
 
-import type { GetProfileOutput } from '@/features/profile/profile.type';
-import type { Mode } from '@/store/slices/theme.slice';
 import type { Layout } from '@/types';
+import type { ProvidersProps } from '@/types/initialState.type';
 
-interface Props {
-  user: GetProfileOutput | undefined;
-  mode: Mode;
-}
-
-const Providers: Layout<Props> = ({ children, user, mode }) => (
+const Providers: Layout<ProvidersProps> = ({ children, user, mode }) => (
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools />
     <ToastContainer pauseOnFocusLoss={false} autoClose={5000} closeOnClick hideProgressBar />

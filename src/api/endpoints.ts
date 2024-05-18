@@ -1,4 +1,4 @@
-import type { Endpoints } from '@/types/api/axios';
+import type { Endpoints } from '@/types/axios.type';
 
 const endpoints: Endpoints = {
   login: {

@@ -5,7 +5,7 @@ import createAuthSlice, { getUser } from '@/store/slices/auth.slice';
 import createLoadingSlice from '@/store/slices/loading.slice';
 import createThemeSlice, { getMode } from '@/store/slices/theme.slice';
 
-import type { CreateStore, GetProperStoreData, StateFromFunctions } from '@/types/store';
+import type { CreateStore, GetProperStoreData, StateFromFunctions } from '@/types/store.type';
 
 export type StoreState = StateFromFunctions<
   [typeof createAuthSlice, typeof createLoadingSlice, typeof createThemeSlice]

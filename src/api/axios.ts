@@ -7,7 +7,7 @@ import cookieStore from '@/lib/cookieStore';
 import store from '@/store/store';
 import { isServer } from '@/utils/utils';
 
-import type { AxiosErr, InternalAxiosRequestConfigWithExtraProps } from '@/types/api/axios';
+import type { AxiosErr, InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
 import type { AxiosError } from 'axios';
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH });

@@ -3,7 +3,8 @@ import React, { createContext, useContext, useRef } from 'react';
 import createStore from '@/store/store';
 
 import type { Layout } from '@/types';
-import type { ZustandInitialState, ZustandStoreApi } from '@/types/store';
+import type { ZustandInitialState } from '@/types/initialState.type';
+import type { ZustandStoreApi } from '@/types/store.type';
 
 export const ZustandContext = createContext<ZustandStoreApi | undefined>(undefined);
 

@@ -3,7 +3,7 @@ import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
 import constants from '@/constants';
 import { isServer } from '@/utils/utils';
 
-import type { CookieStoreType } from '@/types/lib/cookieStore.type';
+import type { CookieStoreType } from '@/types/cookieStore.type';
 
 const { tokenName } = constants.cookies;
 

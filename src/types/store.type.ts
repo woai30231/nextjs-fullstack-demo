@@ -1,6 +1,5 @@
-import type { GetProfileOutput } from '@/features/profile/profile.type';
-import type { Mode } from '@/store/slices/theme.slice';
 import type { StoreState } from '@/store/store';
+import type { ZustandInitialState } from '@/types/initialState.type';
 import type { StateCreator, StoreApi } from 'zustand';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
@@ -10,15 +9,6 @@ export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infe
     ? StateFromFunctions<R> & ReturnType<F>
     : unknown
   : unknown;
-
-interface InitialState {
-  user: GetProfileOutput | undefined;
-  mode: Mode;
-}
-
-export interface ZustandInitialState {
-  initialState?: InitialState | undefined;
-}
 
 export type ZustandStoreApi = StoreApi<StoreState>;
 
