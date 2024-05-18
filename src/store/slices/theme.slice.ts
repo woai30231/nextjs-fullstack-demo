@@ -1,5 +1,5 @@
-import tokenStore from '@/config/tokenStore';
 import constants from '@/constants';
+import cookieStore from '@/lib/cookieStore';
 
 import type { RemoveFnType } from '@/types';
 import type { SliceCreator } from '@/types/store';
@@ -36,7 +36,7 @@ export const getMode = (modeStr: string | null): ThemeSliceProperties => {
 export const setModeClient = (mode: Mode): void => {
   document.documentElement.classList.remove(`${mode === dark ? light : dark}-mode`);
   document.documentElement.classList.add(`${mode}-mode`);
-  tokenStore.set(mode, constants.cookies.themeName);
+  cookieStore.set(mode, constants.cookies.themeName);
 };
 
 const createThemeSlice: SliceCreator<ThemeSlice> = set => ({

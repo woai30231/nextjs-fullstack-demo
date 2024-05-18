@@ -3,8 +3,8 @@
 import React, { Fragment, Suspense, useEffect } from 'react';
 
 import Header from '@/components/header/Header';
-import tokenStore from '@/config/tokenStore';
 import constants from '@/constants';
+import cookieStore from '@/lib/cookieStore';
 import Loader from '@/shared/loader/Loader';
 import { PROGRESS_BAR_DELAY } from '@/shared/loader/ProgressBar';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
@@ -19,7 +19,7 @@ const App: Layout = ({ children }) => {
   const setMode = useStore(state => state.setMode);
 
   useEffect(() => {
-    const mode = tokenStore.get(constants.cookies.themeName);
+    const mode = cookieStore.get(constants.cookies.themeName);
     if (mode) return;
 
     const detectedMode = detectMode();

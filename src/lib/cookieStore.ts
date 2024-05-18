@@ -10,7 +10,7 @@ const cookies = async () => {
   return serverCookies();
 };
 
-const tokenStore = {
+const cookieStore = {
   get(key: string = tokenName): string | null {
     const token = hasCookie(key) && getCookie(key);
     // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
@@ -18,9 +18,9 @@ const tokenStore = {
   },
   async getAsync(key: string = tokenName): Promise<string | null> {
     if (isServer) {
-      const cookieStore = await cookies();
+      const serverCookies = await cookies();
 
-      const token = cookieStore.has(key) && cookieStore.get(key);
+      const token = serverCookies.has(key) && serverCookies.get(key);
       return token ? token.value : null;
     }
 
@@ -32,9 +32,9 @@ const tokenStore = {
   },
   async setAsync(value: string, key: string = tokenName): Promise<true> {
     if (isServer) {
-      const cookieStore = await cookies();
+      const serverCookies = await cookies();
 
-      cookieStore.set(key, value, { expires: new Date('9999-12-31') });
+      serverCookies.set(key, value, { expires: new Date('9999-12-31') });
       return true;
     }
 
@@ -49,11 +49,11 @@ const tokenStore = {
   },
   async deleteAsync(key: string = tokenName): Promise<boolean> {
     if (isServer) {
-      const cookieStore = await cookies();
-      const isExist = cookieStore.has(key);
+      const serverCookies = await cookies();
+      const isExist = serverCookies.has(key);
       if (!isExist) return false;
 
-      cookieStore.delete(key);
+      serverCookies.delete(key);
       return true;
     }
 
@@ -61,4 +61,4 @@ const tokenStore = {
   },
 };
 
-export default tokenStore;
+export default cookieStore;

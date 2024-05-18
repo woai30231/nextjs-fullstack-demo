@@ -1,5 +1,5 @@
 import queryClient from '@/config/queryClient';
-import tokenStore from '@/config/tokenStore';
+import cookieStore from '@/lib/cookieStore';
 
 import type { GetProfileOutput } from '@/features/profile/profile.type';
 import type { RemoveFnType } from '@/types';
@@ -27,7 +27,7 @@ export const getUser = (payload: GetProfileOutput): AuthSliceProperties => {
 
   return {
     isAuthenticated: true,
-    token: tokenStore.get() ?? '',
+    token: cookieStore.get() ?? '',
     user: payload,
   };
 };
@@ -36,14 +36,14 @@ const createAuthSlice: SliceCreator<AuthSlice> = set => ({
   ...initialState,
   login: token => {
     set({ token }, false, 'auth/login');
-    tokenStore.set(token);
+    cookieStore.set(token);
   },
   setUser: payload => {
     set(getUser(payload), false, 'auth/setUser');
   },
   logout: () => {
     set(initialState, false, 'auth/logout');
-    tokenStore.delete();
+    cookieStore.delete();
     queryClient.removeQueries();
   },
 });
