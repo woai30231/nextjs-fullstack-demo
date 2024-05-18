@@ -4,7 +4,7 @@ import Providers from '@/app/providers';
 import constants from '@/constants';
 import { getProfileApi } from '@/features/profile/profile.api';
 import cookieStore from '@/lib/cookieStore';
-import { getMode } from '@/store/slices/theme.slice';
+import { getMode } from '@/store/slices/theme/theme.slice';
 import { interFont } from '@/styles/font';
 import '@/styles/style.css';
 

@@ -1,5 +1,5 @@
 import type { GetProfileOutput } from '@/features/profile/profile.type';
-import type { Mode } from '@/store/slices/theme.slice';
+import type { Mode } from '@/store/slices/theme/theme.type';
 
 export interface ProvidersProps {
   user: GetProfileOutput | undefined;

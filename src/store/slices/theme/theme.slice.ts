@@ -1,30 +1,27 @@
 import constants from '@/constants';
 import cookieStore from '@/lib/cookieStore';
 
-import type { RemoveFnType } from '@/types';
-import type { SliceCreator } from '@/types/store.type';
-
-export type Mode = 'dark' | 'light';
-
-interface ThemeSlice {
-  mode: Mode;
-  setMode: (mode: Mode) => void;
-}
-
-type ThemeSliceProperties = RemoveFnType<ThemeSlice>;
+import type {
+  CreateThemeSlice,
+  Mode,
+  ThemeSliceDetectMode,
+  ThemeSliceGetMode,
+  ThemeSliceInitialState,
+  ThemeSliceSetModeClient,
+} from '@/store/slices/theme/theme.type';
 
 const { light, dark } = constants.theme;
 
-const initialState: ThemeSliceProperties = {
+const initialState: ThemeSliceInitialState = {
   mode: light,
 };
 
-export const detectMode = (): Mode => {
+export const detectMode: ThemeSliceDetectMode = () => {
   const darkThemeMq = window.matchMedia(`(prefers-color-scheme: ${light})`);
   return darkThemeMq.matches ? light : dark;
 };
 
-export const getMode = (modeStr: string | null): ThemeSliceProperties => {
+export const getMode: ThemeSliceGetMode = modeStr => {
   const mode = (() => {
     if (!modeStr) return initialState.mode;
     return modeStr === light ? light : dark;
@@ -33,13 +30,13 @@ export const getMode = (modeStr: string | null): ThemeSliceProperties => {
   return { mode };
 };
 
-export const setModeClient = (mode: Mode): void => {
+export const setModeClient: ThemeSliceSetModeClient = mode => {
   document.documentElement.classList.remove(`${mode === dark ? light : dark}-mode`);
   document.documentElement.classList.add(`${mode}-mode`);
   cookieStore.set(mode, constants.cookies.themeName);
 };
 
-const createThemeSlice: SliceCreator<ThemeSlice> = set => ({
+const createThemeSlice: CreateThemeSlice = set => ({
   ...initialState,
   setMode: (mode: Mode) => {
     set({ mode }, false, 'theme/setMode');

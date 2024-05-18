@@ -9,7 +9,7 @@ import Loader from '@/shared/loader/Loader';
 import { PROGRESS_BAR_DELAY } from '@/shared/loader/ProgressBar';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
 import { useStore } from '@/store';
-import { detectMode, setModeClient } from '@/store/slices/theme.slice';
+import { detectMode, setModeClient } from '@/store/slices/theme/theme.slice';
 
 import type { Layout } from '@/types';
 

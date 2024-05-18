@@ -1,9 +1,9 @@
 import { createStore as createZustandStore } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import createAuthSlice, { getUser } from '@/store/slices/auth.slice';
-import createLoadingSlice from '@/store/slices/loading.slice';
-import createThemeSlice, { getMode } from '@/store/slices/theme.slice';
+import createAuthSlice, { getUser } from '@/store/slices/auth/auth.slice';
+import createLoadingSlice from '@/store/slices/loading/loading.slice';
+import createThemeSlice, { getMode } from '@/store/slices/theme/theme.slice';
 
 import type { CreateStore, GetProperStoreData, StateFromFunctions } from '@/types/store.type';
 
