@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { AppError } from '@/utils/appError';
 
-import type { AxiosErr, AxiosRes } from '@/types/axios';
+import type { AxiosErr, AxiosRes } from '@/types/api/axios';
 
 export const throwAxiosError = (err: unknown): void => {
   const STATUS_CODE = 400;
