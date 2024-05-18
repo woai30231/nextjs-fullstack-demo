@@ -1,4 +1,5 @@
 import axiosInstance from 'axios';
+import { toast } from 'react-toastify';
 
 import { showToast } from '@/api/utils';
 import config from '@/config';
@@ -46,11 +47,16 @@ axios.interceptors.response.use(
     return res;
   },
   async (error: AxiosErr) => {
-    if (error.response && [401, 403].includes(error.response.status)) {
-      store().getState().logout();
-    }
-
     if (!isServer) {
+      if (error.code === 'ERR_NETWORK') {
+        toast.error(error.message);
+        return Promise.reject(error);
+      }
+
+      if (error.response && [401, 403].includes(error.response.status)) {
+        store().getState().logout();
+      }
+
       showToast(error);
       console.debug('Response Error', error);
     }
