@@ -3,9 +3,9 @@ import { toast } from 'react-toastify';
 
 import { AppError } from '@/utils/appError';
 
-import type { AxiosErr, AxiosRes } from '@/types/api/axios';
+import type { ShowToast, ThrowAxiosError } from '@/types/api/utils.type';
 
-export const throwAxiosError = (err: unknown): void => {
+export const throwAxiosError: ThrowAxiosError = err => {
   const STATUS_CODE = 400;
 
   const message = err instanceof AxiosError ? err.response?.data.message : err;
@@ -16,7 +16,7 @@ export const throwAxiosError = (err: unknown): void => {
   });
 };
 
-export const showToast = (res: AxiosRes | AxiosErr): void => {
+export const showToast: ShowToast = res => {
   const { config } = res;
   const { manageToast } = config;
 
