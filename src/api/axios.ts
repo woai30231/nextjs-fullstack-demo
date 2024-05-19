@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 
 import { showToast } from '@/api/utils';
 import config from '@/config';
+import constants from '@/constants';
 import cookieStore from '@/lib/cookieStore';
 import store from '@/store/store';
 import { isServer } from '@/utils/utils';
@@ -17,7 +18,7 @@ axios.interceptors.request.use(
     const myConfig = { ...conf };
 
     const lang = myConfig.headers['Accept-Language'];
-    const token = myConfig.noAuth ? null : await cookieStore.getAsync();
+    const token = myConfig.noAuth ? null : await cookieStore.getAsync(constants.cookies.tokenName);
 
     if (token) myConfig.headers.Authorization = `Bearer ${token}`;
     if (!isServer && !lang) myConfig.headers['Accept-Language'] = 'en';

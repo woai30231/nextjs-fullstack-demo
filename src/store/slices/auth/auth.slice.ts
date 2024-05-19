@@ -1,4 +1,5 @@
 import queryClient from '@/config/queryClient';
+import constants from '@/constants';
 import cookieStore from '@/lib/cookieStore';
 
 import type {
@@ -18,7 +19,7 @@ export const getUser: AuthSliceGetUser = payload => {
 
   return {
     isAuthenticated: true,
-    token: cookieStore.get(),
+    token: cookieStore.get(constants.cookies.tokenName),
     user: payload,
   };
 };
@@ -27,14 +28,14 @@ const createAuthSlice: CreateAuthSlice = set => ({
   ...initialState,
   login: token => {
     set({ token }, false, 'auth/login');
-    cookieStore.set(token);
+    cookieStore.set(constants.cookies.tokenName, token);
   },
   setUser: payload => {
     set(getUser(payload), false, 'auth/setUser');
   },
   logout: () => {
     set(initialState, false, 'auth/logout');
-    cookieStore.delete();
+    cookieStore.delete(constants.cookies.tokenName);
     queryClient.removeQueries();
   },
 });

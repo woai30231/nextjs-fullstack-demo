@@ -33,7 +33,7 @@ export const getMode: ThemeSliceGetMode = modeStr => {
 export const setModeClient: ThemeSliceSetModeClient = mode => {
   document.documentElement.classList.remove(`${mode === dark ? light : dark}-mode`);
   document.documentElement.classList.add(`${mode}-mode`);
-  cookieStore.set(mode, constants.cookies.themeName);
+  cookieStore.set(constants.cookies.themeName, mode);
 };
 
 const createThemeSlice: CreateThemeSlice = set => ({

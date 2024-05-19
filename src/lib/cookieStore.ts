@@ -1,11 +1,8 @@
 import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
 
-import constants from '@/constants';
 import { isServer } from '@/utils/utils';
 
 import type { CookieStoreType, DefaultSetOptions, GetOptions } from '@/types/cookieStore.type';
-
-const { tokenName } = constants.cookies;
 
 const cookies = async () => {
   const { cookies: serverCookies } = await import('next/headers');
@@ -21,11 +18,11 @@ const getOptions: GetOptions = (options = {}) => {
 };
 
 const cookieStore: CookieStoreType = {
-  get(key = tokenName) {
+  get(key) {
     const token = hasCookie(key) ? getCookie(key) : null;
     return token ?? null;
   },
-  async getAsync(key = tokenName) {
+  async getAsync(key) {
     if (isServer) {
       const serverCookies = await cookies();
 
@@ -35,11 +32,11 @@ const cookieStore: CookieStoreType = {
 
     return this.get(key);
   },
-  set(value, key = tokenName, options = {}) {
+  set(key, value, options = {}) {
     setCookie(key, value, getOptions(options));
     return true;
   },
-  async setAsync(value, key = tokenName, options = {}) {
+  async setAsync(key, value, options = {}) {
     if (isServer) {
       const serverCookies = await cookies();
 
@@ -47,16 +44,16 @@ const cookieStore: CookieStoreType = {
       return true;
     }
 
-    return this.set(value, key);
+    return this.set(key, value);
   },
-  delete(key = tokenName) {
+  delete(key) {
     const isExist = hasCookie(key);
     if (!isExist) return false;
 
     deleteCookie(key);
     return true;
   },
-  async deleteAsync(key = tokenName) {
+  async deleteAsync(key) {
     if (isServer) {
       const serverCookies = await cookies();
       const isExist = serverCookies.has(key);
