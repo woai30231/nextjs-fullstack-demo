@@ -45,7 +45,7 @@ const Login: Component = () => {
       await fetchProfile({});
       toast.success('Logged In Successfully');
     } catch (err) {
-      // empty
+      console.error(err);
     }
   };
 

@@ -2,7 +2,7 @@ import type { StoreState } from '@/store/store';
 import type { ZustandInitialState } from '@/types/initialState.type';
 import type { StateCreator, StoreApi } from 'zustand';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infer R]
   ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
     F extends (...args: any) => object

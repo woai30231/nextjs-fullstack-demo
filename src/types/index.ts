@@ -22,5 +22,5 @@ export interface NextErrorType {
   reset: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export type RemoveFnType<T> = ConditionalExcept<T, Function>;

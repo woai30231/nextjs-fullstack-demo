@@ -16,7 +16,6 @@ const WebsiteLoader: Component<WebsiteLoaderType> = ({ transparent = true }) => 
       'website-loader-transparent': transparent,
     })}
   >
-    {/* eslint-disable-next-line @next/next/no-img-element */}
     <img src={logo.src} alt="logo-img" />
   </div>
 );
