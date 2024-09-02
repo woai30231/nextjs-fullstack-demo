@@ -5,7 +5,7 @@ Project Name
 ### Prerequisites
 
 - Install pnpm as global dependency.
-- Node 20 and above only.
+- Node 22 and above only.
 - No NPM, Yarn, Only PNPM.
 - Don't Disable ESLint & Prettier.
 - Try to follow the rules as much as you can.
@@ -42,4 +42,4 @@ https://fakeapi.platzi.com/
 
 Nisharg Shah
 
-14/05/2024
+02/09/2024
