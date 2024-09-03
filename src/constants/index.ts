@@ -1,3 +1,5 @@
+import { isLive } from '@/utils/utils';
+
 const constants = {
   cookies: {
     tokenName: 'token',
@@ -7,6 +9,7 @@ const constants = {
     light: 'light',
     dark: 'dark',
   },
+  progressBarDelay: isLive ? 200 : 500,
 } as const;
 
 export default constants;

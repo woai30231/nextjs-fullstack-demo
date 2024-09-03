@@ -6,7 +6,6 @@ import Header from '@/components/header/Header';
 import constants from '@/constants';
 import cookieStore from '@/lib/cookieStore';
 import Loader from '@/shared/loader/Loader';
-import { PROGRESS_BAR_DELAY } from '@/shared/loader/ProgressBar';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
 import { useStore } from '@/store';
 import { detectMode, setModeClient } from '@/store/slices/theme/theme.slice';
@@ -30,7 +29,7 @@ const App: Layout = ({ children }) => {
   useEffect(() => {
     (async () => {
       await new Promise(resolve => {
-        setTimeout(resolve, PROGRESS_BAR_DELAY);
+        setTimeout(resolve, constants.progressBarDelay);
       });
 
       setLoading(false);

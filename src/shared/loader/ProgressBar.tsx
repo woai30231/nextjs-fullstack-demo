@@ -4,11 +4,9 @@ import { AppProgressBar } from 'next-nprogress-bar';
 import ReactDOMServer from 'react-dom/server';
 
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
-import { isLive } from '@/utils/utils';
 
 import type { Component } from '@/types';
-
-export const PROGRESS_BAR_DELAY = isLive ? 200 : 500;
+import constants from '@/constants';
 
 const ProgressBar: Component = () => {
   const loader = ReactDOMServer.renderToString(<WebsiteLoader />);
@@ -23,7 +21,7 @@ const ProgressBar: Component = () => {
   return (
     <AppProgressBar
       color="var(--bs-dark)"
-      stopDelay={PROGRESS_BAR_DELAY}
+      stopDelay={constants.progressBarDelay}
       options={{ showSpinner: false, template }}
     />
   );

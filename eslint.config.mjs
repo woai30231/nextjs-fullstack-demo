@@ -5,16 +5,16 @@ import { gitIgnoreFile } from './lint/utils.mjs';
 import customReactESLintConfig from './lint/react.eslint.mjs';
 import customImportESLintConfig from './lint/import.eslint.mjs';
 import js from '@eslint/js';
+import customJSESLintConfig from './lint/javascript.eslint.mjs';
 
 export default [
   gitIgnoreFile,
   ...[
     js.configs.recommended,
-    ...customImportESLintConfig,
-    ...customTSESLintConfig,
+    ...customJSESLintConfig,
     ...customReactESLintConfig,
-    // 'plugin:@next/next/recommended',
-    // 'plugin:@tanstack/eslint-plugin-query/recommended',
+    ...customTSESLintConfig,
+    ...customImportESLintConfig,
     ESLintConfigPrettier,
   ],
   {
@@ -49,7 +49,7 @@ export default [
           selector: 'MemberExpression[object.name="React"]',
           message: 'Use of React.method is not allowed.',
         },
-        // TYPESCRIPT
+        // REACT - TYPESCRIPT
         {
           selector: 'TSTypeReference[typeName.left.name="React"]',
           message: 'Use of React.type is not allowed.',
