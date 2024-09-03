@@ -1,43 +1,29 @@
-import globals from 'globals';
-import ESLintPluginReact from 'eslint-plugin-react';
 import ESLintPluginQuery from '@tanstack/eslint-plugin-query';
 import ESLintPluginReactRefresh from 'eslint-plugin-react-refresh';
 
 const customReactESLintConfig = [
+  // IT IS USING IMPORT, REACT, REACT HOOKS (ALL) & JSX A11Y INTERNALLY SO THOSE 3 PACKAGES SHOULD BE AFTER THIS
   // 'airbnb',
   // 'airbnb/hooks',
-  {
-    plugins: {
-      react: ESLintPluginReact,
-    },
-    languageOptions: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-      globals: {
-        ...globals.browser,
-      },
-    },
-    rules: {
-      'react/function-component-definition': [
-        'error',
-        {
-          namedComponents: 'arrow-function',
-        },
-      ],
-      'react/prop-types': 'off',
-      'react/jsx-props-no-spreading': 'off',
-      'react/jsx-fragments': ['error', 'element'],
-      'react/require-default-props': [
-        'error',
-        {
-          functions: 'defaultArguments',
-        },
-      ],
-    },
-  },
+  // {
+  //   rules: {
+  //     'react/function-component-definition': [
+  //       'error',
+  //       {
+  //         namedComponents: 'arrow-function',
+  //       },
+  //     ],
+  //     'react/prop-types': 'off',
+  //     'react/jsx-props-no-spreading': 'off',
+  //     'react/jsx-fragments': ['error', 'element'],
+  //     'react/require-default-props': [
+  //       'error',
+  //       {
+  //         functions: 'defaultArguments',
+  //       },
+  //     ],
+  //   },
+  // },
   // {
   //   rules: {
   //     'jsx-a11y/label-has-associated-control': [

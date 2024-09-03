@@ -73,6 +73,7 @@ const customTSESLintConfig = TSEslint.config(
     files: ['**/*.js'],
     ...TSEslint.configs.disableTypeChecked,
   },
+  // REACT ONLY
   {
     files: ['src/features/**/use*.ts'],
     rules: {
