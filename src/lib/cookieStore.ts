@@ -20,7 +20,7 @@ const getOptions: GetOptions = (options = {}) => {
 const cookieStore: CookieStoreType = {
   get(key) {
     const token = hasCookie(key) ? getCookie(key) : null;
-    return token ?? null;
+    return (token as Awaited<typeof token>) ?? null;
   },
   async getAsync(key) {
     if (isServer) {
