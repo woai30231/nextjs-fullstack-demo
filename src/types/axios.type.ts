@@ -90,6 +90,6 @@ export interface AxiosSignal {
   signal?: AbortSignal;
 }
 
-export type ThrowAxiosError = (err: unknown) => void;
+export type ThrowAxiosError = (error: unknown) => void;
 
 export type ShowToast = (res: AxiosRes | AxiosErr) => void;

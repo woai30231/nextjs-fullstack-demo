@@ -16,6 +16,6 @@ export type CreateThemeSlice = SliceCreator<ThemeSlice>;
 
 export type ThemeSliceDetectMode = () => Mode;
 
-export type ThemeSliceGetMode = (modeStr: string | null) => ThemeSliceInitialState;
+export type ThemeSliceGetMode = (modeString: string | null) => ThemeSliceInitialState;
 
 export type ThemeSliceSetModeClient = (mode: Mode) => void;

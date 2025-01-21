@@ -5,16 +5,16 @@ import { AppError } from '@/utils/appError';
 
 import type { ShowToast, ThrowAxiosError } from '@/types/axios.type';
 
-export const throwAxiosError: ThrowAxiosError = err => {
+export const throwAxiosError: ThrowAxiosError = error => {
   const STATUS_CODE = 400;
 
-  const message = err instanceof AxiosError ? err.response?.data.message : err;
+  const message = error instanceof AxiosError ? error.response?.data.message : error;
   const statusCode =
-    err instanceof AxiosError ? (err.response?.status ?? STATUS_CODE) : STATUS_CODE;
+    error instanceof AxiosError ? (error.response?.status ?? STATUS_CODE) : STATUS_CODE;
 
   throw new AppError(message, statusCode, {
-    error: err,
-    ...(err instanceof AxiosError ? { res: err.response?.data ?? null } : null),
+    error,
+    ...(error instanceof AxiosError ? { res: error.response?.data ?? null } : null),
   });
 };
 
@@ -35,7 +35,7 @@ export const showToast: ShowToast = res => {
 
   if (!shouldShowToast) return;
 
-  const toastMsg = responseData?.message ?? 'Something went wrong';
+  const toastMessage = responseData?.message ?? 'Something went wrong';
   const call = isError ? 'error' : 'success';
-  toast[call](toastMsg);
+  toast[call](toastMessage);
 };

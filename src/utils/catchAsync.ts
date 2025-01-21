@@ -21,7 +21,7 @@ type CatchAsyncOutput<T, R, P, E> = (
   options?: CatchAsyncOptions
 ) => Promise<CatchAsyncOutputCond<R, P> | E | undefined>;
 
-type ErrorCB<E> = (err: unknown) => Promisable<E>;
+type ErrorCB<E> = (error: unknown) => Promisable<E>;
 
 type CatchAsync = <I, R, P = unknown | boolean, E = undefined, T = I & DefaultParamsInput>(
   fn: CatchAsyncInput<T, R, P>,
@@ -29,15 +29,15 @@ type CatchAsync = <I, R, P = unknown | boolean, E = undefined, T = I & DefaultPa
 ) => CatchAsyncOutput<T, R, P, E>;
 
 const catchAsync: CatchAsync =
-  (fn, errorCB = undefined) =>
+  (fn, errorCB?) =>
   async (data, options = {}) => {
     const { throwError = true } = options;
 
     try {
       return await fn(data, options);
-    } catch (err) {
-      if (throwError) throwAxiosError(err);
-      return errorCB ? errorCB(err) : undefined;
+    } catch (error) {
+      if (throwError) throwAxiosError(error);
+      return errorCB ? errorCB(error) : undefined;
     }
   };
 

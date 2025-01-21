@@ -8,7 +8,7 @@ const options: QueryClientConfig = {
   defaultOptions: {
     queries: {
       retry: isServer ? 0 : 1,
-      staleTime: 10000,
+      staleTime: 10_000,
       gcTime: isServer ? Infinity : 1000 * 60 * 5,
     },
   },

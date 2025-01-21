@@ -44,8 +44,8 @@ const Login: Component = () => {
       await mutateAsync(data);
       await fetchProfile({});
       toast.success('Logged In Successfully');
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 

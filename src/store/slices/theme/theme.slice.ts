@@ -17,14 +17,14 @@ const initialState: ThemeSliceInitialState = {
 };
 
 export const detectMode: ThemeSliceDetectMode = () => {
-  const darkThemeMq = window.matchMedia(`(prefers-color-scheme: ${light})`);
+  const darkThemeMq = globalThis.matchMedia(`(prefers-color-scheme: ${light})`);
   return darkThemeMq.matches ? light : dark;
 };
 
-export const getMode: ThemeSliceGetMode = modeStr => {
+export const getMode: ThemeSliceGetMode = modeString => {
   const mode = (() => {
-    if (!modeStr) return initialState.mode;
-    return modeStr === light ? light : dark;
+    if (!modeString) return initialState.mode;
+    return modeString === light ? light : dark;
   })();
 
   return { mode };
