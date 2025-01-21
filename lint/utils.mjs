@@ -1,7 +1,8 @@
 import path from 'node:path';
+
+import { includeIgnoreFile } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
-import { includeIgnoreFile } from '@eslint/compat';
 
 export const ESLintDirectoryName = path.resolve('.');
 export const gitignorePath = path.resolve(ESLintDirectoryName, '.gitignore');

@@ -1,10 +1,11 @@
-import ESLintPluginPrettier from 'eslint-plugin-prettier';
+import js from '@eslint/js';
 import ESLintConfigPrettier from 'eslint-config-prettier';
+import ESLintPluginPrettier from 'eslint-plugin-prettier';
+
+import customImportESLintConfig from './lint/import.eslint.mjs';
+import customReactESLintConfig from './lint/react.eslint.mjs';
 import customTSESLintConfig from './lint/typescript.eslint.mjs';
 import { gitIgnoreFile } from './lint/utils.mjs';
-import customReactESLintConfig from './lint/react.eslint.mjs';
-import customImportESLintConfig from './lint/import.eslint.mjs';
-import js from '@eslint/js';
 import customJSESLintConfig from './lint/javascript.eslint.mjs';
 
 export default [

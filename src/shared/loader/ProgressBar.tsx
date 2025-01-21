@@ -3,10 +3,10 @@ import React from 'react';
 import { AppProgressBar } from 'next-nprogress-bar';
 import ReactDOMServer from 'react-dom/server';
 
+import constants from '@/constants';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
 
 import type { Component } from '@/types';
-import constants from '@/constants';
 
 const ProgressBar: Component = () => {
   const loader = ReactDOMServer.renderToString(<WebsiteLoader />);

@@ -1,6 +1,7 @@
 import ESLintPluginPromise from 'eslint-plugin-promise';
-import { flatCompat } from './utils.mjs';
 import ESLintPluginUnicorn from 'eslint-plugin-unicorn';
+
+import { flatCompat } from './utils.mjs';
 
 const customJSESLintConfig = [
   // IT IS USING IMPORT, PROMISE & N INTERNALLY SO THOSE 3 PACKAGES SHOULD BE AFTER THIS

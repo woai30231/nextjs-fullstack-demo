@@ -9,7 +9,7 @@ import type { ZustandStoreApi } from '@/types/store.type';
 export const ZustandContext = createContext<ZustandStoreApi | undefined>(undefined);
 
 const ZustandProvider: Layout<ZustandInitialState> = ({ children, initialState }) => {
-  const storeRef = useRef<ZustandStoreApi>();
+  const storeRef = useRef<ZustandStoreApi>(undefined);
 
   if (!storeRef.current) {
     storeRef.current = createStore(initialState);

@@ -1,16 +1,16 @@
-import TSEslint from 'typescript-eslint';
+import { config, configs, parser, plugin } from 'typescript-eslint';
 // import { flatCompat } from './utils.mjs';
 
-const customTSESLintConfig = TSEslint.config(
+const customTSESLintConfig = config(
   // ...flatCompat.extends('airbnb-typescript'),
-  ...TSEslint.configs.recommended,
-  ...TSEslint.configs.stylistic,
+  ...configs.recommended,
+  ...configs.stylistic,
   {
     plugins: {
-      '@typescript-eslint': TSEslint.plugin,
+      '@typescript-eslint': plugin,
     },
     languageOptions: {
-      parser: TSEslint.parser,
+      parser,
       parserOptions: {
         projectService: true,
       },
@@ -71,7 +71,7 @@ const customTSESLintConfig = TSEslint.config(
   },
   {
     files: ['**/*.js'],
-    ...TSEslint.configs.disableTypeChecked,
+    ...configs.disableTypeChecked,
   },
   // REACT ONLY
   {
