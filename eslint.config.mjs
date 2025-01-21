@@ -10,14 +10,12 @@ import customJSESLintConfig from './lint/javascript.eslint.mjs';
 
 export default [
   gitIgnoreFile,
-  ...[
-    js.configs.recommended,
-    ...customJSESLintConfig,
-    ...customReactESLintConfig,
-    ...customTSESLintConfig,
-    ...customImportESLintConfig,
-    ESLintConfigPrettier,
-  ],
+  js.configs.recommended,
+  ...customJSESLintConfig,
+  ...customReactESLintConfig,
+  ...customTSESLintConfig,
+  ...customImportESLintConfig,
+  ESLintConfigPrettier,
   {
     plugins: {
       prettier: ESLintPluginPrettier,
