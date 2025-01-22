@@ -3,7 +3,11 @@ import { toast } from 'react-toastify';
 
 import { AppError } from '@/utils/appError';
 
-import type { ShowToast, ThrowAxiosError } from '@/types/axios.type';
+import type { AxiosErrConfig, ShowToast, SuccessOutput, ThrowAxiosError } from '@/types/axios.type';
+
+export class AxiosErr extends AxiosError {
+  config?: AxiosErrConfig;
+}
 
 export const throwAxiosError: ThrowAxiosError = error => {
   const STATUS_CODE = 400;
@@ -20,18 +24,19 @@ export const throwAxiosError: ThrowAxiosError = error => {
 
 export const showToast: ShowToast = res => {
   const { config } = res;
+  if (!config) return;
+
   const { manageToast } = config;
 
   const isError = res instanceof AxiosError;
 
   const responseData = (() => {
-    if (isError) return res.response?.data;
-
+    if (isError) return res.response?.data ?? null;
     return 'data' in res ? res.data : null;
-  })();
+  })() as SuccessOutput | null;
 
   const shouldShowToast =
-    typeof manageToast === 'function' ? manageToast(responseData) : !!manageToast;
+    typeof manageToast === 'function' && responseData ? manageToast(responseData) : !!manageToast;
 
   if (!shouldShowToast) return;
 

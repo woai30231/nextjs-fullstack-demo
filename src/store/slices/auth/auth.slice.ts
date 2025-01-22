@@ -10,7 +10,6 @@ import type {
 
 const initialState: AuthSliceInitialState = {
   isAuthenticated: false,
-  token: null,
   user: null,
 };
 
@@ -19,7 +18,6 @@ export const getUser: AuthSliceGetUser = payload => {
 
   return {
     isAuthenticated: true,
-    token: cookieStore.get(constants.cookies.tokenName),
     user: payload,
   };
 };
@@ -27,7 +25,6 @@ export const getUser: AuthSliceGetUser = payload => {
 const createAuthSlice: CreateAuthSlice = set => ({
   ...initialState,
   login: token => {
-    set({ token }, false, 'auth/login');
     cookieStore.set(constants.cookies.tokenName, token);
   },
   setUser: payload => {

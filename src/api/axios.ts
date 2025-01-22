@@ -1,6 +1,7 @@
 import axiosInstance from 'axios';
 import { toast } from 'react-toastify';
 
+import type { AxiosErr } from '@/api/utils';
 import { showToast } from '@/api/utils';
 import config from '@/config';
 import constants from '@/constants';
@@ -8,7 +9,7 @@ import cookieStore from '@/lib/cookieStore';
 import store from '@/store/store';
 import { isServer } from '@/utils/utils';
 
-import type { AxiosErr, InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
+import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
 import type { AxiosError } from 'axios';
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH });
@@ -24,7 +25,7 @@ axios.interceptors.request.use(
     if (!isServer && !lang) myConfig.headers['Accept-Language'] = 'en';
 
     myConfig.url = Object.entries(conf.urlParams ?? {}).reduce((acc, [k, v]) => {
-      let temp = acc.slice();
+      let temp = `${acc}`;
       temp = temp.replace(`:${k}`, v.toString());
 
       return temp;
@@ -38,7 +39,7 @@ axios.interceptors.request.use(
   },
   async (error: AxiosError) => {
     if (!isServer) console.debug('Request Error', error);
-    return Promise.reject(error);
+    throw error;
   }
 );
 
@@ -51,7 +52,7 @@ axios.interceptors.response.use(
     if (!isServer) {
       if (error.code === 'ERR_NETWORK') {
         toast.error(error.message);
-        return Promise.reject(error);
+        throw error;
       }
 
       if (error.response && [401, 403].includes(error.response.status)) {
@@ -62,7 +63,7 @@ axios.interceptors.response.use(
       console.debug('Response Error', error);
     }
 
-    return Promise.reject(error);
+    throw error;
   }
 );
 

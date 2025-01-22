@@ -1,10 +1,5 @@
-import type { PrimitiveType, RecursiveType } from '@/types';
-import type {
-  AxiosError,
-  AxiosRequestConfig,
-  AxiosResponse,
-  InternalAxiosRequestConfig,
-} from 'axios';
+import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import type { AxiosErr } from '@/api/utils';
 
 type UrlParams = Record<string, number | string>;
 
@@ -14,7 +9,7 @@ interface AxiosExtraProps {
 }
 
 interface ManageToast {
-  manageToast?: ((res: RecursiveType<PrimitiveType>) => boolean) | boolean;
+  manageToast?: ((res: SuccessOutput) => boolean) | boolean;
 }
 
 export type AxiosRequestConfigWithExtraProps = AxiosRequestConfig & AxiosExtraProps;
@@ -29,9 +24,7 @@ export type AxiosRes<T = unknown> = Omit<AxiosResponse<T>, 'config'> & {
   config: InternalAxiosRequestConfig & ManageToast;
 };
 
-export type AxiosErr<T = unknown> = Omit<AxiosError<T>, 'config'> & {
-  config: InternalAxiosRequestConfig & ManageToast;
-};
+export type AxiosErrConfig = InternalAxiosRequestConfig & ManageToast;
 
 export interface SuccessOutput<T = unknown> {
   status: number;
