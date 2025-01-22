@@ -1,4 +1,12 @@
-const users = [
+interface User {
+  id: number;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}
+
+const users: User[] = [
   {
     id: 1,
     email: 'nishargshah3101@gmail.com',
@@ -21,5 +29,17 @@ const users = [
     lastName: 'Codal',
   },
 ];
+
+type TransformUser = (user: User) => Omit<User, 'password'> & {
+  fullName: string;
+};
+
+export const transformUser: TransformUser = user => ({
+  id: user.id,
+  email: user.email,
+  firstName: user.firstName,
+  lastName: user.lastName,
+  fullName: `${user.firstName} ${user.lastName}`,
+});
 
 export default users;

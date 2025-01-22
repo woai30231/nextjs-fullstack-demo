@@ -11,7 +11,7 @@ const endpoints: Endpoints = {
     url: '/user/profile/me',
   },
   logout: {
-    method: 'GET',
+    method: 'POST',
     url: '/user/profile/logout',
   },
   getAllUsers: {

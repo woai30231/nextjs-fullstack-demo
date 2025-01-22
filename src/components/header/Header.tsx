@@ -6,9 +6,11 @@ import styles from '@/components/header/Header.module.css';
 import { useStore } from '@/store';
 
 import type { Component } from '@/types';
+import { useRouter } from '@/hooks/useRouter';
 
 const Header: Component = () => {
-  const logout = useStore(state => state.logout);
+  const router = useRouter();
+
   const mode = useStore(state => state.mode);
   const setMode = useStore(state => state.setMode);
   const isAuthenticated = useStore(state => state.isAuthenticated);
@@ -43,7 +45,7 @@ const Header: Component = () => {
           Current: {mode === 'dark' ? 'Dark' : 'Light'}
         </button>
         {isAuthenticated && (
-          <button type="button" className={styles.btn} onClick={logout}>
+          <button type="button" className={styles.btn} onClick={() => router.push('/app/logout')}>
             Logout
           </button>
         )}

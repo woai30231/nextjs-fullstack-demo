@@ -1,5 +1,5 @@
 import type { Route } from '@/types/api.type';
-import users from '@/app/api/_mock/users';
+import users, { transformUser } from '@/app/api/_mock/users';
 
 export const GET: Route = async request => {
   const userId = 1;
@@ -9,14 +9,7 @@ export const GET: Route = async request => {
     return Response.json({ status: 500, message: 'Something went wrong.' }, { status: 500 });
   }
 
-  const user = {
-    id: userData.id,
-    email: userData.email,
-    firstName: userData.firstName,
-    lastName: userData.lastName,
-    fullName: `${userData.firstName} ${userData.lastName}`,
-  };
-
+  const user = transformUser(userData);
   return Response.json({
     status: 200,
     message: 'Profile Fetched Successfully',
