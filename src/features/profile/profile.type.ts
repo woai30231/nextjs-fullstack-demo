@@ -5,6 +5,7 @@ export type GetProfileInput = unknown;
 export interface GetProfileOutput {
   id: number;
   email: string;
-  name: string;
-  avatar: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
 }

@@ -5,6 +5,4 @@ export interface LoginInput {
   password: string;
 }
 
-export interface LoginOutput {
-  access_token: string;
-}
+export type LoginOutput = unknown;
