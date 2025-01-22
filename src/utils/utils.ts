@@ -1,6 +1,7 @@
 import config from '@/config';
 
-export const isServer = typeof globalThis === 'undefined';
+// eslint-disable-next-line unicorn/prefer-global-this
+export const isServer = typeof window === 'undefined';
 
 export const isProduction = config.NODE_ENV === 'production';
 

@@ -11,6 +11,8 @@ const cookies = async () => {
 
 const getOptions: GetOptions = (options = {}) => {
   const defaultSetOptions: DefaultSetOptions = {
+    secure: true,
+    sameSite: 'lax',
     expires: new Date('9999-12-31'),
   };
 
