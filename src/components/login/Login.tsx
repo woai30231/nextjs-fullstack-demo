@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 
 import styles from '@/components/login/Login.module.css';
 import { useLogin } from '@/features/auth/useLogin';
@@ -47,7 +46,6 @@ const Login: Component = () => {
       await mutateAsync(data);
       await fetchProfile({});
       router.push('/app');
-      toast.success('Logged In Successfully');
     } catch (error) {
       console.error(error);
     }
