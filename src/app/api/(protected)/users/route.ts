@@ -1,5 +1,6 @@
-import type { Route } from '@/types/api.type';
 import users, { transformUser } from '@/app/api/_mock/users';
+
+import type { Route } from '@/types/api.type';
 
 export const GET: Route = async () =>
   Response.json({

@@ -1,6 +1,7 @@
-import type { Route } from '@/types/api.type';
 import users, { transformUser } from '@/app/api/_mock/users';
 import getUserData from '@/app/api/_utils/getUserData';
+
+import type { Route } from '@/types/api.type';
 
 export const GET: Route = async request => {
   const user = getUserData(request);

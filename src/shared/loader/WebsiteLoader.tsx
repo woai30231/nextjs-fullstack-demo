@@ -1,11 +1,11 @@
 import React from 'react';
 
 import clsx from 'clsx';
+import Image from 'next/image';
 
 import logo from '@/assets/next.svg';
 
 import type { Component } from '@/types';
-import Image from 'next/image';
 
 interface WebsiteLoaderType {
   transparent?: boolean;

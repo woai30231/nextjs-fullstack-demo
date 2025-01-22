@@ -1,5 +1,5 @@
-import cookieStore from '@/lib/cookieStore';
 import constants from '@/constants';
+import cookieStore from '@/lib/cookieStore';
 
 type IsAuthenticated = () => Promise<boolean>;
 

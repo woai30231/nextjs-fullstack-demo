@@ -5,10 +5,10 @@ import { useForm } from 'react-hook-form';
 import styles from '@/components/login/Login.module.css';
 import { useLogin } from '@/features/auth/useLogin';
 import { useProfile } from '@/features/profile/useProfile';
+import { useRouter } from '@/hooks/useRouter';
 
 import type { Component, Layout } from '@/types';
 import type { SubmitHandler } from 'react-hook-form';
-import { useRouter } from '@/hooks/useRouter';
 
 interface FormControlProps {
   label: string;

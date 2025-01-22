@@ -2,9 +2,10 @@
 
 import React, { Fragment, useEffect } from 'react';
 
-import type { Component } from '@/types';
 import { useLogout } from '@/features/profile/useLogout';
 import { useRouter } from '@/hooks/useRouter';
+
+import type { Component } from '@/types';
 
 const LogoutPage: Component = () => {
   const router = useRouter();

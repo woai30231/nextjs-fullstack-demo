@@ -1,7 +1,9 @@
-import type { NextMiddleware } from 'next/server';
 import { NextResponse } from 'next/server';
-import cookieStore from '@/lib/cookieStore';
+
 import constants from '@/constants';
+import cookieStore from '@/lib/cookieStore';
+
+import type { NextMiddleware } from 'next/server';
 
 export const middleware: NextMiddleware = async request => {
   const { headers, nextUrl } = request;

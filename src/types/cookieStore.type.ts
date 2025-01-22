@@ -1,7 +1,7 @@
 import type constants from '@/constants';
+import type { Obj } from '@/types/index';
 import type { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import type { ValueOf } from 'type-fest';
-import type { Obj } from '@/types/index';
 
 export type DefaultSetOptions = Partial<ResponseCookie> & {
   expires?: Exclude<ResponseCookie['expires'], number>;

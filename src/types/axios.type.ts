@@ -1,5 +1,5 @@
-import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import type { AxiosErr } from '@/api/utils';
+import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 
 export interface AxiosSSR {
   ssr?: boolean;

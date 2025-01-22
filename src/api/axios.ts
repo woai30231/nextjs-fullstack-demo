@@ -1,14 +1,14 @@
 import axiosInstance from 'axios';
 import { toast } from 'react-toastify';
 
-import type { AxiosErr } from '@/api/utils';
 import { showToast } from '@/api/utils';
 import config from '@/config';
+import cookieStore from '@/lib/cookieStore';
 import { isServer } from '@/utils/utils';
 
+import type { AxiosErr } from '@/api/utils';
 import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
 import type { AxiosError } from 'axios';
-import cookieStore from '@/lib/cookieStore';
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH, withCredentials: true });
 

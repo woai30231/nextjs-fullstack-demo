@@ -3,10 +3,10 @@ import React from 'react';
 import Link from 'next/link';
 
 import styles from '@/components/header/Header.module.css';
+import { useRouter } from '@/hooks/useRouter';
 import { useStore } from '@/store';
 
 import type { Component } from '@/types';
-import { useRouter } from '@/hooks/useRouter';
 
 const Header: Component = () => {
   const router = useRouter();

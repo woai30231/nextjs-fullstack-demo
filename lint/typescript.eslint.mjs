@@ -1,10 +1,14 @@
 import { config, configs, parser, plugin } from 'typescript-eslint';
-// import { flatCompat } from './utils.mjs';
+import { flatCompat } from './utils.mjs';
 
 const customTSESLintConfig = config(
-  // ...flatCompat.extends('airbnb-typescript'),
+  // AIRBNB TYPESCRIPT CONFIG
+  ...flatCompat.extends('airbnb-typescript'),
+  // TYPESCRIPT CONFIG
   ...configs.recommended,
+  // TYPESCRIPT STYLISTIC CONFIG
   ...configs.stylistic,
+  // TYPESCRIPT CONFIG RULES
   {
     plugins: {
       '@typescript-eslint': plugin,
@@ -69,11 +73,12 @@ const customTSESLintConfig = config(
       ],
     },
   },
+  // DISABLED TYPECHECKING JS FILES
   {
     files: ['**/*.js'],
     ...configs.disableTypeChecked,
   },
-  // REACT ONLY
+  // REACT ONLY - REMOVED ONE RULE FOR FEATURES HOOK
   {
     files: ['src/features/**/use*.ts'],
     rules: {

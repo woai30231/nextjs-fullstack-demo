@@ -4,10 +4,14 @@ import ESLintPluginUnicorn from 'eslint-plugin-unicorn';
 import { flatCompat } from './utils.mjs';
 
 const customJSESLintConfig = [
+  // STANDARD CONFIG
   // IT IS USING IMPORT, PROMISE & N INTERNALLY SO THOSE 3 PACKAGES SHOULD BE AFTER THIS
   ...flatCompat.extends('eslint-config-standard'),
+  // PROMISE CONFIG
   ESLintPluginPromise.configs['flat/recommended'],
+  // UNICORN CONFIG
   ESLintPluginUnicorn.configs['flat/recommended'],
+  // UNICORN CONFIG RULES
   {
     rules: {
       'unicorn/filename-case': [

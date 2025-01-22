@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation';
 
-import type { Layout } from '@/types';
 import isAuthenticated from '@/lib/isAuthenticated';
+
+import type { Layout } from '@/types';
 
 const AuthLayout: Layout = async ({ children }) => {
   const isLoggedIn = await isAuthenticated();

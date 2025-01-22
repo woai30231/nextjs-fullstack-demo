@@ -1,7 +1,8 @@
-import type { Route } from '@/types/api.type';
 import users from '@/app/api/_mock/users';
-import cookieStore from '@/lib/cookieStore';
 import constants from '@/constants';
+import cookieStore from '@/lib/cookieStore';
+
+import type { Route } from '@/types/api.type';
 
 export const POST: Route = async request => {
   const body = await request.json();
