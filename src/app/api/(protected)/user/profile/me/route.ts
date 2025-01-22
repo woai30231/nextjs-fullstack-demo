@@ -1,18 +1,22 @@
 import type { Route } from '@/types/api.type';
 import users, { transformUser } from '@/app/api/_mock/users';
+import getUserData from '@/app/api/_utils/getUserData';
 
 export const GET: Route = async request => {
-  const userId = 1;
+  const user = getUserData(request);
 
-  const userData = users.find(cur => cur.id === userId);
+  const userData = users.find(cur => cur.id === user.id);
   if (!userData) {
-    return Response.json({ status: 500, message: 'Something went wrong.' }, { status: 500 });
+    return Response.json(
+      { status: 500, message: 'It’s not you. It’s us. Give it another try, please!' },
+      { status: 500 }
+    );
   }
 
-  const user = transformUser(userData);
+  const data = transformUser(userData);
   return Response.json({
     status: 200,
     message: 'Profile Fetched Successfully',
-    data: user,
+    data,
   });
 };
