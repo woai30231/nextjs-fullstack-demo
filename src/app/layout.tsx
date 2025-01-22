@@ -23,8 +23,7 @@ const RootLayout: Layout = async ({ children }) => {
   const { user } = await (async () => {
     const defaults = { user: undefined };
 
-    const hasToken = await cookieStore.getAsync(constants.cookies.tokenName);
-
+    const hasToken = !!(await cookieStore.getAsync(constants.cookies.tokenName));
     if (hasToken) {
       const userData = await getProfileApi({}, { throwError: false });
       return { ...defaults, user: userData };

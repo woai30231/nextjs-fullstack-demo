@@ -1,8 +1,9 @@
-import { deleteCookie, getCookie, hasCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, hasCookie, setCookie, getCookies } from 'cookies-next';
 
 import { isServer } from '@/utils/utils';
 
 import type { CookieStoreType, DefaultSetOptions, GetOptions } from '@/types/cookieStore.type';
+import type { Obj } from '@/types';
 
 const cookies = async () => {
   const { cookies: serverCookies } = await import('next/headers');
@@ -33,6 +34,32 @@ const cookieStore: CookieStoreType = {
     }
 
     return this.get(key);
+  },
+  getAll() {
+    return getCookies() as Obj<string>;
+  },
+  async getAllAsync() {
+    if (isServer) {
+      const serverCookies = await cookies();
+
+      const allCookies = serverCookies.getAll();
+      return allCookies.reduce<Obj<string>>((acc, val) => {
+        const { name, value } = val;
+
+        acc[name] = value;
+        return acc;
+      }, {});
+    }
+
+    return this.getAll();
+  },
+  async getAllSerialized() {
+    if (isServer) {
+      const serverCookies = await cookies();
+      return serverCookies.toString();
+    }
+
+    return '';
   },
   set(key, value, options = {}) {
     setCookie(key, value, getOptions(options));

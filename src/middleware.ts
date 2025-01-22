@@ -7,6 +7,8 @@ export const middleware: NextMiddleware = async request => {
   const { headers, nextUrl } = request;
   const { pathname } = nextUrl;
 
+  if (pathname.startsWith('/_next') || ['/favicon.ico', 'robots.txt'].includes(pathname)) return;
+
   // API ONLY
   if (pathname.startsWith('/api')) {
     const isProtected = !pathname.startsWith('/api/auth');

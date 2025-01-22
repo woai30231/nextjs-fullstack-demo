@@ -8,6 +8,7 @@ import { isServer } from '@/utils/utils';
 
 import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
 import type { AxiosError } from 'axios';
+import cookieStore from '@/lib/cookieStore';
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH, withCredentials: true });
 
@@ -27,6 +28,10 @@ axios.interceptors.request.use(
 
     if (myConfig.data instanceof FormData) {
       myConfig.headers['Content-Type'] = 'multipart/form-data';
+    }
+
+    if (isServer && myConfig.ssr !== false) {
+      myConfig.headers.Cookie = await cookieStore.getAllSerialized();
     }
 
     return myConfig;

@@ -1,9 +1,13 @@
 import type { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import type { AxiosErr } from '@/api/utils';
 
+export interface AxiosSSR {
+  ssr?: boolean;
+}
+
 type UrlParams = Record<string, number | string>;
 
-interface AxiosExtraProps {
+interface AxiosExtraProps extends AxiosSSR {
   urlParams?: UrlParams;
   noAuth?: boolean;
 }
