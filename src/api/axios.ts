@@ -4,24 +4,19 @@ import { toast } from 'react-toastify';
 import type { AxiosErr } from '@/api/utils';
 import { showToast } from '@/api/utils';
 import config from '@/config';
-import constants from '@/constants';
-import cookieStore from '@/lib/cookieStore';
 import store from '@/store/store';
 import { isServer } from '@/utils/utils';
 
 import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
 import type { AxiosError } from 'axios';
 
-const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH });
+const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH, withCredentials: true });
 
 axios.interceptors.request.use(
   async (conf: InternalAxiosRequestConfigWithExtraProps) => {
     const myConfig = { ...conf };
 
     const lang = myConfig.headers['Accept-Language'];
-    const token = myConfig.noAuth ? null : await cookieStore.getAsync(constants.cookies.tokenName);
-
-    if (token) myConfig.headers.Authorization = `Bearer ${token}`;
     if (!isServer && !lang) myConfig.headers['Accept-Language'] = 'en';
 
     myConfig.url = Object.entries(conf.urlParams ?? {}).reduce((acc, [k, v]) => {

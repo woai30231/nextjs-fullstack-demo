@@ -19,6 +19,9 @@ const Header: Component = () => {
         <Link className={styles.link} href="/">
           Home
         </Link>
+        <Link className={styles.link} href="/about">
+          About
+        </Link>
         <Link className={styles.link} href="/login">
           Login
         </Link>

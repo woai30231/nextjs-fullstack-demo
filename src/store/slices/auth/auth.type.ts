@@ -5,7 +5,6 @@ import type { SliceCreator } from '@/types/store.type';
 interface AuthSlice {
   isAuthenticated: boolean;
   user?: GetProfileOutput | null;
-  login: (token: string) => void;
   setUser: (payload: GetProfileOutput) => void;
   logout: () => void;
 }
