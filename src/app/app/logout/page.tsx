@@ -15,7 +15,9 @@ const LogoutPage: Component = () => {
     (async () => {
       try {
         await logout({});
-      } catch {}
+      } catch {
+        // empty
+      }
 
       router.push('/');
     })();

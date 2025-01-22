@@ -2,7 +2,7 @@ import ESLintPluginNext from '@next/eslint-plugin-next';
 import ESLintPluginQuery from '@tanstack/eslint-plugin-query';
 import ESLintPluginReactRefresh from 'eslint-plugin-react-refresh';
 
-import { flatCompat } from './utils.mjs';
+// import { flatCompat } from './utils.mjs';
 
 const customReactESLintConfig = [
   // AIRBNB CONFIG

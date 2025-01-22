@@ -1,6 +1,6 @@
+import js from '@eslint/js';
 import ESLintPluginPromise from 'eslint-plugin-promise';
 import ESLintPluginUnicorn from 'eslint-plugin-unicorn';
-import js from '@eslint/js';
 
 const customJSESLintConfig = [
   // ESLINT RECOMMENDED RULES
