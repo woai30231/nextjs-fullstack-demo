@@ -12,7 +12,10 @@ const LogoutPage: Component = () => {
 
   useEffect(() => {
     (async () => {
-      await logout({});
+      try {
+        await logout({});
+      } catch {}
+
       router.push('/');
     })();
   }, []);

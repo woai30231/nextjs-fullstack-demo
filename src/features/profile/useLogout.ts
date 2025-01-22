@@ -9,5 +9,6 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: logoutApi,
     onSuccess: logout,
+    onError: logout,
   });
 };

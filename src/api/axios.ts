@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import type { AxiosErr } from '@/api/utils';
 import { showToast } from '@/api/utils';
 import config from '@/config';
-import store from '@/store/store';
 import { isServer } from '@/utils/utils';
 
 import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
@@ -50,8 +49,12 @@ axios.interceptors.response.use(
         throw error;
       }
 
-      if (error.response && [401, 403].includes(error.response.status)) {
-        store().getState().logout();
+      if (
+        error.response &&
+        [401, 403].includes(error.response.status) &&
+        globalThis.location.pathname !== '/app/logout'
+      ) {
+        globalThis.location.assign('/app/logout');
       }
 
       showToast(error);
