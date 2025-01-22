@@ -2,14 +2,9 @@ import ESLintPluginPromise from 'eslint-plugin-promise';
 import ESLintPluginUnicorn from 'eslint-plugin-unicorn';
 import js from '@eslint/js';
 
-// import { flatCompat } from './utils.mjs';
-
 const customJSESLintConfig = [
   // ESLINT RECOMMENDED RULES
   js.configs.recommended,
-  // STANDARD CONFIG
-  // IT IS USING IMPORT, PROMISE & N INTERNALLY SO THOSE 3 PACKAGES SHOULD BE AFTER THIS
-  // ...flatCompat.extends('eslint-config-standard'),
   // PROMISE CONFIG
   ESLintPluginPromise.configs['flat/recommended'],
   // UNICORN CONFIG
