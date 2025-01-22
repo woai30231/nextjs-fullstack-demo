@@ -8,4 +8,6 @@ export const login: Axios = async data => axios({ ...endpoints.login, ...data })
 
 export const getProfile: Axios = async data => axios({ ...endpoints.getProfile, ...data });
 
+export const logout: Axios = async data => axios({ ...endpoints.logout, ...data });
+
 export const getAllUsers: Axios = async data => axios({ ...endpoints.getAllUsers, ...data });

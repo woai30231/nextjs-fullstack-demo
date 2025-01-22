@@ -10,6 +10,10 @@ const endpoints: Endpoints = {
     method: 'GET',
     url: '/user/profile/me',
   },
+  logout: {
+    method: 'GET',
+    url: '/user/profile/logout',
+  },
   getAllUsers: {
     method: 'GET',
     url: '/users',

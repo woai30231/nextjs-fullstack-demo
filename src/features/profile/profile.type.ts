@@ -9,3 +9,9 @@ export interface GetProfileOutput {
   lastName: string;
   fullName: string;
 }
+
+/* Logout API */
+
+export type LogoutInput = unknown;
+
+export type LogoutOutput = unknown;
