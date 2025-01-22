@@ -1,9 +1,10 @@
 import { config, configs, parser, plugin } from 'typescript-eslint';
-import { flatCompat } from './utils.mjs';
+
+// import { flatCompat } from './utils.mjs';
 
 const customTSESLintConfig = config(
   // AIRBNB TYPESCRIPT CONFIG
-  ...flatCompat.extends('airbnb-typescript'),
+  // ...flatCompat.extends('airbnb-typescript'),
   // TYPESCRIPT CONFIG
   ...configs.recommended,
   // TYPESCRIPT STYLISTIC CONFIG

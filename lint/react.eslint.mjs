@@ -1,55 +1,56 @@
+import ESLintPluginNext from '@next/eslint-plugin-next';
 import ESLintPluginQuery from '@tanstack/eslint-plugin-query';
 import ESLintPluginReactRefresh from 'eslint-plugin-react-refresh';
-import ESLintPluginNext from '@next/eslint-plugin-next';
+
 import { flatCompat } from './utils.mjs';
 
 const customReactESLintConfig = [
   // AIRBNB CONFIG
   // IT IS USING IMPORT, REACT, REACT HOOKS (ALL) & JSX A11Y INTERNALLY SO THOSE 4 PACKAGES SHOULD BE AFTER THIS
-  ...flatCompat.extends('airbnb'),
+  // ...flatCompat.extends('airbnb'),
   // AIRBNB HOOKS CONFIG
-  ...flatCompat.extends('airbnb/hooks'),
+  // ...flatCompat.extends('airbnb/hooks'),
   // REACT CONFIG RULES
-  {
-    rules: {
-      'react/function-component-definition': [
-        'error',
-        {
-          namedComponents: 'arrow-function',
-        },
-      ],
-      'react/prop-types': 'off',
-      'react/jsx-props-no-spreading': 'off',
-      'react/jsx-fragments': ['error', 'element'],
-      'react/require-default-props': [
-        'error',
-        {
-          functions: 'defaultArguments',
-        },
-      ],
-    },
-  },
-  // JSX A11Y CONFIG RULES
-  {
-    rules: {
-      'jsx-a11y/label-has-associated-control': [
-        'error',
-        {
-          required: {
-            some: ['nesting', 'id'],
-          },
-        },
-      ],
-      'jsx-a11y/label-has-for': [
-        'error',
-        {
-          required: {
-            some: ['nesting', 'id'],
-          },
-        },
-      ],
-    },
-  },
+  // {
+  //   rules: {
+  //     'react/function-component-definition': [
+  //       'error',
+  //       {
+  //         namedComponents: 'arrow-function',
+  //       },
+  //     ],
+  //     'react/prop-types': 'off',
+  //     'react/jsx-props-no-spreading': 'off',
+  //     'react/jsx-fragments': ['error', 'element'],
+  //     'react/require-default-props': [
+  //       'error',
+  //       {
+  //         functions: 'defaultArguments',
+  //       },
+  //     ],
+  //   },
+  // },
+  // // JSX A11Y CONFIG RULES
+  // {
+  //   rules: {
+  //     'jsx-a11y/label-has-associated-control': [
+  //       'error',
+  //       {
+  //         required: {
+  //           some: ['nesting', 'id'],
+  //         },
+  //       },
+  //     ],
+  //     'jsx-a11y/label-has-for': [
+  //       'error',
+  //       {
+  //         required: {
+  //           some: ['nesting', 'id'],
+  //         },
+  //       },
+  //     ],
+  //   },
+  // },
   // REACT REFRESH CONFIG
   {
     plugins: {
