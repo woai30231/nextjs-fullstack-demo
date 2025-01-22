@@ -9,6 +9,7 @@ import { useProfile } from '@/features/profile/useProfile';
 
 import type { Component, Layout } from '@/types';
 import type { SubmitHandler } from 'react-hook-form';
+import { useRouter } from '@/hooks/useRouter';
 
 interface FormControlProps {
   label: string;
@@ -32,6 +33,8 @@ interface FormData {
 }
 
 const Login: Component = () => {
+  const router = useRouter();
+
   const { mutateAsync, isPending: isLoginPending } = useLogin();
   const { mutateAsync: fetchProfile, isPending: isProfilePending } = useProfile();
   const isLoading = isLoginPending || isProfilePending;
@@ -43,6 +46,7 @@ const Login: Component = () => {
     try {
       await mutateAsync(data);
       await fetchProfile({});
+      router.push('/app');
       toast.success('Logged In Successfully');
     } catch (error) {
       console.error(error);
