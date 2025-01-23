@@ -53,13 +53,13 @@ const customReactESLintConfig = [
   // },
   // REACT REFRESH CONFIG
   {
-    name: 'react-refresh/config',
-    ...ESLintPluginReactRefresh.configs.recommended,
-  },
-  {
     name: 'react-refresh/rules',
+    plugins: {
+      'react-refresh': ESLintPluginReactRefresh,
+    },
     ignores: ['src/context/**'],
     rules: {
+      ...ESLintPluginReactRefresh.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'error',
         {

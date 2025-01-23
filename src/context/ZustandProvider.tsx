@@ -6,7 +6,7 @@ import type { Layout } from '@/types';
 import type { ZustandInitialState } from '@/types/initialState.type';
 import type { ZustandStoreApi } from '@/types/store.type';
 
-export const ZustandContext = createContext<ZustandStoreApi | undefined>(undefined);
+const ZustandContext = createContext<ZustandStoreApi | undefined>(undefined);
 
 const ZustandProvider: Layout<ZustandInitialState> = ({ children, initialState }) => {
   const storeRef = useRef<ZustandStoreApi>(undefined);
@@ -15,7 +15,7 @@ const ZustandProvider: Layout<ZustandInitialState> = ({ children, initialState }
     storeRef.current = createStore(initialState);
   }
 
-  return <ZustandContext.Provider value={storeRef.current}>{children}</ZustandContext.Provider>;
+  return <ZustandContext value={storeRef.current}>{children}</ZustandContext>;
 };
 
 export const useZustand = (): ZustandStoreApi => {
