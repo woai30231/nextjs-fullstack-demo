@@ -6,7 +6,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 
-import App from '@/app/_app';
+import App from '@/app/app';
 import queryClient from '@/config/queryClient';
 import ZustandProvider from '@/context/ZustandProvider';
 import ProgressBar from '@/shared/loader/ProgressBar';

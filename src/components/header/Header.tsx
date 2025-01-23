@@ -24,12 +24,16 @@ const Header: Component = () => {
         <Link className={styles.link} href="/about">
           About
         </Link>
-        <Link className={styles.link} href="/login">
-          Login
-        </Link>
-        <Link className={styles.link} href="/app">
-          App
-        </Link>
+        {!isAuthenticated && (
+          <Link className={styles.link} href="/login">
+            Login
+          </Link>
+        )}
+        {isAuthenticated && (
+          <Link className={styles.link} href="/app">
+            Dashboard
+          </Link>
+        )}
         {isAuthenticated && (
           <Link className={styles.link} href="/app/users">
             Users
