@@ -53,9 +53,11 @@ const customReactESLintConfig = [
   // },
   // REACT REFRESH CONFIG
   {
-    plugins: {
-      'react-refresh': ESLintPluginReactRefresh,
-    },
+    name: 'react-refresh/config',
+    ...ESLintPluginReactRefresh.configs.recommended,
+  },
+  {
+    name: 'react-refresh/rules',
     ignores: ['src/context/**'],
     rules: {
       'react-refresh/only-export-components': [
@@ -67,9 +69,13 @@ const customReactESLintConfig = [
     },
   },
   // TAN STACK QUERY CONFIG
-  ...ESLintPluginQuery.configs['flat/recommended'],
+  ...ESLintPluginQuery.configs['flat/recommended'].map(config => ({
+    name: 'tanstack/query/config',
+    ...config,
+  })),
   // NEXT.JS CONFIG
   {
+    name: 'next/rules',
     plugins: {
       '@next/next': ESLintPluginNext,
     },

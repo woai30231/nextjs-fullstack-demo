@@ -11,6 +11,7 @@ const customTSESLintConfig = config(
   ...configs.stylistic,
   // TYPESCRIPT CONFIG RULES
   {
+    name: 'typescript-eslint/rules',
     plugins: {
       '@typescript-eslint': plugin,
     },
@@ -74,17 +75,18 @@ const customTSESLintConfig = config(
       ],
     },
   },
-  // DISABLED TYPECHECKING JS FILES
-  {
-    files: ['**/*.js'],
-    ...configs.disableTypeChecked,
-  },
   // REACT ONLY - REMOVED ONE RULE FOR FEATURES HOOK
   {
+    name: 'typescript-eslint/rules/features-hook-only',
     files: ['src/features/**/use*.ts'],
     rules: {
       '@typescript-eslint/explicit-module-boundary-types': 'off',
     },
+  },
+  // DISABLED TYPECHECKING FOR JS FILES
+  {
+    files: ['**/*.js'],
+    ...configs.disableTypeChecked,
   }
 );
 

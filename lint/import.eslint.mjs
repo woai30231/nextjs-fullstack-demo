@@ -4,9 +4,13 @@ const customImportESLintConfig = [
   // IMPORT CONFIG
   ESLintPluginImport.flatConfigs.recommended,
   // IMPORT TYPESCRIPT CONFIG
-  ESLintPluginImport.flatConfigs.typescript,
+  {
+    name: 'import/typescript',
+    ...ESLintPluginImport.flatConfigs.typescript,
+  },
   // IMPORT CONFIG RULES
   {
+    name: 'import/rules',
     settings: {
       'import/resolver': {
         typescript: true,
@@ -54,6 +58,7 @@ const customImportESLintConfig = [
   },
   // RESTRICTED SOME IMPORTS
   {
+    name: 'import/rules/ts-only',
     files: ['**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': [
