@@ -2,14 +2,12 @@ import ESLintPluginNext from '@next/eslint-plugin-next';
 import ESLintPluginQuery from '@tanstack/eslint-plugin-query';
 import ESLintPluginReactRefresh from 'eslint-plugin-react-refresh';
 
-// import { flatCompat } from './utils.mjs';
-
 const customReactESLintConfig = [
   // AIRBNB CONFIG
   // IT IS USING IMPORT, REACT, REACT HOOKS (ALL) & JSX A11Y INTERNALLY SO THOSE 4 PACKAGES SHOULD BE AFTER THIS
-  // ...flatCompat.extends('airbnb'),
+  // 'airbnb',
   // AIRBNB HOOKS CONFIG
-  // ...flatCompat.extends('airbnb/hooks'),
+  // 'airbnb/hooks',
   // REACT CONFIG RULES
   // {
   //   rules: {
@@ -79,7 +77,6 @@ const customReactESLintConfig = [
     plugins: {
       '@next/next': ESLintPluginNext,
     },
-    files: ['**/*.ts', '**/*.tsx'],
     rules: {
       ...ESLintPluginNext.configs.recommended.rules,
       ...ESLintPluginNext.configs['core-web-vitals'].rules,
