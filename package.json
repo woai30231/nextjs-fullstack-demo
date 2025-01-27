@@ -19,7 +19,7 @@
     "script:lint": "bash -e ./scripts/lint.sh",
     "start": "next start",
     "start:dev": "next dev",
-    "ts": "tsc --noEmit --skipLibCheck -p tsconfig.json"
+    "ts": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.64.2",
