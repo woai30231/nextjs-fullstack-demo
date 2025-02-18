@@ -22,7 +22,6 @@ Project Name
 |---------------|---------------|-------------------------------------------------------|
 | -             | -             | Too Many, so skipping it, please check in .env files. |
 
-
 ### Features
 
 1. Fully Typed with Typescript
@@ -34,7 +33,7 @@ Project Name
 7. Not allowed to push until all my rules are happy :) ( unless you don't use --no-verify (wink) )
 8. Ready Dockerfile and gitlab-ci file for DevOps
 
-### Fake API Doc 
+### Fake API Doc
 
 https://fakeapi.platzi.com/
 
@@ -42,4 +41,4 @@ https://fakeapi.platzi.com/
 
 Nisharg Shah
 
-02/09/2024
+19/02/2025
