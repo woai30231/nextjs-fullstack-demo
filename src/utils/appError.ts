@@ -23,7 +23,7 @@ export class AppError extends Error {
   constructor(
     message: AppErrorType['message'],
     statusCode: AppErrorType['statusCode'],
-    extraFields: AppErrorType['extraFields'] = {}
+    extraFields: AppErrorType['extraFields'] = {},
   ) {
     super();
     this.message = AppError.getMessage(message);

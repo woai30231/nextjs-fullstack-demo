@@ -7,9 +7,9 @@ const initialState: LoadingSliceInitialState = {
   isLoading: true,
 };
 
-const createLoadingSlice: CreateLoadingSlice = set => ({
+const createLoadingSlice: CreateLoadingSlice = (set) => ({
   ...initialState,
-  setLoading: payload => {
+  setLoading: (payload) => {
     set({ isLoading: payload }, false, 'loading/setLoading');
   },
 });

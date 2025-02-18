@@ -1,3 +1,11 @@
+# Absolute Paths
+Dockerfile text eol=lf
+
+# Global Paths
+.* text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.jsx text eol=lf
 *.js text eol=lf
 *.ts text eol=lf
 *.tsx text eol=lf

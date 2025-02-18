@@ -21,7 +21,7 @@ export const detectMode: ThemeSliceDetectMode = () => {
   return darkThemeMq.matches ? light : dark;
 };
 
-export const getMode: ThemeSliceGetMode = modeString => {
+export const getMode: ThemeSliceGetMode = (modeString) => {
   const mode = (() => {
     if (!modeString) return initialState.mode;
     return modeString === light ? light : dark;
@@ -30,13 +30,13 @@ export const getMode: ThemeSliceGetMode = modeString => {
   return { mode };
 };
 
-export const setModeClient: ThemeSliceSetModeClient = mode => {
+export const setModeClient: ThemeSliceSetModeClient = (mode) => {
   document.documentElement.classList.remove(`${mode === dark ? light : dark}-mode`);
   document.documentElement.classList.add(`${mode}-mode`);
   cookieStore.set(constants.cookies.themeName, mode);
 };
 
-const createThemeSlice: CreateThemeSlice = set => ({
+const createThemeSlice: CreateThemeSlice = (set) => ({
   ...initialState,
   setMode: (mode: Mode) => {
     set({ mode }, false, 'theme/setMode');

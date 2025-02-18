@@ -13,7 +13,7 @@ export const getProfileApi = catchAsync<GetProfileInput, GetProfileOutput>(async
   return res.data.data;
 });
 
-export const logoutApi = catchAsync<LogoutInput, LogoutOutput>(async data => {
+export const logoutApi = catchAsync<LogoutInput, LogoutOutput>(async (data) => {
   const res = await api.logout<LogoutOutput>(data);
   return res.data.data;
 });

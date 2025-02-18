@@ -13,11 +13,11 @@ export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infe
 export type ZustandStoreApi = StoreApi<StoreState>;
 
 export type GetProperStoreData = (
-  initialState?: ZustandInitialState['initialState']
+  initialState?: ZustandInitialState['initialState'],
 ) => Partial<StoreState>;
 
 export type CreateStore = (
-  initialState?: ZustandInitialState['initialState']
+  initialState?: ZustandInitialState['initialState'],
 ) => StoreApi<StoreState>;
 
 export type UseStore = <T>(selector: (state: StoreState) => T) => T;

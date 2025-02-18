@@ -13,19 +13,19 @@ type CatchAsyncOutputCond<T, P> = P extends true ? DocsOutput<T> : P extends fal
 
 type CatchAsyncInput<T, R, P> = (
   data: T,
-  options?: CatchAsyncOptions
+  options?: CatchAsyncOptions,
 ) => Promise<CatchAsyncOutputCond<R, P>>;
 
 type CatchAsyncOutput<T, R, P, E> = (
   data: T,
-  options?: CatchAsyncOptions
+  options?: CatchAsyncOptions,
 ) => Promise<CatchAsyncOutputCond<R, P> | E | undefined>;
 
 type ErrorCB<E> = (error: unknown) => Promisable<E>;
 
 type CatchAsync = <I, R, P = unknown | boolean, E = undefined, T = I & DefaultParamsInput>(
   fn: CatchAsyncInput<T, R, P>,
-  errorCB?: ErrorCB<E>
+  errorCB?: ErrorCB<E>,
 ) => CatchAsyncOutput<T, R, P, E>;
 
 const catchAsync: CatchAsync =

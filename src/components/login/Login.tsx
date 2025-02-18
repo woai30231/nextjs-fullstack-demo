@@ -41,7 +41,7 @@ const Login: Component = () => {
   const { formState, register, handleSubmit: onSubmit } = useForm<FormData>();
   const { errors } = formState;
 
-  const handleSubmit: SubmitHandler<FormData> = async data => {
+  const handleSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       await mutateAsync(data);
       await fetchProfile({});

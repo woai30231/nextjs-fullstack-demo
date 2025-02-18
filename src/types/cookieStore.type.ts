@@ -12,7 +12,7 @@ export type GetOptions = (options: DefaultSetOptions) => DefaultSetOptions;
 type CookieKey = ValueOf<typeof constants.cookies>;
 
 export type GetCookie<P extends boolean = false, T = string | null> = (
-  key: CookieKey
+  key: CookieKey,
 ) => P extends true ? Promise<T> : T;
 
 export type GetAllCookies<P extends boolean = false, T = Obj<string>> = () => P extends true
@@ -24,11 +24,11 @@ export type GetAllSerialized = () => Promise<string>;
 export type SetCookie<P extends boolean = false, T = true> = (
   key: CookieKey,
   value: string,
-  options?: DefaultSetOptions
+  options?: DefaultSetOptions,
 ) => P extends true ? Promise<T> : T;
 
 export type DeleteCookie<P extends boolean = false, T = boolean> = (
-  key: CookieKey
+  key: CookieKey,
 ) => P extends true ? Promise<T> : T;
 
 export interface CookieStoreType {

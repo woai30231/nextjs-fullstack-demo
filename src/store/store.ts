@@ -11,7 +11,7 @@ export type StoreState = StateFromFunctions<
   [typeof createAuthSlice, typeof createLoadingSlice, typeof createThemeSlice]
 >;
 
-const getProperStoreData: GetProperStoreData = initialState => {
+const getProperStoreData: GetProperStoreData = (initialState) => {
   let newState = {};
 
   if (initialState?.user) {
@@ -27,7 +27,7 @@ const getProperStoreData: GetProperStoreData = initialState => {
   return newState;
 };
 
-const createStore: CreateStore = initialState => {
+const createStore: CreateStore = (initialState) => {
   const state = getProperStoreData(initialState);
 
   return createZustandStore<StoreState>()(
@@ -36,7 +36,7 @@ const createStore: CreateStore = initialState => {
       ...createLoadingSlice(...a),
       ...createThemeSlice(...a),
       ...state,
-    }))
+    })),
   );
 };
 

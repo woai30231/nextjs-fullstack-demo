@@ -76,11 +76,11 @@ export interface ErrorResponse {
 }
 
 export type AxiosOutput<T = unknown, E = unknown> = <M = T, O extends boolean = false>(
-  data: AxiosRequestConfigWithExtraProps
+  data: AxiosRequestConfigWithExtraProps,
 ) => Promise<AxiosRes<O extends false ? SuccessOutput<M> & E : M>>;
 
 export type AxiosDocsOutput<T = unknown[], E = unknown> = <M = T, O extends boolean = false>(
-  data: AxiosRequestConfigWithExtraProps
+  data: AxiosRequestConfigWithExtraProps,
 ) => Promise<AxiosRes<O extends false ? SuccessDocsOutput<M> & E : M>>;
 
 export interface AxiosSignal {

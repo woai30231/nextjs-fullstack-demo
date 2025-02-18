@@ -7,7 +7,7 @@ import { interFont } from '@/styles/font';
 
 import type { Component, NextErrorType } from '@/types';
 
-const GlobalError: Component<NextErrorType> = props => (
+const GlobalError: Component<NextErrorType> = (props) => (
   <html lang="en">
     <body className={interFont.className}>
       <Error {...props} />

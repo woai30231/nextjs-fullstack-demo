@@ -67,7 +67,7 @@ const customReactESLintConfig = [
     },
   },
   // TAN STACK QUERY CONFIG
-  ...ESLintPluginQuery.configs['flat/recommended'].map(config => ({
+  ...ESLintPluginQuery.configs['flat/recommended'].map((config) => ({
     name: 'tanstack/query/config',
     ...config,
   })),

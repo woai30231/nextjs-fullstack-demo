@@ -4,11 +4,11 @@ import { getProfileApi } from '@/features/profile/profile.api';
 import { useStore } from '@/store';
 
 export const useProfile = () => {
-  const setUser = useStore(state => state.setUser);
+  const setUser = useStore((state) => state.setUser);
 
   return useMutation({
     mutationFn: getProfileApi,
-    onSuccess: data => {
+    onSuccess: (data) => {
       if (data) setUser(data);
     },
   });

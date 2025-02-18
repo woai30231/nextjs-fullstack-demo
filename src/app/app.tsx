@@ -13,9 +13,9 @@ import { detectMode, setModeClient } from '@/store/slices/theme/theme.slice';
 import type { Layout } from '@/types';
 
 const App: Layout = ({ children }) => {
-  const isLoading = useStore(state => state.isLoading);
-  const setLoading = useStore(state => state.setLoading);
-  const setMode = useStore(state => state.setMode);
+  const isLoading = useStore((state) => state.isLoading);
+  const setLoading = useStore((state) => state.setLoading);
+  const setMode = useStore((state) => state.setMode);
 
   useEffect(() => {
     const mode = cookieStore.get(constants.cookies.themeName);
@@ -28,7 +28,7 @@ const App: Layout = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         setTimeout(resolve, constants.progressBarDelay);
       });
 

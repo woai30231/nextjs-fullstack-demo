@@ -11,7 +11,7 @@ const initialState: AuthSliceInitialState = {
   user: null,
 };
 
-export const getUser: AuthSliceGetUser = payload => {
+export const getUser: AuthSliceGetUser = (payload) => {
   queryClient.setQueryData(['user'], payload);
 
   return {
@@ -20,9 +20,9 @@ export const getUser: AuthSliceGetUser = payload => {
   };
 };
 
-const createAuthSlice: CreateAuthSlice = set => ({
+const createAuthSlice: CreateAuthSlice = (set) => ({
   ...initialState,
-  setUser: payload => {
+  setUser: (payload) => {
     set(getUser(payload), false, 'auth/setUser');
   },
   logout: () => {

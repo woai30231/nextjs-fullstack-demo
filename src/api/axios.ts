@@ -39,11 +39,11 @@ axios.interceptors.request.use(
   async (error: AxiosError) => {
     if (!isServer) console.debug('Request Error', error);
     throw error;
-  }
+  },
 );
 
 axios.interceptors.response.use(
-  res => {
+  (res) => {
     if (!isServer) showToast(res);
     return res;
   },
@@ -67,7 +67,7 @@ axios.interceptors.response.use(
     }
 
     throw error;
-  }
+  },
 );
 
 export default axios;

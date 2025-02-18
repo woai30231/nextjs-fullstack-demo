@@ -85,7 +85,7 @@ const customTSESLintConfig = config(
   {
     files: ['**/*.js'],
     ...configs.disableTypeChecked,
-  }
+  },
 );
 
 export default customTSESLintConfig;

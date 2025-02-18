@@ -9,7 +9,7 @@ export class AxiosErr extends AxiosError {
   config?: AxiosErrConfig;
 }
 
-export const throwAxiosError: ThrowAxiosError = error => {
+export const throwAxiosError: ThrowAxiosError = (error) => {
   const STATUS_CODE = 400;
 
   const message = error instanceof AxiosError ? error.response?.data.message : error;
@@ -22,7 +22,7 @@ export const throwAxiosError: ThrowAxiosError = error => {
   });
 };
 
-export const showToast: ShowToast = res => {
+export const showToast: ShowToast = (res) => {
   const { config } = res;
   if (!config) return;
 

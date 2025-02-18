@@ -4,11 +4,11 @@ import cookieStore from '@/lib/cookieStore';
 
 import type { Route } from '@/types/api.type';
 
-export const POST: Route = async request => {
+export const POST: Route = async (request) => {
   const body = await request.json();
 
   const user = users.find(
-    cur => cur.email === body.email.toLowerCase() && cur.password === body.password
+    (cur) => cur.email === body.email.toLowerCase() && cur.password === body.password,
   );
 
   if (!user) {
@@ -27,6 +27,6 @@ export const POST: Route = async request => {
     },
     {
       status: 200,
-    }
+    },
   );
 };

@@ -7,5 +7,5 @@ export const getAllUsersApi = catchAsync<GetAllUsersInput, GetAllUsersOutput>(
   async ({ signal }) => {
     const res = await api.getAllUsers<GetAllUsersOutput>({ signal });
     return res.data.data;
-  }
+  },
 );

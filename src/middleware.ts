@@ -5,7 +5,7 @@ import cookieStore from '@/lib/cookieStore';
 
 import type { NextMiddleware } from 'next/server';
 
-export const middleware: NextMiddleware = async request => {
+export const middleware: NextMiddleware = async (request) => {
   const { headers, nextUrl } = request;
   const { pathname } = nextUrl;
 
@@ -20,7 +20,7 @@ export const middleware: NextMiddleware = async request => {
       if (!token) {
         return Response.json(
           { status: 401, message: 'You are not logged in! please log in to get access.' },
-          { status: 401 }
+          { status: 401 },
         );
       }
 

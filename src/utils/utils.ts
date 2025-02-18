@@ -12,7 +12,7 @@ export const getBase64 = async (file: File): Promise<FileReader['result']> =>
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.addEventListener('load', () => resolve(reader.result));
-    reader.addEventListener('error', error => reject(error));
+    reader.addEventListener('error', (error) => reject(error));
   });
 
 export const isProcessing = (data: unknown, isLoading: boolean): data is undefined =>

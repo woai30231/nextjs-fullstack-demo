@@ -11,9 +11,9 @@ import type { Component } from '@/types';
 const Header: Component = () => {
   const router = useRouter();
 
-  const mode = useStore(state => state.mode);
-  const setMode = useStore(state => state.setMode);
-  const isAuthenticated = useStore(state => state.isAuthenticated);
+  const mode = useStore((state) => state.mode);
+  const setMode = useStore((state) => state.setMode);
+  const isAuthenticated = useStore((state) => state.isAuthenticated);
 
   return (
     <div className={styles.container}>

@@ -6,5 +6,5 @@ export const GET: Route = async () =>
   Response.json({
     status: 200,
     message: 'Users retrieved successfully.',
-    data: users.map(cur => transformUser(cur)),
+    data: users.map((cur) => transformUser(cur)),
   });

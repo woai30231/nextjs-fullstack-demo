@@ -34,7 +34,7 @@ type TransformUser = (user: User) => Omit<User, 'password'> & {
   fullName: string;
 };
 
-export const transformUser: TransformUser = user => ({
+export const transformUser: TransformUser = (user) => ({
   id: user.id,
   email: user.email,
   firstName: user.firstName,
