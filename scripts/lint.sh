@@ -20,7 +20,7 @@ if [[ $isForPush == "0" ]]; then
     echo "Stash Stored"
 fi
 
-pnpm --silent prettier:fix --log-level silent
+pnpm --silent format:fix --log-level silent
 echo "Prettier Completed"
 pnpm --silent lint:fix
 echo "Eslint Completed"
