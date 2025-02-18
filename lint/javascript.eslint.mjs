@@ -30,6 +30,7 @@ const customJSESLintConfig = [
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/no-null': 'off',
       'unicorn/no-array-reduce': 'off',
+      'unicorn/consistent-function-scoping': 'off',
     },
   },
 ];

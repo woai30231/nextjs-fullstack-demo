@@ -15,8 +15,6 @@ const customGeneralESLintConfig = [
       'no-restricted-syntax': [
         'error',
         'ForStatement',
-        'ForInStatement',
-        'ForOfStatement',
         'ContinueStatement',
         'DoWhileStatement',
         'WhileStatement',
