@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
-import { AppError } from '@/utils/appError';
+import { AppError } from '@/api/appError';
 
 import type { AxiosErrConfig, ShowToast, SuccessOutput, ThrowAxiosError } from '@/types/axios.type';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import styles from '@/components/users/Users.module.css';
 import { useUsers } from '@/features/users/useUsers';
 import Loader from '@/shared/loader/Loader';
-import { isProcessing } from '@/utils/utils';
+import { isProcessing } from '@/utils';
 
 import type { Component } from '@/types';
 

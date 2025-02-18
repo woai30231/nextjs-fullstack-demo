@@ -1,6 +1,6 @@
 import { QueryClient } from '@tanstack/react-query';
 
-import { isServer } from '@/utils/utils';
+import { isServer } from '@/utils';
 
 import type { QueryClientConfig } from '@tanstack/react-query';
 

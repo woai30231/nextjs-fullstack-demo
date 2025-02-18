@@ -1,5 +1,5 @@
 import api from '@/api';
-import catchAsync from '@/utils/catchAsync';
+import catchAsync from '@/api/catchAsync';
 
 import type { LoginInput, LoginOutput } from '@/features/auth/auth.type';
 

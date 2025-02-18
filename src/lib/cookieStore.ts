@@ -1,6 +1,6 @@
 import { deleteCookie, getCookie, getCookies, hasCookie, setCookie } from 'cookies-next';
 
-import { isServer } from '@/utils/utils';
+import { isServer } from '@/utils';
 
 import type { Obj } from '@/types';
 import type { CookieStoreType, DefaultSetOptions, GetOptions } from '@/types/cookieStore.type';

@@ -1,5 +1,5 @@
 import api from '@/api';
-import catchAsync from '@/utils/catchAsync';
+import catchAsync from '@/api/catchAsync';
 
 import type { GetAllUsersInput, GetAllUsersOutput } from '@/features/users/users.type';
 

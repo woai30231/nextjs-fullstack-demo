@@ -1,4 +1,4 @@
-import { isLive } from '@/utils/utils';
+import { isLive } from '@/utils';
 
 const constants = {
   cookies: {

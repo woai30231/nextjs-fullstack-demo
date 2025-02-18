@@ -16,7 +16,7 @@ export class AppError extends Error {
   public isOperational: AppErrorType['isOperational'];
 
   static getMessage = (message: AppErrorType['message']): string => {
-    if (message instanceof Function) return message() as string;
+    if (typeof message === 'function') return message() as string;
     return Array.isArray(message) ? message[0] : message;
   };
 
@@ -32,6 +32,7 @@ export class AppError extends Error {
     this.status = statusCode;
     this.extraFields = extraFields;
     this.isOperational = true;
+
     if ('captureStackTrace' in Error) Error.captureStackTrace(this, this.constructor);
   }
 }

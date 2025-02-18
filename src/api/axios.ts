@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { showToast } from '@/api/utils';
 import config from '@/config';
 import cookieStore from '@/lib/cookieStore';
-import { isServer } from '@/utils/utils';
+import { isServer } from '@/utils';
 
 import type { AxiosErr } from '@/api/utils';
 import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
