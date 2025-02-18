@@ -19,10 +19,10 @@ const ZustandProvider: Layout<ZustandInitialState> = ({ children, initialState }
 };
 
 export const useZustand = (): ZustandStoreApi => {
-  const store = useContext(ZustandContext);
-  if (!store) throw new Error('Missing ZustandProvider.Provider in the tree');
+  const context = useContext(ZustandContext);
+  if (!context) throw new Error('Missing ZustandProvider.Provider in the tree');
 
-  return store;
+  return context;
 };
 
 export default ZustandProvider;

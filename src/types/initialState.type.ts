@@ -1,13 +1,15 @@
 import type { GetProfileOutput } from '@/features/profile/profile.type';
 import type { Mode } from '@/store/slices/theme/theme.type';
 
-export interface ProvidersProps {
+interface InitialStateProps {
   user: GetProfileOutput | undefined;
   mode: Mode;
 }
 
-type InitialState = ProvidersProps;
+export interface ProvidersProps {
+  initialState: InitialStateProps;
+}
 
 export interface ZustandInitialState {
-  initialState?: InitialState | undefined;
+  initialState?: InitialStateProps | undefined;
 }

@@ -1,4 +1,4 @@
-/* Login API */
+// Login
 
 export interface LoginInput {
   email: string;

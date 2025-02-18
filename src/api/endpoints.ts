@@ -1,6 +1,6 @@
 import type { Endpoints } from '@/types/axios.type';
 
-const endpoints: Endpoints = {
+const endpoints = {
   login: {
     method: 'POST',
     url: '/auth/login',
@@ -18,6 +18,6 @@ const endpoints: Endpoints = {
     method: 'GET',
     url: '/users',
   },
-} as const;
+} satisfies Endpoints;
 
 export default endpoints;

@@ -14,14 +14,14 @@ import ProgressBar from '@/shared/loader/ProgressBar';
 import type { Layout } from '@/types';
 import type { ProvidersProps } from '@/types/initialState.type';
 
-const Providers: Layout<ProvidersProps> = ({ children, user, mode }) => (
+const Providers: Layout<ProvidersProps> = ({ children, initialState }) => (
   <QueryClientProvider client={queryClient}>
+    <ZustandProvider initialState={initialState}>
+      <App>{children}</App>
+      <ProgressBar />
+    </ZustandProvider>
     <ReactQueryDevtools />
     <ToastContainer pauseOnFocusLoss={false} autoClose={5000} closeOnClick hideProgressBar />
-    <ZustandProvider initialState={{ user, mode }}>
-      <ProgressBar />
-      <App>{children}</App>
-    </ZustandProvider>
   </QueryClientProvider>
 );
 

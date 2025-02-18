@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import Providers from '@/app/providers';
 import constants from '@/constants';
@@ -6,7 +6,7 @@ import { getProfileApi } from '@/features/profile/profile.api';
 import cookieStore from '@/lib/cookieStore';
 import { getMode } from '@/store/slices/theme/theme.slice';
 import { interFont } from '@/styles/font';
-import '@/styles/style.css';
+import '@/styles/globals.css';
 
 import type { Layout } from '@/types';
 import type { Metadata } from 'next';
@@ -35,9 +35,9 @@ const RootLayout: Layout = async ({ children }) => {
   return (
     <html lang="en" className={`${mode}-mode`}>
       <body className={interFont.className}>
-        <Providers user={user} mode={mode}>
-          {children}
-        </Providers>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Providers initialState={{ user, mode }}>{children}</Providers>
+        </Suspense>
       </body>
     </html>
   );

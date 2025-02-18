@@ -1,6 +1,6 @@
 import type { GetProfileOutput } from '@/features/profile/profile.type';
 
-/* Get All Users API */
+// Get All Users
 
 export type GetAllUsersInput = unknown;
 

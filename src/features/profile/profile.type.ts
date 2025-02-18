@@ -1,4 +1,4 @@
-/* Get Profile API */
+// Get Profile
 
 export type GetProfileInput = unknown;
 
@@ -10,7 +10,7 @@ export interface GetProfileOutput {
   fullName: string;
 }
 
-/* Logout API */
+// Logout
 
 export type LogoutInput = unknown;
 
