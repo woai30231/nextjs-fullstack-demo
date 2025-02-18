@@ -19,7 +19,7 @@ Project Name
 ### Environment Variables
 
 | VARIABLE NAME | DEFAULT VALUE | DESCRIPTION                                           |
-|---------------|---------------|-------------------------------------------------------|
+| ------------- | ------------- | ----------------------------------------------------- |
 | -             | -             | Too Many, so skipping it, please check in .env files. |
 
 ### Features

@@ -10,9 +10,8 @@
   "author": "Nisharg Shah",
   "scripts": {
     "build": "next build",
-    "format": "prettier \"**/*.{js,mjs,jsx,ts,mts,tsx,css,scss,json}\"",
-    "format:check": "pnpm --silent format --check",
-    "format:fix": "pnpm --silent format --write",
+    "format:check": "prettier . --check",
+    "format:fix": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "pnpm --silent lint --fix",
     "prepare": "husky",
