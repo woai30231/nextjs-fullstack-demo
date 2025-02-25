@@ -69,10 +69,6 @@ const customImportESLintConfig = [
               group: ['./*', '../*'],
               message: "Please use the absolute path '@/*' instead.",
             },
-            {
-              group: ['@/api/api'],
-              message: 'Please use the api default export instead.',
-            },
           ],
         },
       ],

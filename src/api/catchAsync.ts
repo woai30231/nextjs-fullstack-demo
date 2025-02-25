@@ -1,6 +1,6 @@
 import { throwAxiosError } from '@/api/utils';
 
-import type { AxiosSignal, DocsOutput } from '@/types/axios.type';
+import type { AxiosSignal, PaginatedOutput } from '@/types/axios.type';
 import type { Promisable } from 'type-fest';
 
 type DefaultParamsInput = AxiosSignal;
@@ -9,7 +9,7 @@ interface CatchAsyncOptions {
   throwError?: boolean;
 }
 
-type CatchAsyncOutputCond<T, P> = P extends true ? DocsOutput<T> : P extends false ? T[] : T;
+type CatchAsyncOutputCond<T, P> = P extends true ? PaginatedOutput<T> : P extends false ? T[] : T;
 
 type CatchAsyncInput<T, R, P> = (
   data: T,

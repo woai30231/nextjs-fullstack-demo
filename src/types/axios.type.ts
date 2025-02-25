@@ -37,12 +37,12 @@ export interface SuccessOutput<T = unknown> {
   data: T;
 }
 
-export interface DocsInputParamsDefaults {
+export interface PaginatedInputParamsDefaults {
   page?: number;
   limit?: number;
 }
 
-export interface DocsInputDataDefaults {
+export interface PaginatedInputDataDefaults {
   search?: string;
   fields?: string;
   sort?: number;
@@ -53,9 +53,9 @@ export interface DocsInputDataDefaults {
   pagination?: boolean;
 }
 
-export type DocsInputDefaults = DocsInputParamsDefaults & DocsInputDataDefaults;
+export type PaginatedInputDefaults = PaginatedInputParamsDefaults & PaginatedInputDataDefaults;
 
-export interface DocsOutput<T = unknown[]> {
+export interface PaginatedOutput<T = unknown[]> {
   docs: T[];
   limit: number;
   page: number;
@@ -67,7 +67,7 @@ export interface DocsOutput<T = unknown[]> {
   nextPage: number;
 }
 
-export type SuccessDocsOutput<T> = SuccessOutput<DocsOutput<T>>;
+export type SuccessPaginatedOutput<T> = SuccessOutput<PaginatedOutput<T>>;
 
 export interface ErrorResponse {
   status: number;
@@ -79,9 +79,9 @@ export type AxiosOutput<T = unknown, E = unknown> = <M = T, O extends boolean = 
   data: AxiosRequestConfigWithExtraProps,
 ) => Promise<AxiosRes<O extends false ? SuccessOutput<M> & E : M>>;
 
-export type AxiosDocsOutput<T = unknown[], E = unknown> = <M = T, O extends boolean = false>(
+export type AxiosPaginatedOutput<T = unknown[], E = unknown> = <M = T, O extends boolean = false>(
   data: AxiosRequestConfigWithExtraProps,
-) => Promise<AxiosRes<O extends false ? SuccessDocsOutput<M> & E : M>>;
+) => Promise<AxiosRes<O extends false ? SuccessPaginatedOutput<M> & E : M>>;
 
 export interface AxiosSignal {
   signal?: AbortSignal;
