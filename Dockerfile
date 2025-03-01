@@ -1,4 +1,6 @@
-FROM node:22-alpine as build
+ARG NODE_VERSION=22
+
+FROM node:${NODE_VERSION}-alpine as build
 WORKDIR /app
 
 ENV NODE_ENV=production
@@ -10,7 +12,7 @@ RUN npm install -g pnpm
 RUN pnpm install --prod=false --ignore-scripts --frozen-lockfile --prefer-offline
 RUN pnpm build
 
-FROM node:20-alpine
+FROM node:${NODE_VERSION}-alpine
 WORKDIR /app
 
 ENV NODE_ENV=production
