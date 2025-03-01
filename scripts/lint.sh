@@ -24,7 +24,7 @@ pnpm --silent format:fix --log-level silent
 echo "Prettier Completed"
 pnpm --silent lint:fix
 echo "Eslint Completed"
-pnpm --silent ts
+pnpm --silent typecheck
 echo "Typescript Completed"
 
 if [[ $isForPush == "0" ]]; then
