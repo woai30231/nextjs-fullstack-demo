@@ -1,5 +1,3 @@
-import { setDetectedMode } from '@/store/slices/theme/theme.slice';
-
 import type constants from '@/constants';
 import type { RemoveFnType } from '@/types';
 import type { SliceCreator } from '@/types/store.type';
