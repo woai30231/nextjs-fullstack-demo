@@ -28,6 +28,13 @@ const users: User[] = [
     firstName: 'Nisharg',
     lastName: 'Codal',
   },
+  {
+    id: 4,
+    email: 'admin@example.com',
+    password: 'admin',
+    firstName: 'Nisharg',
+    lastName: 'Codal',
+  },
 ];
 
 type TransformUser = (user: User) => Omit<User, 'password'> & {

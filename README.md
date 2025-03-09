@@ -16,12 +16,6 @@ Project Name
 2. fill all the .env and config details
 3. `pnpm start` to run the project ( `pnpm start:dev` for development )
 
-### Environment Variables
-
-| VARIABLE NAME | DEFAULT VALUE | DESCRIPTION                                           |
-| ------------- | ------------- | ----------------------------------------------------- |
-| -             | -             | Too Many, so skipping it, please check in .env files. |
-
 ### Features
 
 1. Fully Typed with Typescript
@@ -33,12 +27,15 @@ Project Name
 7. Not allowed to push until all my rules are happy :) ( unless you don't use --no-verify (wink) )
 8. Ready Dockerfile and gitlab-ci file for DevOps
 
-### Fake API Doc
+### Credentials
 
-https://fakeapi.platzi.com/
+```
+Email: admin@example.com
+Password: admin
+```
 
 ### Update
 
 Nisharg Shah
 
-19/02/2025
+09/03/2025
