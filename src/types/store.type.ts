@@ -1,5 +1,5 @@
-import type { StoreState } from '@/store/store';
-import type { ZustandInitialState } from '@/types/initialState.type';
+import type { StoreState } from '@/store';
+import type { ZustandState } from '@/types/zustandState.type';
 import type { StateCreator, StoreApi } from 'zustand';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,15 +10,11 @@ export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infe
     : unknown
   : unknown;
 
-export type ZustandStoreApi = StoreApi<StoreState>;
+export type ZustandStore = StoreApi<StoreState>;
 
-export type GetProperStoreData = (
-  initialState?: ZustandInitialState['initialState'],
-) => Partial<StoreState>;
+export type ZustandContextValue = ZustandStore;
 
-export type CreateStore = (
-  initialState?: ZustandInitialState['initialState'],
-) => StoreApi<StoreState>;
+export type CreateStore = (state: ZustandState) => ZustandStore;
 
 export type UseStore = <T>(selector: (state: StoreState) => T) => T;
 

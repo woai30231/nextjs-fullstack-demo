@@ -4,9 +4,11 @@
   --theme-black: #000;
 }
 
-:root.dark-mode {
-  --theme-white: #000;
-  --theme-black: #fff;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-white: #000;
+    --theme-black: #fff;
+  }
 }
 
 * {
@@ -21,6 +23,10 @@ html {
 
 html.light-mode {
   color-scheme: light;
+}
+
+body {
+  color-scheme: light dark;
 }
 
 .text-center {

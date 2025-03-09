@@ -1,4 +1,4 @@
-import queryClient from '@/config/queryClient';
+import queryClient from '@/lib/queryClient';
 
 import type {
   AuthSliceGetUser,

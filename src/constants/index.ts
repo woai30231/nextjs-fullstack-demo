@@ -1,15 +1,16 @@
 import { isLive } from '@/utils';
 
 const constants = {
-  cookies: {
-    tokenName: 'token',
-    themeName: 'theme',
+  APP_NAME: 'Next.js Template',
+  COOKIES: {
+    TOKEN_NAME: 'token',
+    THEME_NAME: 'theme',
   },
-  theme: {
-    light: 'light',
-    dark: 'dark',
+  THEME: {
+    LIGHT: 'light',
+    DARK: 'dark',
   },
-  progressBarDelay: isLive ? 200 : 500,
+  PROGRESS_BAR_DELAY: isLive ? 200 : 500,
 } as const;
 
 export default constants;
