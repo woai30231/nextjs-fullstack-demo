@@ -9,12 +9,18 @@ export const middleware: NextMiddleware = async (request) => {
   const { headers, nextUrl } = request;
   const { pathname } = nextUrl;
 
-  if (pathname.startsWith('/_next') || ['/favicon.ico', 'robots.txt'].includes(pathname)) return;
+  if (
+    pathname.startsWith('/_next') ||
+    ['/favicon.ico', 'robots.txt'].includes(pathname) ||
+    pathname === '/api'
+  ) {
+    return;
+  }
 
   // API ONLY
   if (pathname.startsWith('/api')) {
     const isProtected = !pathname.startsWith('/api/auth');
-    const token = await cookieStore.getAsync(constants.cookies.tokenName);
+    const token = await cookieStore.getAsync(constants.COOKIES.TOKEN_NAME);
 
     if (isProtected) {
       if (!token) {

@@ -21,7 +21,7 @@ const ProgressBar: Component = () => {
   return (
     <AppProgressBar
       color="var(--bs-dark)"
-      stopDelay={constants.progressBarDelay}
+      stopDelay={constants.PROGRESS_BAR_DELAY}
       options={{ showSpinner: false, template }}
     />
   );

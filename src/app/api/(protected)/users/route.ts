@@ -1,10 +1,14 @@
-import users, { transformUser } from '@/app/api/_mock/users';
+import constants from '@server/_/constants';
+import sendRes from '@server/_/functions/sendRes';
+import users, { transformUser } from '@server/_/mock/users';
 
-import type { Route } from '@/types/api.type';
+import type { Route } from '@server/_/types';
 
 export const GET: Route = async () =>
-  Response.json({
-    status: 200,
-    message: 'Users retrieved successfully.',
-    data: users.map((cur) => transformUser(cur)),
-  });
+  sendRes(
+    users.map((cur) => transformUser(cur)),
+    constants.SUCCESS,
+    {
+      message: constants.USERS_RETRIEVED,
+    },
+  );
