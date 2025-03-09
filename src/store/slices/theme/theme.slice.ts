@@ -7,6 +7,7 @@ import type {
   ThemeSliceGetMode,
   ThemeSliceGetPreferredMode,
   ThemeSliceInitialState,
+  ThemeSliceSetDetectedMode,
   ThemeSliceSetModeClient,
 } from '@/store/slices/theme/theme.type';
 
@@ -43,6 +44,12 @@ export const setModeClient: ThemeSliceSetModeClient = (mode) => {
   return actualMode;
 };
 
+export const setDetectedMode: ThemeSliceSetDetectedMode = (mode) => {
+  document.documentElement.dataset.theme = mode;
+  cookieStore.set(constants.COOKIES.THEME_NAME, SYSTEM);
+  cookieStore.set(constants.COOKIES.SYSTEM_THEME, mode);
+};
+
 const createThemeSlice: CreateThemeSlice = (set, get) => ({
   ...initialState,
   setMode: (mode) => {
@@ -56,6 +63,13 @@ const createThemeSlice: CreateThemeSlice = (set, get) => ({
     const preferredMode = setModeClient(actualMode);
 
     set({ mode: actualMode, preferredMode }, false, 'theme/setMode');
+  },
+  setPreferredMode: (preferredMode) => {
+    if (get().mode !== SYSTEM) return;
+
+    setDetectedMode(preferredMode);
+
+    set({ mode: SYSTEM, preferredMode }, false, 'theme/setDetectedMode');
   },
 });
 

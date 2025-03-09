@@ -43,7 +43,7 @@ const Header: Component = () => {
         )}
       </div>
       <div className={styles.btnWrapper}>
-        <button type="button" className={styles.btn} onClick={() => setMode(null)}>
+        <button type="button" className={styles.btn} onClick={() => setMode(undefined)}>
           Mode: <span className={styles.capitalize}>{mode}</span>
         </button>
         {isAuthenticated && (
