@@ -1,41 +1,36 @@
 # Project Name
 
-Project Name
+## Prerequisites
 
-### Prerequisites
+- Install `pnpm` globally.
+- Requires Node.js 22 or later.
+- Use only `pnpm`, no NPM or Yarn.
+- Keep ESLint & Prettier enabled.
+- Adhere to the coding rules as much as possible.
 
-- Install pnpm as global dependency.
-- Node 22 and above only.
-- No NPM, Yarn, Only PNPM.
-- Don't Disable ESLint & Prettier.
-- Try to follow the rules as much as you can.
+## Installation
 
-### Installing
+1. Run `pnpm install`.
+2. Start the project with `pnpm start` (use `pnpm start:dev` for development).
 
-1. pnpm install
-2. fill all the .env and config details
-3. `pnpm start` to run the project ( `pnpm start:dev` for development )
+## Features
 
-### Features
+- Fully typed with TypeScript.
+- Full-stack application.
+- React Query for server state and Zustand for client state.
+- Authentication & authorization flow.
+- Custom navigation loader.
+- Prettier & strict ESLint rules.
+- Husky and lint-staged for pre-commit validation.
+- Commits are blocked unless all rules pass (unless `--no-verify` is used).
+- Pre-configured Dockerfile & GitHub Actions workflow for DevOps.
 
-1. Fully Typed with Typescript
-2. React Query for server state and Zustand for client state
-3. Authorization and Authentication flow
-4. Customized loader for navigation
-5. Prettier & Complex ESLint rules
-6. Husky, lint-staged for hooks validation
-7. Not allowed to push until all my rules are happy :) ( unless you don't use --no-verify (wink) )
-8. Ready Dockerfile and gitlab-ci file for DevOps
-
-### Credentials
+## Credentials
 
 ```
 Email: admin@example.com
 Password: admin
 ```
 
-### Update
-
-Nisharg Shah
-
-09/03/2025
+**Updated by:** Nisharg Shah  
+**Date:** 09/03/2025
