@@ -1,8 +1,8 @@
 import constants from '@server/_/constants';
+import getUserData from '@server/_/functions/getUserData';
 import sendError from '@server/_/functions/sendError';
 import sendRes from '@server/_/functions/sendRes';
 import users, { transformUser } from '@server/_/mock/users';
-import getUserData from '@server/_/utils/getUserData';
 
 import type { Route } from '@server/_/types';
 
