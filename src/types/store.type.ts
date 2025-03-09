@@ -14,7 +14,7 @@ export type ZustandStore = StoreApi<StoreState>;
 
 export type ZustandContextValue = ZustandStore;
 
-export type CreateStore = (state: ZustandState) => ZustandStore;
+export type CreateStore = (state: Partial<ZustandState>) => ZustandStore;
 
 export type UseStore = <T>(selector: (state: StoreState) => T) => T;
 
