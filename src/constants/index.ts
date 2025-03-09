@@ -5,10 +5,12 @@ const constants = {
   COOKIES: {
     TOKEN_NAME: 'token',
     THEME_NAME: 'theme',
+    SYSTEM_THEME: 'system_theme',
   },
   THEME: {
     LIGHT: 'light',
     DARK: 'dark',
+    SYSTEM: 'system',
   },
   PROGRESS_BAR_DELAY: isLive ? 200 : 500,
 } as const;

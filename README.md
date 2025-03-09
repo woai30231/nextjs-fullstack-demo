@@ -18,7 +18,7 @@
 - Fully typed with TypeScript.
 - Full-stack application.
 - React Query for server state and Zustand for client state.
-- Authentication & authorization flow.
+- Cookie based authentication & authorization flow.
 - Custom navigation loader.
 - Prettier & strict ESLint rules.
 - Husky and lint-staged for pre-commit validation.

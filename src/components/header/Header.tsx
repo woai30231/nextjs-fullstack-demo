@@ -43,12 +43,8 @@ const Header: Component = () => {
         )}
       </div>
       <div className={styles.btnWrapper}>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
-        >
-          Current: {mode === 'dark' ? 'Dark' : 'Light'}
+        <button type="button" className={styles.btn} onClick={() => setMode(null)}>
+          Mode: <span className={styles.capitalize}>{mode}</span>
         </button>
         {isAuthenticated && (
           <button type="button" className={styles.btn} onClick={() => router.push('/app/logout')}>

@@ -22,3 +22,7 @@
   cursor: pointer;
   margin-left: 1rem;
 }
+
+.capitalize {
+  text-transform: capitalize;
+}

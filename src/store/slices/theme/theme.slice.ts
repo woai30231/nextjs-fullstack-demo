@@ -3,44 +3,59 @@ import cookieStore from '@/lib/cookieStore';
 
 import type {
   CreateThemeSlice,
-  Mode,
   ThemeSliceDetectMode,
   ThemeSliceGetMode,
+  ThemeSliceGetPreferredMode,
   ThemeSliceInitialState,
   ThemeSliceSetModeClient,
 } from '@/store/slices/theme/theme.type';
 
-const { light, dark } = constants.theme;
+const { LIGHT, DARK, SYSTEM } = constants.THEME;
 
 const initialState: ThemeSliceInitialState = {
-  mode: light,
+  mode: LIGHT,
+  preferredMode: LIGHT,
 };
 
 export const detectMode: ThemeSliceDetectMode = () => {
-  const darkThemeMq = globalThis.matchMedia(`(prefers-color-scheme: ${light})`);
-  return darkThemeMq.matches ? light : dark;
+  const darkThemeMq = globalThis.matchMedia(`(prefers-color-scheme: ${DARK})`);
+  return darkThemeMq.matches ? DARK : LIGHT;
 };
 
-export const getMode: ThemeSliceGetMode = (modeString) => {
-  const mode = (() => {
-    if (!modeString) return initialState.mode;
-    return modeString === light ? light : dark;
-  })();
+export const getMode: ThemeSliceGetMode = (mode) => {
+  if (mode === DARK) return DARK;
+  if (mode === SYSTEM) return SYSTEM;
+  return LIGHT;
+};
 
-  return { mode };
+export const getPreferredMode: ThemeSliceGetPreferredMode = (mode) => {
+  return mode === DARK ? DARK : LIGHT;
 };
 
 export const setModeClient: ThemeSliceSetModeClient = (mode) => {
-  document.documentElement.classList.remove(`${mode === dark ? light : dark}-mode`);
-  document.documentElement.classList.add(`${mode}-mode`);
-  cookieStore.set(constants.cookies.themeName, mode);
+  const isSystem = mode === SYSTEM;
+  const actualMode = isSystem ? detectMode() : mode;
+
+  document.documentElement.dataset.theme = actualMode;
+  cookieStore.set(constants.COOKIES.THEME_NAME, mode);
+  if (isSystem) cookieStore.set(constants.COOKIES.SYSTEM_THEME, actualMode);
+
+  return actualMode;
 };
 
-const createThemeSlice: CreateThemeSlice = (set) => ({
+const createThemeSlice: CreateThemeSlice = (set, get) => ({
   ...initialState,
-  setMode: (mode: Mode) => {
-    set({ mode }, false, 'theme/setMode');
-    setModeClient(mode);
+  setMode: (mode) => {
+    const themeMode = (() => {
+      if (get().mode === LIGHT) return DARK;
+      if (get().mode === DARK) return SYSTEM;
+      return LIGHT;
+    })();
+
+    const actualMode = mode ?? themeMode;
+    const preferredMode = setModeClient(actualMode);
+
+    set({ mode: actualMode, preferredMode }, false, 'theme/setMode');
   },
 });
 

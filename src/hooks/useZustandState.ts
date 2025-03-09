@@ -6,8 +6,8 @@ import type { RootLayoutAppProps } from '@/types/zustandState.type';
 type ZustandStateHook = (props: RootLayoutAppProps) => Parameters<CreateStore>[0];
 
 export const useZustandState: ZustandStateHook = (props) => {
-  const { user } = props;
-  let newState = {};
+  const { user, mode, preferredMode } = props;
+  let newState = { mode, preferredMode };
 
   if (user) {
     const state = getUser(user);
