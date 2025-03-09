@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 
-import Providers from '@/app/providers';
+import App from '@/app/app';
 import constants from '@/constants';
 import { getProfileApi } from '@/features/profile/profile.api';
 import cookieStore from '@/lib/cookieStore';
-import { getMode } from '@/store/slices/theme/theme.slice';
+import Loader from '@/shared/loader/Loader';
 import { interFont } from '@/styles/font';
 import '@/styles/globals.css';
 
@@ -12,31 +12,23 @@ import type { Layout } from '@/types';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Next.js Template',
-  description: 'Next.js Template Description',
+  title: constants.APP_NAME,
+  description: `${constants.APP_NAME} Description`,
 };
 
 const RootLayout: Layout = async ({ children }) => {
-  const modeString = await cookieStore.getAsync(constants.cookies.themeName);
-  const { mode } = getMode(modeString);
+  const user = await (async () => {
+    const hasToken = !!(await cookieStore.getAsync(constants.COOKIES.TOKEN_NAME));
+    if (!hasToken) return;
 
-  const { user } = await (async () => {
-    const defaults = { user: undefined };
-
-    const hasToken = !!(await cookieStore.getAsync(constants.cookies.tokenName));
-    if (hasToken) {
-      const userData = await getProfileApi({}, { throwError: false });
-      return { ...defaults, user: userData };
-    }
-
-    return defaults;
+    return await getProfileApi({}, { throwError: false });
   })();
 
   return (
-    <html lang="en" className={`${mode}-mode`}>
+    <html lang="en">
       <body className={interFont.className}>
-        <Suspense fallback={<p>Loading...</p>}>
-          <Providers initialState={{ user, mode }}>{children}</Providers>
+        <Suspense fallback={<Loader />}>
+          <App user={user}>{children}</App>
         </Suspense>
       </body>
     </html>
