@@ -1,33 +1,15 @@
-'use client';
+import React from 'react';
 
-import React, { Fragment, useEffect } from 'react';
-
-import { useLogout } from '@/features/profile/useLogout';
-import { useRouter } from '@/hooks/useRouter';
+import Logout from '@/components/logout/Logout';
+import constants from '@/constants';
 
 import type { Component } from '@/types';
+import type { Metadata } from 'next';
 
-const LogoutPage: Component = () => {
-  const router = useRouter();
-  const { mutateAsync: logout } = useLogout();
+export const metadata = {
+  title: `Logout | ${constants.APP_NAME}`,
+} satisfies Metadata;
 
-  useEffect(() => {
-    (async () => {
-      try {
-        await logout({});
-      } catch {
-        // empty
-      }
-
-      router.push('/');
-    })();
-  }, []);
-
-  return (
-    <Fragment>
-      <h1 className="text-center">Logging you out...</h1>
-    </Fragment>
-  );
-};
+const LogoutPage: Component = () => <Logout />;
 
 export default LogoutPage;
