@@ -2,11 +2,12 @@ import type { StoreState } from '@/store';
 import type { ZustandState } from '@/types/zustandState.type';
 import type { StateCreator, StoreApi } from 'zustand';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type StateFromFunctions<T extends [...any]> = T extends [infer F, ...infer R]
-  ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    F extends (...args: any) => object
-    ? StateFromFunctions<R> & ReturnType<F>
+export type StateFromFunctions<T extends ((...args: never[]) => object)[]> = T extends [
+  infer F,
+  ...infer R,
+]
+  ? F extends (...args: never[]) => object
+    ? StateFromFunctions<R extends ((...args: never[]) => object)[] ? R : []> & ReturnType<F>
     : unknown
   : unknown;
 
