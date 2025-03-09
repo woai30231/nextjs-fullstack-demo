@@ -13,6 +13,7 @@ const constants = {
     SYSTEM: 'system',
   },
   PROGRESS_BAR_DELAY: isLive ? 200 : 500,
+  STARTUP_PROGRESS_BAR_TIMEOUT: 200,
 } as const;
 
 export default constants;
