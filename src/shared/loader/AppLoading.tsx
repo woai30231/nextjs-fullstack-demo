@@ -5,8 +5,9 @@ import React, { useEffect } from 'react';
 import constants from '@/constants';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
 import { useStore } from '@/store';
-import type { Component } from '@/types';
 import { sleep } from '@/utils';
+
+import type { Component } from '@/types';
 
 const AppLoading: Component = () => {
   const isLoading = useStore((state) => state.isLoading);

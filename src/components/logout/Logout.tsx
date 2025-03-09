@@ -4,6 +4,7 @@ import React, { Fragment, useEffect } from 'react';
 
 import { useLogout } from '@/features/profile/useLogout';
 import { useRouter } from '@/hooks/useRouter';
+
 import type { Component } from '@/types';
 
 const Logout: Component = () => {

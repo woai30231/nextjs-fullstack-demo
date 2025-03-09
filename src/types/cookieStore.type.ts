@@ -9,7 +9,7 @@ export type DefaultSetOptions = Partial<ResponseCookie> & {
 
 export type GetOptions = (options: DefaultSetOptions) => DefaultSetOptions;
 
-type CookieKey = ValueOf<typeof constants.cookies>;
+type CookieKey = ValueOf<typeof constants.COOKIES>;
 
 export type GetCookie<P extends boolean = false, T = string | null> = (
   key: CookieKey,
