@@ -32,5 +32,5 @@ Email: admin@example.com
 Password: admin
 ```
 
-**Updated by:** Nisharg Shah  
+**Last updated by:** Nisharg Shah  
 **Date:** 09/03/2025
