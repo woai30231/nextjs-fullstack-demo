@@ -4,15 +4,13 @@ import React from 'react';
 
 import styles from '@/components/users/Users.module.css';
 import { useUsers } from '@/features/users/useUsers';
-import Loader from '@/shared/loader/Loader';
-import { isProcessing } from '@/utils';
 
 import type { Component } from '@/types';
 
 const Users: Component = () => {
-  const { isLoading, data: users } = useUsers();
+  const { data: users } = useUsers();
 
-  if (isProcessing(users, isLoading)) return <Loader />;
+  if (!users) return null;
 
   return (
     <div className={styles.container}>

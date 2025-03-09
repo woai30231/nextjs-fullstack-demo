@@ -15,4 +15,9 @@ export type CreateAuthSlice = SliceCreator<AuthSlice>;
 
 // OUTER FUNCTIONS
 
-export type AuthSliceGetUser = (payload: GetProfileOutput) => AuthSliceInitialState;
+interface AuthSliceGetUserOutput {
+  isAuthenticated: true;
+  user: GetProfileOutput;
+}
+
+export type AuthSliceGetUser = (payload: GetProfileOutput) => AuthSliceGetUserOutput;
