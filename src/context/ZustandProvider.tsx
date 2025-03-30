@@ -12,8 +12,7 @@ const ZustandContext = createContext<ZustandContextValue | undefined>(undefined)
 
 const ZustandProvider: Layout<ZustandProviderProps> = ({ children, ...state }) => {
   const storeRef = useRef<ZustandContextValue>(undefined);
-
-  if (!storeRef.current) storeRef.current = createStore(state);
+  storeRef.current ??= createStore(state);
 
   return <ZustandContext value={storeRef.current}>{children}</ZustandContext>;
 };
