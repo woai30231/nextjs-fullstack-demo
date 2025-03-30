@@ -11,9 +11,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.71.0
         version: 5.71.0(react@19.1.0)
-      '@tanstack/react-query-devtools':
-        specifier: ^5.71.0
-        version: 5.71.0(@tanstack/react-query@5.71.0(react@19.1.0))(react@19.1.0)
       axios:
         specifier: ^1.8.4
         version: 1.8.4
@@ -41,12 +38,6 @@ importers:
       react-toastify:
         specifier: ^11.0.5
         version: 11.0.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      type-fest:
-        specifier: ^4.38.0
-        version: 4.38.0
-      typescript:
-        specifier: ^5.8.2
-        version: 5.8.2
       zustand:
         specifier: ^5.0.3
         version: 5.0.3(@types/react@19.0.12)(react@19.1.0)
@@ -63,6 +54,9 @@ importers:
       '@tanstack/eslint-plugin-query':
         specifier: ^5.68.0
         version: 5.68.0(eslint@9.23.0)(typescript@5.8.2)
+      '@tanstack/react-query-devtools':
+        specifier: ^5.71.0
+        version: 5.71.0(@tanstack/react-query@5.71.0(react@19.1.0))(react@19.1.0)
       '@types/node':
         specifier: ^22.13.14
         version: 22.13.14
@@ -123,6 +117,12 @@ importers:
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
+      type-fest:
+        specifier: ^4.38.0
+        version: 4.38.0
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
       typescript-eslint:
         specifier: ^8.28.0
         version: 8.28.0(eslint@9.23.0)(typescript@5.8.2)

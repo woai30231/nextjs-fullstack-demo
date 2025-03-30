@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.71.0",
-    "@tanstack/react-query-devtools": "^5.71.0",
     "axios": "^1.8.4",
     "clsx": "^2.1.1",
     "cookies-next": "^5.1.0",
@@ -32,8 +31,6 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.55.0",
     "react-toastify": "^11.0.5",
-    "type-fest": "^4.38.0",
-    "typescript": "^5.8.2",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
@@ -41,6 +38,7 @@
     "@eslint/js": "^9.23.0",
     "@next/eslint-plugin-next": "^15.2.4",
     "@tanstack/eslint-plugin-query": "^5.68.0",
+    "@tanstack/react-query-devtools": "^5.71.0",
     "@types/node": "^22.13.14",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
@@ -61,6 +59,8 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
+    "type-fest": "^4.38.0",
+    "typescript": "^5.8.2",
     "typescript-eslint": "^8.28.0"
   },
   "packageManager": "pnpm@10.7.0",
