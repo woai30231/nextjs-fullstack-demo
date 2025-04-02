@@ -29,9 +29,8 @@ export const getMode: ThemeSliceGetMode = (mode) => {
   return LIGHT;
 };
 
-export const getPreferredMode: ThemeSliceGetPreferredMode = (mode) => {
-  return mode === DARK ? DARK : LIGHT;
-};
+export const getPreferredMode: ThemeSliceGetPreferredMode = (mode) =>
+  mode === DARK ? DARK : LIGHT;
 
 export const setModeClient: ThemeSliceSetModeClient = (mode) => {
   const isSystem = mode === SYSTEM;

@@ -10,9 +10,13 @@ export interface AppErrorType {
 
 export class AppError extends Error {
   public messages: AppErrorType['messages'];
+
   public statusCode: AppErrorType['statusCode'];
+
   public status: AppErrorType['statusCode'];
+
   public extraFields: AppErrorType['extraFields'];
+
   public isOperational: AppErrorType['isOperational'];
 
   static getMessage = (message: AppErrorType['message']): string => {

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useLogout } from '@/features/profile/useLogout';
 import { useRouter } from '@/hooks/useRouter';
@@ -23,11 +23,7 @@ const Logout: Component = () => {
     })();
   }, []);
 
-  return (
-    <Fragment>
-      <h1 className="text-center">Logging you out...</h1>
-    </Fragment>
-  );
+  return <h1 className="text-center">Logging you out...</h1>;
 };
 
 export default Logout;
