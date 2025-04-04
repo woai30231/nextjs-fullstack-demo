@@ -1,72 +1,53 @@
 import ESLintPluginNext from '@next/eslint-plugin-next';
 import ESLintPluginQuery from '@tanstack/eslint-plugin-query';
-import ESLintConfigAirbnbExtended from 'eslint-config-airbnb-extended';
-import ESLintPluginReactRefresh from 'eslint-plugin-react-refresh';
 
 const customReactESLintConfig = [
   // AIRBNB CONFIG
   // IT IS USING IMPORT, REACT, REACT HOOKS (ALL) & JSX A11Y INTERNALLY SO THOSE 4 PACKAGES SHOULD BE AFTER THIS
-  ...ESLintConfigAirbnbExtended.configs.recommended,
+  // ...ESLintConfigAirbnbExtended.configs.recommended,
   // REACT CONFIG RULES
-  {
-    name: 'react/rules',
-    rules: {
-      'react/function-component-definition': [
-        'error',
-        {
-          namedComponents: 'arrow-function',
-        },
-      ],
-      'react/prop-types': 'off',
-      'react/jsx-props-no-spreading': 'off',
-      'react/jsx-fragments': ['error', 'element'],
-      'react/require-default-props': [
-        'error',
-        {
-          functions: 'defaultArguments',
-        },
-      ],
-    },
-  },
+  // {
+  //   name: 'react/rules',
+  //   rules: {
+  //     'react/function-component-definition': [
+  //       'error',
+  //       {
+  //         namedComponents: 'arrow-function',
+  //       },
+  //     ],
+  //     'react/prop-types': 'off',
+  //     'react/jsx-props-no-spreading': 'off',
+  //     'react/jsx-fragments': ['error', 'element'],
+  //     'react/require-default-props': [
+  //       'error',
+  //       {
+  //         functions: 'defaultArguments',
+  //       },
+  //     ],
+  //   },
+  // },
   // JSX A11Y CONFIG RULES
-  {
-    name: 'jsx-a11y/rules',
-    rules: {
-      'jsx-a11y/label-has-associated-control': [
-        'error',
-        {
-          required: {
-            some: ['nesting', 'id'],
-          },
-        },
-      ],
-      'jsx-a11y/label-has-for': [
-        'error',
-        {
-          required: {
-            some: ['nesting', 'id'],
-          },
-        },
-      ],
-    },
-  },
-  // REACT REFRESH CONFIG
-  {
-    name: 'react-refresh/rules',
-    plugins: {
-      'react-refresh': ESLintPluginReactRefresh,
-    },
-    ignores: ['src/context/**'],
-    rules: {
-      ...ESLintPluginReactRefresh.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'error',
-        {
-          allowExportNames: ['metadata'],
-        },
-      ],
-    },
-  },
+  // {
+  //   name: 'jsx-a11y/rules',
+  //   rules: {
+  //     'jsx-a11y/label-has-associated-control': [
+  //       'error',
+  //       {
+  //         required: {
+  //           some: ['nesting', 'id'],
+  //         },
+  //       },
+  //     ],
+  //     'jsx-a11y/label-has-for': [
+  //       'error',
+  //       {
+  //         required: {
+  //           some: ['nesting', 'id'],
+  //         },
+  //       },
+  //     ],
+  //   },
+  // },
   // TAN STACK QUERY CONFIG
   ...ESLintPluginQuery.configs['flat/recommended'],
   // NEXT.JS CONFIG
