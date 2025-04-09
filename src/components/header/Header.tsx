@@ -31,26 +31,26 @@ const Header: Component = () => {
             Login
           </Link>
         )}
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <Link className={styles.link} href="/app">
             Dashboard
           </Link>
-        )}
-        {isAuthenticated && (
+        ) : null}
+        {isAuthenticated ? (
           <Link className={styles.link} href="/app/users">
             Users
           </Link>
-        )}
+        ) : null}
       </div>
       <div className={styles.btnWrapper}>
-        <button type="button" className={styles.btn} onClick={() => setMode(undefined)}>
+        <button className={styles.btn} onClick={() => setMode(undefined)} type="button">
           Mode: <span className={styles.capitalize}>{mode}</span>
         </button>
-        {isAuthenticated && (
-          <button type="button" className={styles.btn} onClick={() => router.push('/app/logout')}>
+        {isAuthenticated ? (
+          <button className={styles.btn} onClick={() => router.push('/app/logout')} type="button">
             Logout
           </button>
-        )}
+        ) : null}
       </div>
     </div>
   );

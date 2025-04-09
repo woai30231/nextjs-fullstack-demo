@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 
+import type { ValueOf } from 'type-fest';
+
 import type { RecursiveType } from '@/types';
 import type { HTTP_STATUSES } from '@server/_/constants';
-import type { ValueOf } from 'type-fest';
 
 export interface ResOptions {
   message?: string;

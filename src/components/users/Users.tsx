@@ -24,7 +24,7 @@ const Users: Component = () => {
         </thead>
         <tbody>
           {users.slice(0, 10).map((user) => (
-            <tr className={styles.tableRow} key={user.id}>
+            <tr key={user.id} className={styles.tableRow}>
               <td className={styles.tableData}>{user.id}</td>
               <td className={styles.tableData}>{user.fullName}</td>
               <td className={styles.tableData}>{user.email}</td>

@@ -8,16 +8,16 @@ import logo from '@/assets/images/next.svg';
 import type { Component } from '@/types';
 
 interface WebsiteLoaderType {
-  transparent?: boolean;
+  isTransparent?: boolean;
 }
 
-const WebsiteLoader: Component<WebsiteLoaderType> = ({ transparent = true }) => (
+const WebsiteLoader: Component<WebsiteLoaderType> = ({ isTransparent = true }) => (
   <div
     className={clsx('website-loader', {
-      'website-loader-transparent': transparent,
+      'website-loader-transparent': isTransparent,
     })}
   >
-    <Image src={logo} alt="logo-img" />
+    <Image alt="logo-img" src={logo} />
   </div>
 );
 

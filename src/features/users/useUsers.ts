@@ -13,7 +13,7 @@ export const useUsers = () => {
 
   useEffect(() => {
     setLoading(!data);
-  }, [data]);
+  }, [data, setLoading]);
 
   return queryData;
 };

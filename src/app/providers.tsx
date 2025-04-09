@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { QueryClientProvider } from '@tanstack/react-query';
+// eslint-disable-next-line import-x/no-extraneous-dependencies
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 
@@ -26,7 +27,7 @@ const Providers: Layout<ProvidersProps> = ({ children, ...props }) => {
         <ProgressBar />
       </ZustandProvider>
       <ReactQueryDevtools />
-      <ToastContainer pauseOnFocusLoss={false} autoClose={5000} closeOnClick hideProgressBar />
+      <ToastContainer closeOnClick hideProgressBar autoClose={5000} pauseOnFocusLoss={false} />
     </QueryClientProvider>
   );
 };

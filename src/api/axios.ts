@@ -6,9 +6,10 @@ import config from '@/config';
 import cookieStore from '@/lib/cookieStore';
 import { isServer } from '@/utils';
 
+import type { AxiosError } from 'axios';
+
 import type { AxiosErr } from '@/api/utils';
 import type { InternalAxiosRequestConfigWithExtraProps } from '@/types/axios.type';
-import type { AxiosError } from 'axios';
 
 const axios = axiosInstance.create({ baseURL: config.NEXT_PUBLIC_API_PATH, withCredentials: true });
 

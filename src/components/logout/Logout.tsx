@@ -21,7 +21,7 @@ const Logout: Component = () => {
 
       router.push('/');
     })();
-  }, []);
+  }, [logout, router]);
 
   return <h1 className="text-center">Logging you out...</h1>;
 };

@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/no-rename-default
 import clientConstants from '@/constants';
 
 export const HTTP_STATUSES = {

@@ -1,8 +1,7 @@
 import js from '@eslint/js';
+import { configs } from 'eslint-config-airbnb-extended';
 import promisePlugin from 'eslint-plugin-promise';
 import unicornPlugin from 'eslint-plugin-unicorn';
-
-import { configs } from 'eslint-config-airbnb-extended';
 
 const customJSESLintConfig = [
   // ESLINT RECOMMENDED RULES

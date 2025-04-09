@@ -4,7 +4,7 @@ import customJSESLintConfig from './lint/javascript.eslint.mjs';
 import customPrettierESLintConfig from './lint/prettier.eslint.mjs';
 import customReactESLintConfig from './lint/react.eslint.mjs';
 import customTSESLintConfig from './lint/typescript.eslint.mjs';
-import { gitIgnoreFile } from './lint/utils.mjs';
+import { gitIgnoreFile } from './lint/utils.eslint.mjs';
 
 export default [
   gitIgnoreFile,

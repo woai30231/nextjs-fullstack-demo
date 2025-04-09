@@ -9,8 +9,9 @@ import { getMode, getPreferredMode } from '@/store/slices/theme/theme.slice';
 import { interFont } from '@/styles/font';
 import '@/styles/globals.css';
 
-import type { Layout } from '@/types';
 import type { Metadata } from 'next';
+
+import type { Layout } from '@/types';
 
 export const metadata: Metadata = {
   title: constants.APP_NAME,
@@ -45,14 +46,15 @@ const RootLayout: Layout = async ({ children }) => {
     const hasToken = !!(await cookieStore.getAsync(constants.COOKIES.TOKEN_NAME));
     if (!hasToken) return;
 
-    return await getProfileApi({}, { throwError: false });
+    // BUG: RETURN AWAIT IS NO MORE, SO CHECK THE BEHAVIOUR
+    return getProfileApi({}, { throwError: false });
   })();
 
   return (
-    <html lang="en" data-theme={theme}>
+    <html data-theme={theme} lang="en">
       <body className={interFont.className}>
         <Suspense fallback={<Loader />}>
-          <App user={user} mode={mode} preferredMode={preferredMode}>
+          <App mode={mode} preferredMode={preferredMode} user={user}>
             {children}
           </App>
         </Suspense>

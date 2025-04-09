@@ -1,7 +1,8 @@
 import { throwAxiosError } from '@/api/utils';
 
-import type { AxiosSignal, PaginatedOutput } from '@/types/axios.type';
 import type { Promisable } from 'type-fest';
+
+import type { AxiosSignal, PaginatedOutput } from '@/types/axios.type';
 
 type DefaultParamsInput = AxiosSignal;
 

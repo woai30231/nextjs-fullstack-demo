@@ -9,8 +9,9 @@ import { useLogin } from '@/features/auth/useLogin';
 import { useProfile } from '@/features/profile/useProfile';
 import { useRouter } from '@/hooks/useRouter';
 
-import type { Component, Layout } from '@/types';
 import type { SubmitHandler } from 'react-hook-form';
+
+import type { Component, Layout } from '@/types';
 
 interface FormControlProps {
   label: string;
@@ -55,7 +56,7 @@ const Login: Component = () => {
 
   return (
     <form className={styles.container} onSubmit={onSubmit(handleSubmit)}>
-      <FormControl label="Email" labelFor="temp_email" error={errors.email?.message}>
+      <FormControl error={errors.email?.message} label="Email" labelFor="temp_email">
         <input
           {...register('email', { required: 'Email is required' })}
           className={styles.input}
@@ -63,7 +64,7 @@ const Login: Component = () => {
           type="text"
         />
       </FormControl>
-      <FormControl label="Password" labelFor="temp_password" error={errors.password?.message}>
+      <FormControl error={errors.password?.message} label="Password" labelFor="temp_password">
         <input
           {...register('password', { required: 'Password is required' })}
           className={styles.input}
@@ -72,7 +73,7 @@ const Login: Component = () => {
         />
       </FormControl>
       <div>
-        <button className={styles.btn} type="submit" disabled={isLoading}>
+        <button className={styles.btn} disabled={isLoading} type="submit">
           Submit
         </button>
       </div>

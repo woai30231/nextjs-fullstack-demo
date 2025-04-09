@@ -18,7 +18,7 @@ const Error: Component<NextErrorType> = ({ error, reset }) => {
     <div className={styles.errorContainer}>
       <h2>It’s not you. It’s us. Give it another try, please!</h2>
       <p>{error.message ?? ''}</p>
-      <button type="button" onClick={handleReset}>
+      <button onClick={handleReset} type="button">
         Try Again
       </button>
     </div>

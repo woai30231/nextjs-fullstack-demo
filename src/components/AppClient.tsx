@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import constants from '@/constants';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
@@ -14,11 +14,14 @@ const AppClient: Component = () => {
   const setLoading = useStore((state) => state.setLoading);
   const setPreferredMode = useStore((state) => state.setPreferredMode);
 
-  const handleColorSchema = (event: MediaQueryListEvent) => {
-    const { LIGHT, DARK } = constants.THEME;
-    const newTheme = event.matches ? DARK : LIGHT;
-    setPreferredMode(newTheme);
-  };
+  const handleColorSchema = useCallback(
+    (event: MediaQueryListEvent) => {
+      const { LIGHT, DARK } = constants.THEME;
+      const newTheme = event.matches ? DARK : LIGHT;
+      setPreferredMode(newTheme);
+    },
+    [setPreferredMode],
+  );
 
   useEffect(() => {
     (async () => {
@@ -32,7 +35,7 @@ const AppClient: Component = () => {
 
     matchMedia.addEventListener('change', handleColorSchema);
     return () => matchMedia.removeEventListener('change', handleColorSchema);
-  }, []);
+  }, [handleColorSchema]);
 
   return isLoading ? <WebsiteLoader /> : null;
 };

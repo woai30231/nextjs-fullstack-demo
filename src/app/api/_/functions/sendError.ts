@@ -1,8 +1,9 @@
 import sendRes from '@server/_/functions/sendRes';
 
-import type { HTTP_STATUSES } from '@server/_/constants';
 import type { NextResponse } from 'next/server';
 import type { ValueOf } from 'type-fest';
+
+import type { HTTP_STATUSES } from '@server/_/constants';
 
 export type SendError = (
   message: string,

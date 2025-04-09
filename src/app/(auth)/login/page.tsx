@@ -3,8 +3,9 @@ import React, { Fragment } from 'react';
 import Login from '@/components/login/Login';
 import constants from '@/constants';
 
-import type { Component } from '@/types';
 import type { Metadata } from 'next';
+
+import type { Component } from '@/types';
 
 export const metadata = {
   title: `Login | ${constants.APP_NAME}`,
