@@ -70,8 +70,8 @@ importers:
         specifier: ^9.24.0
         version: 9.24.0
       eslint-config-airbnb-extended:
-        specifier: ^0.5.1
-        version: 0.5.1(@next/eslint-plugin-next@15.3.0)(eslint-import-resolver-typescript@4.3.2)(eslint-plugin-import-x@4.10.2(eslint@9.24.0)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.24.0))(eslint-plugin-react-hooks@5.2.0(eslint@9.24.0))(eslint-plugin-react@7.37.5(eslint@9.24.0))(eslint@9.24.0)(typescript-eslint@8.29.1(eslint@9.24.0)(typescript@5.8.3))
+        specifier: ^0.5.2
+        version: 0.5.2(@next/eslint-plugin-next@15.3.0)(eslint-import-resolver-typescript@4.3.2)(eslint-plugin-import-x@4.10.2(eslint@9.24.0)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.24.0))(eslint-plugin-react-hooks@5.2.0(eslint@9.24.0))(eslint-plugin-react@7.37.5(eslint@9.24.0))(eslint@9.24.0)(typescript-eslint@8.29.1(eslint@9.24.0)(typescript@5.8.3))
       eslint-config-next:
         specifier: ^15.3.0
         version: 15.3.0(eslint-plugin-import-x@4.10.2(eslint@9.24.0)(typescript@5.8.3))(eslint@9.24.0)(typescript@5.8.3)
@@ -1005,8 +1005,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-config-airbnb-extended@0.5.1:
-    resolution: {integrity: sha512-E6pigM+RH5kMJKpcHTAppE3tEBwHPKxOXLoWKTM9+Wx1uCWtDPlSyOvn6I2ZyqZ5v0F1yQgbMyGrFwgcG7gcUQ==}
+  eslint-config-airbnb-extended@0.5.2:
+    resolution: {integrity: sha512-ZmCjuWO5gZbAVgvKTCOstSrrxKbqEi1bv393LY+z2wDss+gHjT22NgEjYbPtn3heMupAlnQJjC4z6xdyjnW2mw==}
     peerDependencies:
       '@next/eslint-plugin-next': ^15.2.4
       eslint: 9.x
@@ -3203,7 +3203,7 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-airbnb-extended@0.5.1(@next/eslint-plugin-next@15.3.0)(eslint-import-resolver-typescript@4.3.2)(eslint-plugin-import-x@4.10.2(eslint@9.24.0)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.24.0))(eslint-plugin-react-hooks@5.2.0(eslint@9.24.0))(eslint-plugin-react@7.37.5(eslint@9.24.0))(eslint@9.24.0)(typescript-eslint@8.29.1(eslint@9.24.0)(typescript@5.8.3)):
+  eslint-config-airbnb-extended@0.5.2(@next/eslint-plugin-next@15.3.0)(eslint-import-resolver-typescript@4.3.2)(eslint-plugin-import-x@4.10.2(eslint@9.24.0)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.24.0))(eslint-plugin-react-hooks@5.2.0(eslint@9.24.0))(eslint-plugin-react@7.37.5(eslint@9.24.0))(eslint@9.24.0)(typescript-eslint@8.29.1(eslint@9.24.0)(typescript@5.8.3)):
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 9.24.0
