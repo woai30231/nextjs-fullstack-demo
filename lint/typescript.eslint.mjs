@@ -12,7 +12,7 @@ const customTSESLintConfig = config(
   ...configs.stylistic,
   // TYPESCRIPT CONFIG RULES
   {
-    name: 'typescript-eslint/rules',
+    name: 'x/typescript-eslint/rules',
     rules: {
       // EXTRA RULES ( NOT IN EXTENDED CONFIG )
       '@typescript-eslint/consistent-type-exports': 'error',
@@ -69,7 +69,7 @@ const customTSESLintConfig = config(
   },
   // REACT ONLY - REMOVED ONE RULE FOR FEATURES HOOK
   {
-    name: 'typescript-eslint/rules/features-hook-only',
+    name: 'x/typescript-eslint/features-hook-only',
     files: ['src/features/**/use*.ts'],
     rules: {
       '@typescript-eslint/explicit-module-boundary-types': 'off',

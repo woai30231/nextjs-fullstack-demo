@@ -6,7 +6,7 @@ const customImportESLintConfig = [
   rules.base.importsStrict,
   // IMPORT CONFIG RULES
   {
-    name: 'import-x/rules',
+    name: 'x/import-x/rules',
     rules: {
       'sort-imports': [
         'error',
@@ -19,7 +19,7 @@ const customImportESLintConfig = [
   },
   // RESTRICTED SOME IMPORTS
   {
-    name: 'import-x/rules/ts-only',
+    name: 'x/import-x/ts-only',
     files: ['**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': [
@@ -36,19 +36,19 @@ const customImportESLintConfig = [
     },
   },
   {
-    name: 'unused-imports/rules',
+    name: 'x/import-x/disable-default-export',
+    files: ['**/features/**/**.api.ts', '**/hooks/**.ts', 'src/features/**/use*.ts'],
+    rules: {
+      'import-x/prefer-default-export': 'off',
+    },
+  },
+  {
+    name: 'unused-imports/config',
     plugins: {
       'unused-imports': unusedImportsPlugin,
     },
     rules: {
       'unused-imports/no-unused-imports': 'error',
-    },
-  },
-  {
-    name: 'airbnb/config/next-import-x',
-    files: ['**/features/**/**.api.ts', '**/hooks/**.ts', 'src/features/**/use*.ts'],
-    rules: {
-      'import-x/prefer-default-export': 'off',
     },
   },
 ];

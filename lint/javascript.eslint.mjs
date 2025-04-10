@@ -17,7 +17,7 @@ const customJSESLintConfig = [
   unicornPlugin.configs.recommended,
   // UNICORN CONFIG RULES
   {
-    name: 'unicorn/rules',
+    name: 'x/unicorn/rules',
     rules: {
       'unicorn/filename-case': [
         'error',

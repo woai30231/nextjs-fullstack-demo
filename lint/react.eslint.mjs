@@ -16,7 +16,7 @@ const customReactESLintConfig = [
   rules.base.reactStrict,
   // JSX A11Y CONFIG RULES
   {
-    name: 'jsx-a11y/rules',
+    name: 'x/jsx-a11y/rules',
     rules: {
       'jsx-a11y/label-has-associated-control': 'off',
     },
