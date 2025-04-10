@@ -27,16 +27,6 @@ const RootLayout: Layout = async ({ children }) => {
 
     const themeMode = getMode(modeString);
     const preferredThemeMode = getPreferredMode(preferredModeString);
-
-    if (!modeString) {
-      cookieStore.set(constants.COOKIES.THEME_NAME, themeMode);
-      cookieStore.set(constants.COOKIES.SYSTEM_THEME, themeMode);
-    }
-
-    if (!preferredModeString) {
-      cookieStore.set(constants.COOKIES.SYSTEM_THEME, preferredThemeMode);
-    }
-
     const dataTheme = themeMode === constants.THEME.SYSTEM ? preferredThemeMode : themeMode;
 
     return { mode: themeMode, preferredMode: preferredThemeMode, theme: dataTheme };
@@ -46,7 +36,6 @@ const RootLayout: Layout = async ({ children }) => {
     const hasToken = !!(await cookieStore.getAsync(constants.COOKIES.TOKEN_NAME));
     if (!hasToken) return;
 
-    // BUG: RETURN AWAIT IS NO MORE, SO CHECK THE BEHAVIOUR
     return getProfileApi({}, { throwError: false });
   })();
 
