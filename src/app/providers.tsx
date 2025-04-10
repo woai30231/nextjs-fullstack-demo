@@ -7,9 +7,9 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 
-import ZustandProvider from '@/context/ZustandProvider';
 import { useZustandState } from '@/hooks/useZustandState';
 import queryClient from '@/lib/queryClient';
+import ZustandProvider from '@/providers/ZustandProvider';
 import ProgressBar from '@/shared/loader/ProgressBar';
 
 import type { Layout } from '@/types';

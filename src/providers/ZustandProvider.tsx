@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useRef } from 'react';
 
-import { createStore } from '@/store';
+import createStore from '@/store';
 
 import type { Layout } from '@/types';
 import type { ZustandContextValue } from '@/types/store.type';

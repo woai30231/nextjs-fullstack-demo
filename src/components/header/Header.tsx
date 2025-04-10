@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import styles from '@/components/header/Header.module.css';
 import { useRouter } from '@/hooks/useRouter';
-import { useStore } from '@/store';
+import { useStore } from '@/hooks/useStore';
 
 import type { Component } from '@/types';
 

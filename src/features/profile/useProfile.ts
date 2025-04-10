@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { getProfileApi } from '@/features/profile/profile.api';
-import { useStore } from '@/store';
+import { useStore } from '@/hooks/useStore';
 
 export const useProfile = () => {
   const setUser = useStore((state) => state.setUser);

@@ -1,18 +1,17 @@
-import { createStore as createZustandStore, useStore as useZustandStore } from 'zustand';
+import { createStore as createZustandStore } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import { useZustand } from '@/context/ZustandProvider';
 import createAuthSlice from '@/store/slices/auth/auth.slice';
 import createLoadingSlice from '@/store/slices/loading/loading.slice';
 import createThemeSlice from '@/store/slices/theme/theme.slice';
 
-import type { CreateStore, StateFromFunctions, UseStore } from '@/types/store.type';
+import type { CreateStore, StateFromFunctions } from '@/types/store.type';
 
 export type StoreState = StateFromFunctions<
   [typeof createAuthSlice, typeof createLoadingSlice, typeof createThemeSlice]
 >;
 
-export const createStore: CreateStore = (state) =>
+const createStore: CreateStore = (state) =>
   createZustandStore<StoreState>()(
     devtools((...a) => ({
       ...createAuthSlice(...a),
@@ -22,7 +21,4 @@ export const createStore: CreateStore = (state) =>
     })),
   );
 
-export const useStore: UseStore = (selector) => {
-  const store = useZustand();
-  return useZustandStore(store, selector);
-};
+export default createStore;

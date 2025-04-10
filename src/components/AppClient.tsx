@@ -3,8 +3,8 @@
 import React, { useCallback, useEffect } from 'react';
 
 import constants from '@/constants';
+import { useStore } from '@/hooks/useStore';
 import WebsiteLoader from '@/shared/loader/WebsiteLoader';
-import { useStore } from '@/store';
 import { sleep } from '@/utils';
 
 import type { Component } from '@/types';

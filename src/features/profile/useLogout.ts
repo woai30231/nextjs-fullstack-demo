@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { logoutApi } from '@/features/profile/profile.api';
-import { useStore } from '@/store';
+import { useStore } from '@/hooks/useStore';
 
 export const useLogout = () => {
   const logout = useStore((state) => state.logout);

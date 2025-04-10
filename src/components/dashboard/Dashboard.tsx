@@ -3,7 +3,7 @@
 import React from 'react';
 
 import styles from '@/components/dashboard/Dashboard.module.css';
-import { useStore } from '@/store';
+import { useStore } from '@/hooks/useStore';
 
 import type { Component } from '@/types';
 
