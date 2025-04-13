@@ -37,7 +37,7 @@ const customImportESLintConfig = [
   },
   {
     name: 'x/import-x/disable-default-export',
-    files: ['**/features/**/**.api.ts', '**/hooks/**.ts', 'src/features/**/use*.ts'],
+    files: ['**/features/**/**.api.ts', '**/use*.ts'],
     rules: {
       'import-x/prefer-default-export': 'off',
     },
