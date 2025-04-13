@@ -1,5 +1,5 @@
 import js from '@eslint/js';
-import { configs } from 'eslint-config-airbnb-extended';
+import { configs, plugins } from 'eslint-config-airbnb-extended';
 import promisePlugin from 'eslint-plugin-promise';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
@@ -9,6 +9,8 @@ const customJSESLintConfig = [
     name: 'js/config',
     ...js.configs.recommended,
   },
+  // IMPORT X PLUGIN
+  plugins.importX,
   // AIRBNB BASE CONFIG
   ...configs.base.recommended,
   // PROMISE CONFIG
