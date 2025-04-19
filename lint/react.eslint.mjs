@@ -13,7 +13,7 @@ const customReactESLintConfig = [
   // AIRBNB NEXT CONFIG
   ...configs.next.recommended,
   // AIRBNB REACT STRICT RULES
-  rules.base.reactStrict,
+  rules.react.strict,
   // JSX A11Y CONFIG RULES
   {
     name: 'x/jsx-a11y/rules',
