@@ -21,7 +21,7 @@ axios.interceptors.request.use(
     if (!isServer && !lang) myConfig.headers['Accept-Language'] = 'en';
 
     myConfig.url = Object.entries(conf.urlParams ?? {}).reduce((acc, [k, v]) => {
-      let temp = `${acc}`;
+      let temp = acc;
       temp = temp.replace(`:${k}`, v.toString());
 
       return temp;
