@@ -40,4 +40,6 @@ export const middleware: NextMiddleware = async (request) => {
       });
     }
   }
+
+  return null;
 };
