@@ -24,7 +24,7 @@ type CatchAsyncOutput<T, R, P, E> = (
 
 type ErrorCB<E> = (error: unknown) => Promisable<E>;
 
-type CatchAsync = <I, R, P = unknown | boolean, E = null, T = I & DefaultParamsInput>(
+type CatchAsync = <I, R, P = unknown, E = null, T = I & DefaultParamsInput>(
   fn: CatchAsyncInput<T, R, P>,
   errorCB?: ErrorCB<E>,
 ) => CatchAsyncOutput<T, R, P, E>;

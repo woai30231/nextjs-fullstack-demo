@@ -1,10 +1,8 @@
 import type { NextRequest } from 'next/server';
 
-type GetBody = <T>(request: NextRequest) => Promise<T>;
-
-const getBody: GetBody = async (request) => {
+const getBody = async <T>(request: NextRequest): Promise<T | null> => {
   try {
-    return await request.json();
+    return (await request.json()) as T;
   } catch {
     return null;
   }
