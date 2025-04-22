@@ -1,4 +1,4 @@
-import { configs, plugins } from 'eslint-config-airbnb-extended';
+import { configs, plugins, rules } from 'eslint-config-airbnb-extended';
 
 const customTSESLintConfig = [
   // Typescript ESLint Plugin
@@ -7,6 +7,8 @@ const customTSESLintConfig = [
   ...configs.base.typescript,
   // AIRBNB NEXT TYPESCRIPT CONFIG
   ...configs.next.typescript,
+  // AIRBNB TYPESCRIPT ESLINT STRICT CONFIG
+  rules.typescript.typescriptEslintStrict,
   // REACT ONLY - REMOVED ONE RULE FOR FEATURES HOOK
   {
     name: 'x/typescript-eslint/features-hook-only',
