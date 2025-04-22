@@ -58,8 +58,8 @@ importers:
         specifier: ^5.73.3
         version: 5.73.3(eslint@9.25.1)(typescript@5.8.3)
       '@tanstack/react-query-devtools':
-        specifier: ^5.74.4
-        version: 5.74.4(@tanstack/react-query@5.74.4(react@19.1.0))(react@19.1.0)
+        specifier: ^5.74.6
+        version: 5.74.6(@tanstack/react-query@5.74.4(react@19.1.0))(react@19.1.0)
       '@types/node':
         specifier: ^22.14.1
         version: 22.14.1
@@ -73,8 +73,8 @@ importers:
         specifier: ^9.25.1
         version: 9.25.1
       eslint-config-airbnb-extended:
-        specifier: ^0.11.0
-        version: 0.11.0(@next/eslint-plugin-next@15.3.1)(@stylistic/eslint-plugin@3.1.0(eslint@9.25.1)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.4)(eslint-plugin-import-x@4.10.6(eslint@9.25.1)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.25.1))(eslint-plugin-react-hooks@5.2.0(eslint@9.25.1))(eslint-plugin-react@7.37.5(eslint@9.25.1))(eslint@9.25.1)(typescript-eslint@8.31.0(eslint@9.25.1)(typescript@5.8.3))
+        specifier: ^0.11.2
+        version: 0.11.2(@next/eslint-plugin-next@15.3.1)(@stylistic/eslint-plugin@3.1.0(eslint@9.25.1)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.4)(eslint-plugin-import-x@4.10.6(eslint@9.25.1)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.25.1))(eslint-plugin-react-hooks@5.2.0(eslint@9.25.1))(eslint-plugin-react@7.37.5(eslint@9.25.1))(eslint@9.25.1)(typescript-eslint@8.31.0(eslint@9.25.1)(typescript@5.8.3))
       eslint-config-next:
         specifier: ^15.3.1
         version: 15.3.1(eslint-plugin-import-x@4.10.6(eslint@9.25.1)(typescript@5.8.3))(eslint@9.25.1)(typescript@5.8.3)
@@ -451,11 +451,11 @@ packages:
   '@tanstack/query-core@5.74.4':
     resolution: {integrity: sha512-YuG0A0+3i9b2Gfo9fkmNnkUWh5+5cFhWBN0pJAHkHilTx6A0nv8kepkk4T4GRt4e5ahbtFj2eTtkiPcVU1xO4A==}
 
-  '@tanstack/query-devtools@5.73.3':
-    resolution: {integrity: sha512-hBQyYwsOuO7QOprK75NzfrWs/EQYjgFA0yykmcvsV62q0t6Ua97CU3sYgjHx0ZvxkXSOMkY24VRJ5uv9f5Ik4w==}
+  '@tanstack/query-devtools@5.74.6':
+    resolution: {integrity: sha512-djaFT11mVCOW3e0Ezfyiq7T6OoHy2LRI1fUFQvj+G6+/4A1FkuRMNUhQkdP1GXlx8id0f1/zd5fgDpIy5SU/Iw==}
 
-  '@tanstack/react-query-devtools@5.74.4':
-    resolution: {integrity: sha512-PGCAcytQMmeagoeGG45ccBhrC1x0/5OlNjsM1FAb9OfsQZIhPzjwjhGcwmMu6TbT4RIHgvjxLwC5NHgkUwJQzw==}
+  '@tanstack/react-query-devtools@5.74.6':
+    resolution: {integrity: sha512-vlsDwz4/FsblK0h7VAlXUdJ+9OV+i1n8OLb8CLLAZqu0M9GCnbajytZwsRmns33PXBZ6wQBJ859kg6aajx+e9Q==}
     peerDependencies:
       '@tanstack/react-query': ^5.74.4
       react: ^18 || ^19
@@ -1052,8 +1052,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-config-airbnb-extended@0.11.0:
-    resolution: {integrity: sha512-0a7ehJUTkvn0+Wzvab6KXmgICKIGvuacHKPhdGgJxuaOYR4Mm4pYFdbwO/L8VrJis88v3LG0nxgoJBlWgiRJ1A==}
+  eslint-config-airbnb-extended@0.11.2:
+    resolution: {integrity: sha512-NdC6b0Kx1N2Fr/AFeLw1nXyVwYBICWADoLsTrY7DelYsc9dTm+JCNRkincnURP/wfJNuM3V5lQI9MOXAgx1IzQ==}
     peerDependencies:
       '@next/eslint-plugin-next': 15.x
       '@stylistic/eslint-plugin': 3.x
@@ -2620,11 +2620,11 @@ snapshots:
 
   '@tanstack/query-core@5.74.4': {}
 
-  '@tanstack/query-devtools@5.73.3': {}
+  '@tanstack/query-devtools@5.74.6': {}
 
-  '@tanstack/react-query-devtools@5.74.4(@tanstack/react-query@5.74.4(react@19.1.0))(react@19.1.0)':
+  '@tanstack/react-query-devtools@5.74.6(@tanstack/react-query@5.74.4(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@tanstack/query-devtools': 5.73.3
+      '@tanstack/query-devtools': 5.74.6
       '@tanstack/react-query': 5.74.4(react@19.1.0)
       react: 19.1.0
 
@@ -3333,7 +3333,7 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-airbnb-extended@0.11.0(@next/eslint-plugin-next@15.3.1)(@stylistic/eslint-plugin@3.1.0(eslint@9.25.1)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.4)(eslint-plugin-import-x@4.10.6(eslint@9.25.1)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.25.1))(eslint-plugin-react-hooks@5.2.0(eslint@9.25.1))(eslint-plugin-react@7.37.5(eslint@9.25.1))(eslint@9.25.1)(typescript-eslint@8.31.0(eslint@9.25.1)(typescript@5.8.3)):
+  eslint-config-airbnb-extended@0.11.2(@next/eslint-plugin-next@15.3.1)(@stylistic/eslint-plugin@3.1.0(eslint@9.25.1)(typescript@5.8.3))(eslint-import-resolver-typescript@4.3.4)(eslint-plugin-import-x@4.10.6(eslint@9.25.1)(typescript@5.8.3))(eslint-plugin-jsx-a11y@6.10.2(eslint@9.25.1))(eslint-plugin-react-hooks@5.2.0(eslint@9.25.1))(eslint-plugin-react@7.37.5(eslint@9.25.1))(eslint@9.25.1)(typescript-eslint@8.31.0(eslint@9.25.1)(typescript@5.8.3)):
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 9.25.1
@@ -3426,7 +3426,7 @@ snapshots:
     dependencies:
       '@pkgr/core': 0.2.4
       '@types/doctrine': 0.0.9
-      '@typescript-eslint/utils': 8.30.1(eslint@9.25.1)(typescript@5.8.3)
+      '@typescript-eslint/utils': 8.31.0(eslint@9.25.1)(typescript@5.8.3)
       debug: 4.4.0
       doctrine: 3.0.0
       eslint: 9.25.1
