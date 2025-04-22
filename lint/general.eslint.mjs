@@ -12,6 +12,12 @@ const customGeneralESLintConfig = [
           allow: ['_id'],
         },
       ],
+      'sort-imports': [
+        'error',
+        {
+          ignoreDeclarationSort: true,
+        },
+      ],
       'no-restricted-syntax': [
         'error',
         'ForStatement',
@@ -28,6 +34,23 @@ const customGeneralESLintConfig = [
         {
           selector: 'TSTypeReference[typeName.left.name="React"]',
           message: 'Use of React.type is not allowed.',
+        },
+      ],
+    },
+  },
+  {
+    name: 'x/general/ts-only',
+    files: ['*.{ts,cts,mts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: ['./*', '../*'],
+              message: "Please use the absolute path '@/*' instead.",
+            },
+          ],
         },
       ],
     },

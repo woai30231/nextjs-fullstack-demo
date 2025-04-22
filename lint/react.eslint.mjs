@@ -1,4 +1,4 @@
-import ESLintPluginQuery from '@tanstack/eslint-plugin-query';
+import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
 import { configs, plugins, rules } from 'eslint-config-airbnb-extended';
 
 const customReactESLintConfig = [
@@ -22,7 +22,7 @@ const customReactESLintConfig = [
     },
   },
   // TAN STACK QUERY CONFIG
-  ...ESLintPluginQuery.configs['flat/recommended'],
+  ...tanstackQueryPlugin.configs['flat/recommended'],
 ];
 
 export default customReactESLintConfig;
