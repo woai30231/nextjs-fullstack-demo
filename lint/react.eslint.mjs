@@ -2,13 +2,13 @@ import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
 import { configs, plugins, rules } from 'eslint-config-airbnb-extended';
 
 const customReactESLintConfig = [
-  // React Plugin
+  // REACT PLUGIN
   plugins.react,
-  // React Hooks Plugin
+  // REACT HOOKS PLUGIN
   plugins.reactHooks,
-  // React JSX-A11y Plugin
+  // REACT JSX-A11Y PLUGIN
   plugins.reactA11y,
-  // Next Plugin
+  // NEXT PLUGIN
   plugins.next,
   // AIRBNB NEXT CONFIG
   ...configs.next.recommended,

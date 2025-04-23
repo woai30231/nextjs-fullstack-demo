@@ -1,7 +1,7 @@
 import { configs, plugins, rules } from 'eslint-config-airbnb-extended';
 
 const customTSESLintConfig = [
-  // Typescript ESLint Plugin
+  // TYPESCRIPT ESLINT PLUGIN
   plugins.typescriptEslint,
   // AIRBNB BASE TYPESCRIPT CONFIG
   ...configs.base.typescript,

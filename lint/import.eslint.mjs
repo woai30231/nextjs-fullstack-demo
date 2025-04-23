@@ -4,6 +4,7 @@ import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 const customImportESLintConfig = [
   // STRICT IMPORT CONFIG
   rules.base.importsStrict,
+  // IMPORT CONFIG RULES
   {
     name: 'x/import-x/disable-default-export',
     files: ['**/features/**/**.api.ts', '**/use*.ts'],
@@ -11,6 +12,7 @@ const customImportESLintConfig = [
       'import-x/prefer-default-export': 'off',
     },
   },
+  // UNUSED IMPORTS CONFIG
   {
     name: 'unused-imports/config',
     plugins: {
