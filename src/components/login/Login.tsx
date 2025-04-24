@@ -55,7 +55,7 @@ const Login: Component = () => {
   };
 
   return (
-    <form className={styles.container} onSubmit={void onSubmit(handleSubmit)}>
+    <form className={styles.container} onSubmit={onSubmit(handleSubmit)}>
       <FormControl error={errors.email?.message} label="Email" labelFor="temp_email">
         <input
           {...register('email', { required: 'Email is required' })}
