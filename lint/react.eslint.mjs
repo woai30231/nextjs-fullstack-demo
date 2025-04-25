@@ -2,27 +2,27 @@ import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
 import { configs, plugins, rules } from 'eslint-config-airbnb-extended';
 
 const customReactESLintConfig = [
-  // REACT PLUGIN
+  // React Plugin
   plugins.react,
-  // REACT HOOKS PLUGIN
+  // React Hooks Plugin
   plugins.reactHooks,
-  // REACT JSX-A11Y PLUGIN
+  // React JSX A11y Plugin
   plugins.reactA11y,
-  // NEXT PLUGIN
+  // Next Plugin
   plugins.next,
-  // AIRBNB NEXT CONFIG
+  // Airbnb Next Recommended Config
   ...configs.next.recommended,
-  // AIRBNB REACT STRICT RULES
+  // Airbnb React Strict Rules
   rules.react.strict,
-  // JSX A11Y CONFIG RULES
+  // Tanstack Query Config
+  ...tanstackQueryPlugin.configs['flat/recommended'],
+  // JSX A11y Config Rules
   {
     name: 'x/jsx-a11y/rules',
     rules: {
       'jsx-a11y/label-has-associated-control': 'off',
     },
   },
-  // TAN STACK QUERY CONFIG
-  ...tanstackQueryPlugin.configs['flat/recommended'],
 ];
 
 export default customReactESLintConfig;

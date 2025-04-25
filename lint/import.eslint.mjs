@@ -2,17 +2,9 @@ import { rules } from 'eslint-config-airbnb-extended';
 import unusedImportsPlugin from 'eslint-plugin-unused-imports';
 
 const customImportESLintConfig = [
-  // STRICT IMPORT CONFIG
+  // Strict Import Rules
   rules.base.importsStrict,
-  // IMPORT CONFIG RULES
-  {
-    name: 'x/import-x/disable-default-export',
-    files: ['**/features/**/**.api.ts', '**/use*.ts'],
-    rules: {
-      'import-x/prefer-default-export': 'off',
-    },
-  },
-  // UNUSED IMPORTS CONFIG
+  // Unused Import Config
   {
     name: 'unused-imports/config',
     plugins: {
@@ -20,6 +12,14 @@ const customImportESLintConfig = [
     },
     rules: {
       'unused-imports/no-unused-imports': 'error',
+    },
+  },
+  // Disable Default Export for Features and Hooks
+  {
+    name: 'x/import-x/disable-default-export',
+    files: ['**/features/**/**.api.ts', '**/use*.ts'],
+    rules: {
+      'import-x/prefer-default-export': 'off',
     },
   },
 ];

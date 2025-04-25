@@ -19,12 +19,12 @@ const customGeneralESLintConfig = [
         'DoWhileStatement',
         'WhileStatement',
         'WithStatement',
-        // REACT
+        // React
         {
           selector: 'MemberExpression[object.name="React"]',
           message: 'Use of React.method is not allowed.',
         },
-        // REACT - TYPESCRIPT
+        // React - TypeScript
         {
           selector: 'TSTypeReference[typeName.left.name="React"]',
           message: 'Use of React.type is not allowed.',

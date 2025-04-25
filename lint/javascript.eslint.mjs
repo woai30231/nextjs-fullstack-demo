@@ -4,22 +4,22 @@ import promisePlugin from 'eslint-plugin-promise';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 const customJSESLintConfig = [
-  // ESLINT RECOMMENDED RULES
+  // ESLint Recommended Rules
   {
     name: 'js/config',
     ...js.configs.recommended,
   },
-  // STYLISTIC PLUGIN
+  // Stylistic Plugin
   plugins.stylistic,
-  // IMPORT X PLUGIN
+  // Import X Plugin
   plugins.importX,
-  // AIRBNB BASE CONFIG
+  // Airbnb Base Recommended Config
   ...configs.base.recommended,
-  // PROMISE CONFIG
+  // Promise Config
   promisePlugin.configs['flat/recommended'],
-  // UNICORN CONFIG
+  // Unicorn Config
   unicornPlugin.configs.recommended,
-  // UNICORN CONFIG RULES
+  // Unicorn Config Rules
   {
     name: 'x/unicorn/rules',
     rules: {
