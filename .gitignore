@@ -6,30 +6,32 @@ node_modules
 # testing
 coverage
 
-# next.js
-.next
-out
-
 # production
 build
+dist
 
 # misc
 .DS_Store
 *.pem
+*.crt
+*.key
 
 # debug
 *.log
 
-# local env files
-.env*.local
-
 # vercel
 .vercel
 
+# next.js
+.next
+out
+next-env.d.ts
+
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 # editor folders
 .idea
-.vscode
+
+# local env files
+.env*.local
