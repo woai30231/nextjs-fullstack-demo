@@ -22,6 +22,14 @@ const customImportESLintConfig = [
       'import-x/prefer-default-export': 'off',
     },
   },
+  // Disable Extensions in Module Files
+  {
+    name: 'x/import-x/disable-extensions-in-module-files',
+    files: ['**/*.mjs'],
+    rules: {
+      'import-x/extensions': 'off',
+    },
+  },
 ];
 
 export default customImportESLintConfig;
