@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Install `pnpm` globally.
-- Requires Node.js 22 or later.
+- Requires Node.js 24 or later.
 - Use only `pnpm`, no NPM or Yarn.
 - Keep ESLint & Prettier enabled.
 - Adhere to the coding rules as much as possible.

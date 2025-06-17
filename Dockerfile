@@ -1,5 +1,5 @@
 # Set Node.js version
-ARG NODE_VERSION=22
+ARG NODE_VERSION=24
 
 # Base stage for dependency installation
 FROM node:${NODE_VERSION}-alpine AS base
