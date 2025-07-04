@@ -6,6 +6,8 @@ import type { GetAllUsersInput, GetAllUsersOutput } from '@/features/users/users
 export const getAllUsersApi = catchAsync<GetAllUsersInput, GetAllUsersOutput>(
   async ({ signal }) => {
     const res = await api.getAllUsers<GetAllUsersOutput>({ signal });
+    console.log(res)
+    console.log('res:usersList')
     return res.data.data;
   },
 );

@@ -6,11 +6,13 @@ import styles from '@/components/users/Users.module.css';
 import { useUsers } from '@/features/users/useUsers';
 
 import type { Component } from '@/types';
+import cookieStore from "@/lib/cookieStore"
 
 const Users: Component = () => {
   const { data: users } = useUsers();
 
   if (!users) return null;
+  console.log(cookieStore.getAll())
 
   return (
     <div className={styles.container}>
