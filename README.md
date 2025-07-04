@@ -1,5 +1,9 @@
 # Project Name
 
+## 备注
+
+- 这是一个以github项目的为模版再开发的demo项目，以下是原readme内容！
+
 ## Prerequisites
 
 - Install `pnpm` globally.
